@@ -1,0 +1,2 @@
+export Virtuoso_Photonics_Option=1
+export Virtuoso_MultiTech=1
