@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/synopsys_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "339f80d2e6b9386346381dbcf264fbbfd511a4a84dced18044f48512326f1fcd",
+      "size_in_bytes": 1387
+    }
+  ],
+  "paths_version": 1
+}

@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/genus_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "d2b044ba3c630d6d715742670a2cf9dcf59dbe6e53e7d165e44675789f108a70",
+      "size_in_bytes": 210
+    }
+  ],
+  "paths_version": 1
+}

@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/agnisys_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "9670ec8589270ce1d2870b2e032cd80c699ad89dcd390829e0b9455af3fceeb2",
+      "size_in_bytes": 121
+    }
+  ],
+  "paths_version": 1
+}
