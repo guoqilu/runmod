@@ -15,6 +15,9 @@ Only required once per user:
 1. Update env.sh with your new values
 2. Edit meta.yaml with a incremented version number
 
+## Build and release all the packages
+`make`
+
 ## Building a single package
 `cd <package_dir>`
 
