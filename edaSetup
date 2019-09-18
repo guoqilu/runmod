@@ -26,10 +26,12 @@ do
             echo "  -c [--configOption] ROLE       Select your Role, if not provided, interactive selection is enabled"
             echo ""
             echo "                                  Available Roles and Valid Options:"
-            echo "                                  1  :: AMS"
-            echo "                                  2  :: AMS/Photonics"
-            echo "                                  3  :: AMS/PD"
-            echo "                                  4  :: RTL/DV"
+            echo "                                  1  :: AMS - IC618"
+            echo "                                  2  :: AMS - ICADVM181"
+            echo "                                  3  :: AMS - ICADVM181/Photonics"
+            echo "                                  4  :: AMS - ICADVM181/PD"
+            echo "                                  5  :: RTL/DV"
+            echo "                                  6  :: Allegro"
             echo ""
             echo " -h [--help]                      Prints help message and exits"
             echo ""
@@ -59,50 +61,17 @@ then
     echo "  Welcome to the Lightelligence EDA Configurator"
     echo ""
     echo "  Please Select Your Role:"
-    echo "  1. AMS"
-    echo "  2. AMS/Photonics"
-    echo "  3. AMS/PD"
-    echo "  4. RTL/DV"
+    echo "  1. AMS - IC618"
+    echo "  2. AMS - ICADVM181"
+    echo "  3. AMS - ICADVM181/Photonics"
+    echo "  4. AMS - ICADVM181/PD"
+    echo "  5. RTL/DV"
+    echo "  6. Allegro"
     echo -n "  Selection [Press Enter]: "
     read configOption
 fi
 
-# --------------------------------------------------
-# Tools Base Installation Folder
-# --------------------------------------------------
-
-# FIX ME - if /eda exists ... set TOOLSBASE ... otherwise set to /tools
-if [ "$HOSTNAME" = "turing-3.opu.tv" ]; then
-    export TOOLSBASE=/eda
-else
-    export TOOLSBASE=/tools
-fi
-
-# --------------------------------------------------
-# REAX to User Input
-# --------------------------------------------------
-
-case $configOption in
-    1)
-        #export CDSBASE=IC618
-	    export CDSBASE=IC618ISR5
-        ;;
-    2) 
-        export CDSBASE=ICADVM181
-	    export Virtuoso_MultiTech=1
-        ;;
-    3)
-        export CDSBASE=ICADVM181
-        export Virtuoso_Photonics_Option=1
-        export Virtuoso_MultiTech=1
-        ;;
-
-    *) 
-        #export CDSBASE=IC618
-	    export CDSBASE=IC618ISR5
-        echo ""
-        ;;
-esac
+echo $configOption
 
 # --------------------------------------------------
 # **************************************************
@@ -112,11 +81,7 @@ esac
 # **************************************************
 # --------------------------------------------------
 
-# --------------------------------------------------
-# Cadence Installation Path
-# --------------------------------------------------
-
-export CDSTOOLS=$TOOLSBASE/cadence
+configure_CDS() {
 
 # --------------------------------------------------
 # Set License File Server for Cadence
@@ -129,58 +94,14 @@ else
 fi
 
 # --------------------------------------------------
-# Cadence Tools Path(s)
-# --------------------------------------------------
-
-# Cadence Base
-export CDSHOME=$CDSTOOLS/$CDSBASE
-
-# Simulation
-export MMSIMHOME=$CDSTOOLS/SPECTRE181
-
-# Physical Verification
-export QRC_HOME=$CDSTOOLS/EXT191
-export PVSHOME=$CDSTOOLS/PVS161
-
-# Digital 
-#export GENUSHOME=$CDSTOOLS/GENUS181
-export GENUSHOME=$CDSTOOLS/GENUS191
-#export INNOVUSHOME=$CDSTOOLS/INNOVUS181
-export INNOVUSHOME=$CDSTOOLS/INNOVUS191
-export AMSHOME=$CDSTOOLS/XCELIUM1809
-export CONFRMLHOME=$CDSTOOLS/CONFRML182
-export JOULESHOME=$CDSTOOLS/JLS181
-export MODUSHOME=$CDSTOOLS/MODUS181
-export SSVHOME=$CDSTOOLS/SSV181
-
-# Allegro and SiP
-export ALLEGROHOME=$CDSTOOLS/SPB172
-export SIGRITYHOME=$CDSTOOLS/SIGRITY2018
-
-# --------------------------------------------------
 # Update Path(s)
 # --------------------------------------------------
 
 # Set Path, LD_LIBRARY Path, and CDS Help Path for Cadence Executables
 
-if [ -n "$ALLEGROHOME" ]; then
-    export PATH=$ALLEGROHOME/tools/bin:$ALLEGROHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$ALLEGROHOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$SIGRITYHOME" ]; then
     export PATH=$SIGRITYHOME/tools/bin:$SIGRITYHOME/tools/dfII/bin:$PATH; 
     export CDNSHELP_DOC=$SIGRITYHOME/doc:$CDNSHELP_DOC;
-fi
-
-if [ -n "$PVSHOME" ]; then
-    export PATH=$PVSHOME/tools/bin:$PVSHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$PVSHOME/doc:$CDNSHELP_DOC;
-fi
-
-if [ -n "$QRC_HOME" ]; then
-    export PATH=$QRC_HOME/tools/bin:$QRC_HOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
 fi
 
 if [ -n "$CONFRMLHOME" ]; then
@@ -208,9 +129,19 @@ if [ -n "$GENUSHOME" ]; then
     export CDNSHELP_DOC=$GENUSHOME/doc:$CDNSHELP_DOC;
 fi
 
-if [ -n "$INNOVUSHOME" ]; then
-    export PATH=$INNOVUSHOME/tools/bin:$INNOVUSHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$INNOVUSHOME/doc:$CDNSHELP_DOC;
+if [ -n "$ALLEGROHOME" ]; then
+    export PATH=$ALLEGROHOME/tools/bin:$ALLEGROHOME/tools/dfII/bin:$PATH; 
+    export CDNSHELP_DOC=$ALLEGROHOME/doc:$CDNSHELP_DOC;
+fi
+
+if [ -n "$QRC_HOME" ]; then
+    export PATH=$QRC_HOME/tools/bin:$QRC_HOME/tools/dfII/bin:$PATH; 
+    export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
+fi
+
+if [ -n "$PVSHOME" ]; then
+    export PATH=$PVSHOME/tools/bin:$PVSHOME/tools/dfII/bin:$PATH; 
+    export CDNSHELP_DOC=$PVSHOME/doc:$CDNSHELP_DOC;
 fi
 
 if [ -n "$AMSHOME" ]; then
@@ -230,28 +161,53 @@ if [ -n "$CDSHOME" ]; then
     export CDNSHELP_DOC=$CDSHOME/doc:$CDNSHELP_DOC;
 fi
 
+if [ -n "$INNOVUSHOME" ]; then
+    export PATH=$INNOVUSHOME/tools/bin:$INNOVUSHOME/tools/dfII/bin:$PATH; 
+    export CDNSHELP_DOC=$INNOVUSHOME/doc:$CDNSHELP_DOC;
+fi
+
+}
+
 # --------------------------------------------------
-# Cadence Env Variables
+# **************************************************
+#
+#            Cadence - AMS ENV Variables
+#
+# **************************************************
 # --------------------------------------------------
 
-#export CDS_LIC_FILE=$LM_LICENSE_FILE
+configure_CDS_AMS_ENV_VARS() {
 
-export CDS_AUTO_64BIT=ALL
-#export SPECTRE_DEFAULTS=-E
-export CDS_Netlisting_Mode=Analog
+    export CDS_LIC_FILE=$LM_LICENSE_FILE
+    export CDS_AUTO_64BIT=ALL
+    #export SPECTRE_DEFAULTS=-E
+    export CDS_Netlisting_Mode=Analog
 
-export QRC_ENABLE_EXTRACTION=t
-export RCXTODFII_TYPE=QRC
+    export QRC_ENABLE_EXTRACTION=t
+    export RCXTODFII_TYPE=QRC
 
-export CDS_LOAD_ENV=addCWD
-export CDS_LOG_PATH=.
-export CDS_DEFAULT_BROWSER=firefox
+    export CDS_LOAD_ENV=addCWD
+    export CDS_LOG_PATH=.
+    export CDS_DEFAULT_BROWSER=firefox
 
-export CDS_ERRORLOG="DIR=/tools/crashlogs"
+    export CDS_ERRORLOG="DIR=/tools/crashlogs"
 
-#export FGR_VERSION_MANAGEMENT=OFF
-#export GDM_USE_SHLIB_ENVVAR=1
+}
 
+# --------------------------------------------------
+# **************************************************
+#
+#            Cadence - Photonics ENV Variables
+#
+# **************************************************
+# --------------------------------------------------
+
+configure_CDS_SiPh_ENV_VARS() {
+
+    export Virtuoso_Photonics_Option=1
+    export Virtuoso_MultiTech=1
+
+}
 
 # --------------------------------------------------
 # **************************************************
@@ -261,38 +217,42 @@ export CDS_ERRORLOG="DIR=/tools/crashlogs"
 # **************************************************
 # --------------------------------------------------
 
-#To be placed one level up from the root client directory
-#e.g. if client installed in /eda/icmanage/gdpxl
-#     gdpxl.baschrc file sits in /eda/icmanage
+configure_ICM() {
 
-# --------------------------------------------------
-# ZSH Hack
-# ICManage Requires Bash Complete
-# --------------------------------------------------
+    #To be placed one level up from the root client directory
+    #e.g. if client installed in /eda/icmanage/gdpxl
+    #     gdpxl.baschrc file sits in /eda/icmanage
 
-if [ -n "$ZSH_VERSION" ]; then
-    # >>> ZSH EDA initialize >>>
-    # Source EDA Environment
-    #
-    autoload bashcompinit   # Need for ZSH Auto-Completion
-    bashcompinit            # Need for ZSH Auto-Completion
-    # <<< ZSH EDA initialize <<<
-fi
+    # --------------------------------------------------
+    # ZSH Hack
+    # ICManage Requires Bash Complete
+    # --------------------------------------------------
 
-# Set HOME and PATH Variables
-export ICM_HOME="$TOOLSBASE/icmanage"
-export PATH="$ICM_HOME/gdpxl/bin.lnx86-64:$ICM_HOME/gdpxl/gdm.lnx86-64:$PATH"
+    if [ -n "$ZSH_VERSION" ]; then
+        # >>> ZSH EDA initialize >>>
+        # Source EDA Environment
+        #
+        autoload bashcompinit   # Need for ZSH Auto-Completion
+        bashcompinit            # Need for ZSH Auto-Completion
+        # <<< ZSH EDA initialize <<<
+    fi
 
-# Set ENV Variables
-export ICM_GDP_SERVER="http://Mach2.lt.lab:5000"
-export ICM_PLASTIC_SERVER="Mach2.lt.lab:8087"
-export PYTHONPATH="$ICM_HOME/gdpxl/cli:$ICM_HOME/gdpxl/pypackages"
-export ICM_SkillRoot="$ICM_HOME/gdpxl"
-export CDS_GDM_SHLIB_LOCATION="$ICM_HOME/gdpxl/gdm.lnx86-64"
+    # Set HOME and PATH Variables
+    export ICM_HOME="$TOOLSBASE/icmanage"
+    export PATH="$ICM_HOME/gdpxl/bin.lnx86-64:$ICM_HOME/gdpxl/gdm.lnx86-64:$PATH"
 
-# Source ICM Collateral
-source "$ICM_HOME/gdpxl/cli/noglob"
-source "$ICM_HOME/gdpxl/cli/bash-completion"
+    # Set ENV Variables
+    export ICM_GDP_SERVER="http://Mach2.lt.lab:5000"
+    export ICM_PLASTIC_SERVER="Mach2.lt.lab:8087"
+    export PYTHONPATH="$ICM_HOME/gdpxl/cli:$ICM_HOME/gdpxl/pypackages"
+    export ICM_SkillRoot="$ICM_HOME/gdpxl"
+    export CDS_GDM_SHLIB_LOCATION="$ICM_HOME/gdpxl/gdm.lnx86-64"
+
+    # Source ICM Collateral
+    source "$ICM_HOME/gdpxl/cli/noglob"
+    source "$ICM_HOME/gdpxl/cli/bash-completion"
+
+}
 
 
 # --------------------------------------------------
@@ -303,18 +263,140 @@ source "$ICM_HOME/gdpxl/cli/bash-completion"
 # **************************************************
 # --------------------------------------------------
 
-# Lumerical License File
-if [ -n "$LM_LICENSE_FILE" ]; then
-    export LM_LICENSE_FILE=$LM_LICENSE_FILE:27011@Faraday-1.opu.tv
+configure_LUM() {
+
+    # Lumerical License File
+    if [ -n "$LM_LICENSE_FILE" ]; then
+        export LM_LICENSE_FILE=$LM_LICENSE_FILE:27011@Faraday-1.opu.tv
+    else
+        export LM_LICENSE_FILE=27011@Faraday-1.opu.tv
+    fi
+
+    # Set HOME and PATH Variables
+    export LUMTOOLS=$TOOLSBASE/lumerical
+    export INTERCONNECT_HOME=$LUMTOOLS/interconnect
+
+    if [ -n "$INTERCONNECT_HOME" ]; then
+            export PATH=$INTERCONNECT_HOME/bin:$PATH;
+            export LD_LIBRARY_PATH=$INTERCONNECT_HOME/interfaces/cadence/spectre:$LD_LIBRARY_PATH;
+    fi
+
+}
+
+# --------------------------------------------------
+# Tools Base Installation Folder
+# --------------------------------------------------
+
+if [ -n "/eda" ]; then
+    export TOOLSBASE=/eda
 else
-    export LM_LICENSE_FILE=27011@Faraday-1.opu.tv
+    export TOOLSBASE=/tools
 fi
 
-# Set HOME and PATH Variables
-export LUMTOOLS=$TOOLSBASE/lumerical
-export INTERCONNECT_HOME=$LUMTOOLS/interconnect
+# --------------------------------------------------
+# Cadence Installation Path
+# --------------------------------------------------
 
-if [ -n "$INTERCONNECT_HOME" ]; then
-        export PATH=$INTERCONNECT_HOME/bin:$PATH;
-        export LD_LIBRARY_PATH=$INTERCONNECT_HOME/interfaces/cadence/spectre:$LD_LIBRARY_PATH;
-fi
+export CDSTOOLS=$TOOLSBASE/cadence
+
+# --------------------------------------------------
+# EDA Roles and Tool Selection
+# --------------------------------------------------
+
+case $configOption in
+    1) # AMS - IC618
+
+        # IC Installation
+        export CDSBASE=IC618ISR5
+        export CDSHOME=$CDSTOOLS/$CDSBASE
+        # Simulation
+        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        # Physical Verification
+        export QRC_HOME=$CDSTOOLS/EXT191
+        export PVSHOME=$CDSTOOLS/PVS161
+
+        configure_CDS
+        configure_CDS_AMS_ENV_VARS
+        configure_ICM
+
+        ;;
+    2) # AMS - ICADVM181
+        
+        # IC Installation
+        export CDSBASE=ICADVM181
+        export CDSHOME=$CDSTOOLS/$CDSBASE
+        # Simulation
+        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        # Physical Verification
+        export QRC_HOME=$CDSTOOLS/EXT191
+        export PVSHOME=$CDSTOOLS/PVS161
+
+        configure_CDS
+        configure_CDS_AMS_ENV_VARS
+        configure_ICM
+
+        ;;
+    3) # AMS - ICADVM181/Photonics
+        # IC Installation
+        export CDSBASE=ICADVM181
+        export CDSHOME=$CDSTOOLS/$CDSBASE
+        # Simulation
+        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        # Physical Verification
+        export QRC_HOME=$CDSTOOLS/EXT191
+        export PVSHOME=$CDSTOOLS/PVS161
+
+        configure_CDS
+        configure_CDS_AMS_ENV_VARS
+        configure_CDS_SiPh_ENV_VARS
+        configure_LUM
+        configure_ICM
+
+        ;;
+    4) # AMS - ICADVM181/PD
+
+        # IC Installation
+        export CDSBASE=ICADVM181
+        export CDSHOME=$CDSTOOLS/$CDSBASE
+        # Simulation
+        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        # Physical Verification
+        export QRC_HOME=$CDSTOOLS/EXT191
+        export PVSHOME=$CDSTOOLS/PVS161
+
+        # Digital Flow
+        #export GENUSHOME=$CDSTOOLS/GENUS181
+        export GENUSHOME=$CDSTOOLS/GENUS191
+        #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
+        export INNOVUSHOME=$CDSTOOLS/INNOVUS191
+        export CONFRMLHOME=$CDSTOOLS/CONFRML182
+        export JOULESHOME=$CDSTOOLS/JLS181
+        export MODUSHOME=$CDSTOOLS/MODUS181
+        export SSVHOME=$CDSTOOLS/SSV181
+
+        configure_CDS
+        configure_CDS_AMS_ENV_VARS
+        configure_ICM
+
+        ;;
+    5) # RTL/DV
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+
+        configure_CDS
+        ;;
+    6) # Allegro
+
+        # Allegro and SiP
+        export ALLEGROHOME=$CDSTOOLS/SPB172
+        export SIGRITYHOME=$CDSTOOLS/SIGRITY2018
+
+        configure_CDS
+        ;;
+    *)
+        ;;
+esac
+   
