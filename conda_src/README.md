@@ -23,6 +23,14 @@ FIXME: maybe directly output to new folder for release?
 
 `conda build . --output-folder /tools/eda/conda_release`
 
+# How to consume packages
+You need to add /tools/eda/conda_release to your channels inside your environment.yaml:
+```
+channels:
+ - conda-forge
+ - file:///tools/eda/conda_release
+```
+Then just specify the packages inside your dependencies list.
 
 # FIXME
 There are not currently any deactivate scripts, so deactivated an environment doesn't have much effect.
