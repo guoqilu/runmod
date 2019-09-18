@@ -1,41 +1,82 @@
 #!/bin/bash
 
 # --------------------------------------------------
-# Script will provide options for inclusion of various software resources
-# 1. Base Cadence (including PCB)
-# 2. Cadence/Lumerical Co-Simulation
-# 3. No EDA Installation
+# Script will provide options for inclusion of various EDA Software Resources
+#
+# Options will be based on Role
+# 1. AMS 
+# 2. AMS/Photonics 
+# 3. AMS/PD 
+# 4. RTL/DV 
 # --------------------------------------------------
 
-if [ -n "$ZSH_VERSION" ]; then
-    # >>> ZSH EDA initialize >>>
-    # Source EDA Environment
-    #
-    autoload bashcompinit   # Need for ZSH Auto-Completion
-    bashcompinit            # Need for ZSH Auto-Completion
-    # <<< ZSH EDA initialize <<<
+# --------------------------------------------------
+# REAX to Command Line Options
+# --------------------------------------------------
+
+while (( $# ))
+do
+    case $1 in
+        "--help" | "-h" )
+            echo "  Usage Guide for Lightelligence EDA Configurator"
+            echo "  usage: edaSetup [-h [--help] -co [--configOption] ROLE"
+            echo ""
+            echo "  Command Line Options:"
+            echo ""
+            echo "  -c [--configOption] ROLE       Select your Role, if not provided, interactive selection is enabled"
+            echo ""
+            echo "                                  Available Roles and Valid Options:"
+            echo "                                  1  :: AMS"
+            echo "                                  2  :: AMS/Photonics"
+            echo "                                  3  :: AMS/PD"
+            echo "                                  4  :: RTL/DV"
+            echo ""
+            echo " -h [--help]                      Prints help message and exits"
+            echo ""
+            exit 1
+            ;;
+        "--configOption" | "-c" )
+            # Get Value after -c || --configOption
+            shift
+            configOption="$@"
+            ;;
+        *)
+            echo $arg
+            echo "Unexecpted Command Line Input - Exiting"
+            exit 1
+            ;;    
+    esac
+    shift
+done
+
+# --------------------------------------------------
+# Parse User Input if Command Line Option not Supplied
+# --------------------------------------------------
+
+if [ -z "$configOption" ]
+then
+    echo ""
+    echo "  Welcome to the Lightelligence EDA Configurator"
+    echo ""
+    echo "  Please Select Your Role:"
+    echo "  1. AMS"
+    echo "  2. AMS/Photonics"
+    echo "  3. AMS/PD"
+    echo "  4. RTL/DV"
+    echo -n "  Selection [Press Enter]: "
+    read configOption
 fi
 
 # --------------------------------------------------
 # Tools Base Installation Folder
 # --------------------------------------------------
 
+# FIX ME - if /eda exists ... set TOOLSBASE ... otherwise set to /tools
 if [ "$HOSTNAME" = "turing-3.opu.tv" ]; then
     export TOOLSBASE=/eda
 else
     export TOOLSBASE=/tools
 fi
-
-# --------------------------------------------------
-# Parse User Input
-# --------------------------------------------------
-echo ""
-echo "  Welcome to the Lightelligence EDA Configuration"
-echo "  1. IC618 Base Cadence Installation"
-echo "  2. ICADVM181 Base Cadence Installation"
-echo "  3. Cadence/Lumerical Co-Simulation"
-echo -n "  Selection [Press Enter]: "
-read configOption
 
 # --------------------------------------------------
 # REAX to User Input
@@ -44,11 +85,11 @@ read configOption
 case $configOption in
     1)
         #export CDSBASE=IC618
-	export CDSBASE=IC618ISR5
+	    export CDSBASE=IC618ISR5
         ;;
     2) 
         export CDSBASE=ICADVM181
-	export Virtuoso_MultiTech=1
+	    export Virtuoso_MultiTech=1
         ;;
     3)
         export CDSBASE=ICADVM181
@@ -58,7 +99,7 @@ case $configOption in
 
     *) 
         #export CDSBASE=IC618
-	export CDSBASE=IC618ISR5
+	    export CDSBASE=IC618ISR5
         echo ""
         ;;
 esac
@@ -224,16 +265,32 @@ export CDS_ERRORLOG="DIR=/tools/crashlogs"
 #e.g. if client installed in /eda/icmanage/gdpxl
 #     gdpxl.baschrc file sits in /eda/icmanage
 
-export ICM_HOME="$TOOLSBASE/icmanage"
+# --------------------------------------------------
+# ZSH Hack
+# ICManage Requires Bash Complete
+# --------------------------------------------------
 
+if [ -n "$ZSH_VERSION" ]; then
+    # >>> ZSH EDA initialize >>>
+    # Source EDA Environment
+    #
+    autoload bashcompinit   # Need for ZSH Auto-Completion
+    bashcompinit            # Need for ZSH Auto-Completion
+    # <<< ZSH EDA initialize <<<
+fi
+
+# Set HOME and PATH Variables
+export ICM_HOME="$TOOLSBASE/icmanage"
 export PATH="$ICM_HOME/gdpxl/bin.lnx86-64:$ICM_HOME/gdpxl/gdm.lnx86-64:$PATH"
+
+# Set ENV Variables
 export ICM_GDP_SERVER="http://Mach2.lt.lab:5000"
 export ICM_PLASTIC_SERVER="Mach2.lt.lab:8087"
 export PYTHONPATH="$ICM_HOME/gdpxl/cli:$ICM_HOME/gdpxl/pypackages"
-
 export ICM_SkillRoot="$ICM_HOME/gdpxl"
 export CDS_GDM_SHLIB_LOCATION="$ICM_HOME/gdpxl/gdm.lnx86-64"
 
+# Source ICM Collateral
 source "$ICM_HOME/gdpxl/cli/noglob"
 source "$ICM_HOME/gdpxl/cli/bash-completion"
 
@@ -253,7 +310,7 @@ else
     export LM_LICENSE_FILE=27011@Faraday-1.opu.tv
 fi
 
-# INTERCONNECT Base and Tool Paths
+# Set HOME and PATH Variables
 export LUMTOOLS=$TOOLSBASE/lumerical
 export INTERCONNECT_HOME=$LUMTOOLS/interconnect
 
