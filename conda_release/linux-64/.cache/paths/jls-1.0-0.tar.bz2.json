@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/jls_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "6b9d1c5a73101e7fede8b812c8ee6d17c94e2ddcf793d7318632a024c24420c6",
+      "size_in_bytes": 199
+    }
+  ],
+  "paths_version": 1
+}

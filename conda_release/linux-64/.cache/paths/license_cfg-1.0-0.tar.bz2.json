@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/license_cfg_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "51b704b753f92c0ea0d46ec92e26daac44538c5fca940bc8852521145b611952",
+      "size_in_bytes": 138
+    }
+  ],
+  "paths_version": 1
+}
