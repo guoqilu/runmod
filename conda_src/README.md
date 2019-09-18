@@ -26,13 +26,13 @@ Only required once per user:
 ### Release
 The above command created the package local for your user. You may want to regenerate this way to make the output public:
 
-`conda build . --output-folder /tools/eda/conda_release`
+`conda build . --output-folder /tools/EDA/conda_release`
 
 # Using packages
 You need to add /tools/eda/conda_release to your channels inside your environment.yaml:
 ```
 channels:
- - file:///tools/eda/conda_release
+ - file:///tools/EDA/conda_release
  - conda-forge
 ```
 Then just specify the packages inside your dependencies list.
