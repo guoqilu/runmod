@@ -35,7 +35,7 @@ do
             echo ""
             echo " -h [--help]                      Prints help message and exits"
             echo ""
-            exit 1
+            return
             ;;
         "--configOption" | "-c" )
             # Get Value after -c || --configOption
@@ -45,7 +45,7 @@ do
         *)
             echo $arg
             echo "Unexecpted Command Line Input - Exiting"
-            exit 1
+            return
             ;;    
     esac
     shift
