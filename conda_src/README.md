@@ -27,8 +27,8 @@ FIXME: maybe directly output to new folder for release?
 You need to add /tools/eda/conda_release to your channels inside your environment.yaml:
 ```
 channels:
- - conda-forge
  - file:///tools/eda/conda_release
+ - conda-forge
 ```
 Then just specify the packages inside your dependencies list.
 
