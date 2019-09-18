@@ -1,29 +1,31 @@
-# Caveat: This is a work in progress
+Caveat: This is a work in progress
 
-# WTF is this thing?
-This directory is the source of our local conda pacakges.
+# What am I looking at?
+This directory is the source of our local conda packages.
 
 For now, these packages just export environment variables rather than building any interesting source code.
 
 # How to build a new version
 ## Prerequisites
-conda install conda-build
+Only required once per user:
+
+`conda install conda-build`
 
 ## Edit your desired package
 1. Update env.sh with your new values
 2. Edit meta.yaml with a incremented version number
 
-## Build
+## Building a single package
 `cd <package_dir>`
 
 `conda build .`
 
-## Release
-FIXME: maybe directly output to new folder for release?
+### Release
+The above command created the package local for your user. You may want to regenerate this way to make the output public:
 
 `conda build . --output-folder /tools/eda/conda_release`
 
-# How to consume packages
+# Using packages
 You need to add /tools/eda/conda_release to your channels inside your environment.yaml:
 ```
 channels:
