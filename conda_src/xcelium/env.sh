@@ -1,10 +1,9 @@
-if [ -n "/eda" ]; then
+if [ -d "/eda" ]; then
     export TOOLS_INSTALL=/eda
 else
-    export TOOLS_INSALL=/tools
+    export TOOLS_INSTALL=/tools
 fi
 
-TOOLS_INSTALL=/tools
 CADENCE_DIR=$TOOLS_INSTALL/cadence
 export XCELIUM_VER=1809
 export XCELIUM_HOME=$CADENCE_DIR/XCELIUM$XCELIUM_VER

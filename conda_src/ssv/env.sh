@@ -1,10 +1,9 @@
-if [ -n "/eda" ]; then
+if [ -d "/eda" ]; then
     export TOOLS_INSTALL=/eda
 else
-    export TOOLS_INSALL=/tools
+    export TOOLS_INSTALL=/tools
 fi
 
-TOOLS_INSTALL=/tools
 CADENCE_DIR=$TOOLS_INSTALL/cadence
 export SSV_VER=181
 export SSV_HOME=$CADENCE_DIR/SSV$SSV_VER

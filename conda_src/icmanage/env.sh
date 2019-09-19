@@ -1,10 +1,8 @@
-if [ -n "/eda" ]; then
+if [ -d "/eda" ]; then
     export TOOLS_INSTALL=/eda
 else
-    export TOOLS_INSALL=/tools
+    export TOOLS_INSTALL=/tools
 fi
-
-TOOLS_INSTALL=/tools
 
 #To be placed one level up from the root client directory
 #e.g. if client installed in /eda/icmanage/gdpxl

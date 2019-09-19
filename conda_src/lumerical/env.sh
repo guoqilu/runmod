@@ -1,10 +1,8 @@
-if [ -n "/eda" ]; then
+if [ -d "/eda" ]; then
     export TOOLS_INSTALL=/eda
 else
-    export TOOLS_INSALL=/tools
+    export TOOLS_INSTALL=/tools
 fi
-
-TOOLS_INSTALL=/tools
 
 if [ -n "$LM_LICENSE_FILE" ]; then
     export LM_LICENSE_FILE=$LM_LICENSE_FILE:27011@Faraday-1.opu.tv
