@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/allegro_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "400e55ff0cec0658ea74af070f9fd03a08678a32a14f54a1174909c5b363a31b",
+      "size_in_bytes": 254
+    }
+  ],
+  "paths_version": 1
+}

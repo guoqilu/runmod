@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/lumerical_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "8d732f986da06645318e9db9108084dd0035ad15183254952f19e84911989770",
+      "size_in_bytes": 487
+    }
+  ],
+  "paths_version": 1
+}
