@@ -51,6 +51,18 @@
       "timestamp": 1568899055008,
       "version": "1.0"
     },
+    "cds_ic-1.0-0.tar.bz2": {
+      "build": "0",
+      "build_number": 0,
+      "depends": [],
+      "md5": "149b3dc16d485b13d1f49779c584e0ed",
+      "name": "cds_ic",
+      "sha256": "055b9100b5b6f4dcb7c38c433d7b193018926aabb4438c6f5caf503f21636f0b",
+      "size": 2467,
+      "subdir": "linux-64",
+      "timestamp": 1568900579295,
+      "version": "1.0"
+    },
     "confrml-1.0-0.tar.bz2": {
       "build": "0",
       "build_number": 0,
