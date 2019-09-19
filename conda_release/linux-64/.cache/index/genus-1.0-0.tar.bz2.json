@@ -1,1 +1,1 @@
-{"build": "0", "build_number": 0, "depends": [], "name": "genus", "subdir": "linux-64", "timestamp": 1568806488130, "version": "1.0", "size": 2493, "md5": "9a3ca158def99f8a519b13164bb97e6f", "sha256": "9c886ab9ccd3d08f2c04c8da1930464cb2147580022fa9cd2ac66a11e908e286"}
+{"build": "0", "build_number": 0, "depends": [], "name": "genus", "subdir": "linux-64", "timestamp": 1568806488130, "version": "1.0", "size": 2545, "md5": "0bb32057b1671fa466ad09eb68c146ad", "sha256": "25ae32ba1ee8405f964314fad1637b20fbb3ed6e4849704369eaf2ef95f300d2"}
