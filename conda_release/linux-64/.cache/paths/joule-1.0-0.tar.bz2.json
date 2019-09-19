@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/joule_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "48e92de0b238d4d4adc87d167f9231be779aa4841818ffbb3ad8edbff854e923",
+      "size_in_bytes": 242
+    }
+  ],
+  "paths_version": 1
+}

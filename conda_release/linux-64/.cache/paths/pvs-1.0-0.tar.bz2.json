@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/pvs_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "d01b8eb9a39816541d1fb1cf66b8ee52bef1c85ee43b6c481d4c503cf0476fe0",
+      "size_in_bytes": 230
+    }
+  ],
+  "paths_version": 1
+}

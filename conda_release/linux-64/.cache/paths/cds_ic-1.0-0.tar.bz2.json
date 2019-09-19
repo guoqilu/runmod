@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/cds_ic_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "f32c8cae810de6120caf249e2df6d182b6970032c4e7d6049867261df43a2b6c",
+      "size_in_bytes": 262
+    }
+  ],
+  "paths_version": 1
+}

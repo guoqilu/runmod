@@ -1,1 +1,1 @@
-{"build": "0", "build_number": 0, "depends": [], "name": "synopsys", "subdir": "linux-64", "timestamp": 1568806510988, "version": "1.0", "size": 2764, "md5": "409f310ae8923f3e637101edaccc19b0", "sha256": "5c06e2aaf717039c4c4bc02c29990935db398571d0bd08d921c8458d62984dc8"}
+{"build": "0", "build_number": 0, "depends": [], "name": "synopsys", "subdir": "linux-64", "timestamp": 1568806510988, "version": "1.0", "size": 2818, "md5": "4cc1926df9b472ed371d8dc681a6812e", "sha256": "ea525847e8ca2291a4ba4df64129b3c2e8a791021341d06945a2ad187b85effe"}

@@ -1,0 +1,11 @@
+{
+  "paths": [
+    {
+      "_path": "etc/conda/activate.d/mmsim_activate.sh",
+      "path_type": "hardlink",
+      "sha256": "b5deaf1f20f4207dcdc8bc1cb70b66f5550132da3b21c4f46f8a4d571859d3e4",
+      "size_in_bytes": 365
+    }
+  ],
+  "paths_version": 1
+}

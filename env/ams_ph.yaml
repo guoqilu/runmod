@@ -1,0 +1,15 @@
+name: ams_ph
+channels:
+ - file:///tools/EDA/conda_release
+ - conda-forge
+dependencies:
+ - license_cfg
+ - cds
+ - mmsim
+ - xcelium
+ - qrc
+ - pvs
+ - ams_env
+ - siph_env
+ - lumerical
+ - icmanage
