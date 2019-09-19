@@ -1,3 +1,9 @@
+if [ -n "/eda" ]; then
+    export TOOLS_INSTALL=/eda
+else
+    export TOOLS_INSALL=/tools
+fi
+
 export SYNOPSYS=/tools/synopsys
 # Not sure if synopsys needs the above variable defined, so redefining
 SYNOPSYS_DIR=$SYNOPSYS

@@ -1,3 +1,9 @@
+if [ -n "/eda" ]; then
+    export TOOLS_INSTALL=/eda
+else
+    export TOOLS_INSALL=/tools
+fi
+
 TOOLS_INSTALL=/tools
 CADENCE_DIR=$TOOLS_INSTALL/cadence
 export MODUS_VER=181

@@ -1,3 +1,9 @@
+if [ -n "/eda" ]; then
+    export TOOLS_INSTALL=/eda
+else
+    export TOOLS_INSALL=/tools
+fi
+
 # FIXME this is order dependent an may not work
 export CDS_LIC_FILE=$LM_LICENSE_FILE
 export CDS_AUTO_64BIT=ALL
