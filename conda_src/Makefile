@@ -1,5 +1,4 @@
-# FIXME
-RELEASE_DIR := /u/wstucker/w/mosaic/EDA/conda_release
+RELEASE_DIR := ../conda_release
 
 PACKAGE_DIRS := $(sort $(dir $(wildcard */meta.yaml)))
 FAKE_DEPS := $(addsuffix .d,$(PACKAGE_DIRS))
