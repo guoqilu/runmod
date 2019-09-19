@@ -1,0 +1,13 @@
+name: ams
+channels:
+ - file:///tools/EDA/conda_release
+ - conda-forge
+dependencies:
+ - license_cfg
+ - cds_ic
+ - mmsim
+ - xcelium
+ - qrc
+ - pvs
+ - ams_env
+ - icmanage
