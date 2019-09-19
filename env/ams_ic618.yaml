@@ -1,4 +1,4 @@
-name: ams
+name: ams_ic618
 channels:
  - file:///tools/EDA/conda_release
  - conda-forge
