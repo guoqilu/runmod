@@ -30,8 +30,9 @@ do
             echo "                                  2  :: AMS - ICADVM181"
             echo "                                  3  :: AMS - ICADVM181/Photonics"
             echo "                                  4  :: AMS - ICADVM181/PD"
-            echo "                                  5  :: RTL/DV"
-            echo "                                  6  :: Allegro"
+            echo "                                  5  :: AMS - ICADVM181/PD-Siph"
+            echo "                                  6  :: RTL/DV"
+            echo "                                  7  :: Allegro"
             echo ""
             echo " -h [--help]                      Prints help message and exits"
             echo ""
@@ -65,8 +66,9 @@ then
     echo "  2. AMS - ICADVM181"
     echo "  3. AMS - ICADVM181/Photonics"
     echo "  4. AMS - ICADVM181/PD"
-    echo "  5. RTL/DV"
-    echo "  6. Allegro"
+    echo "  5. AMS - ICADVM181/PD-Siph"    
+    echo "  6. RTL/DV"
+    echo "  7. Allegro"
     echo -n "  Selection [Press Enter]: "
     read configOption
 fi
@@ -274,7 +276,7 @@ configure_LUM() {
 
     # Set HOME and PATH Variables
     export LUMTOOLS=$TOOLSBASE/lumerical
-    export INTERCONNECT_HOME=$LUMTOOLS/interconnect
+    export INTERCONNECT_HOME=$LUMTOOLS/2019b
 
     if [ -n "$INTERCONNECT_HOME" ]; then
             export PATH=$INTERCONNECT_HOME/bin:$PATH;
@@ -310,7 +312,7 @@ case $configOption in
         export CDSBASE=IC618ISR5
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
         export AMSHOME=$CDSTOOLS/XCELIUM1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -327,7 +329,7 @@ case $configOption in
         export CDSBASE=ICADVM181
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
         export AMSHOME=$CDSTOOLS/XCELIUM1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -343,7 +345,7 @@ case $configOption in
         export CDSBASE=ICADVM181
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
         export AMSHOME=$CDSTOOLS/XCELIUM1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -370,12 +372,12 @@ case $configOption in
 
         # Digital Flow
         #export GENUSHOME=$CDSTOOLS/GENUS181
-        export GENUSHOME=$CDSTOOLS/GENUS191
+        #export GENUSHOME=$CDSTOOLS/GENUS191
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
-        export INNOVUSHOME=$CDSTOOLS/INNOVUS191
-        export CONFRMLHOME=$CDSTOOLS/CONFRML182
-        export JOULESHOME=$CDSTOOLS/JLS181
-        export MODUSHOME=$CDSTOOLS/MODUS181
+        #export INNOVUSHOME=$CDSTOOLS/INNOVUS191
+        #export CONFRMLHOME=$CDSTOOLS/CONFRML182
+        #export JOULESHOME=$CDSTOOLS/JLS181
+        #export MODUSHOME=$CDSTOOLS/MODUS181
         export SSVHOME=$CDSTOOLS/SSV181
 
         configure_CDS
@@ -383,12 +385,41 @@ case $configOption in
         configure_ICM
 
         ;;
-    5) # RTL/DV
+    5) # AMS - ICADVM181/PD
+
+        # IC Installation
+        export CDSBASE=ICADVM181
+        export CDSHOME=$CDSTOOLS/$CDSBASE
+        # Simulation
+        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
+        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        # Physical Verification
+        export QRC_HOME=$CDSTOOLS/EXT191
+        export PVSHOME=$CDSTOOLS/PVS161
+
+        # Digital Flow
+        #export GENUSHOME=$CDSTOOLS/GENUS181
+        #export GENUSHOME=$CDSTOOLS/GENUS191
+        #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
+        export INNOVUSHOME=$CDSTOOLS/INNOVUS191
+        #export CONFRMLHOME=$CDSTOOLS/CONFRML182
+        #export JOULESHOME=$CDSTOOLS/JLS181
+        #export MODUSHOME=$CDSTOOLS/MODUS181
+        #export SSVHOME=$CDSTOOLS/SSV181
+
+        configure_CDS
+        configure_CDS_AMS_ENV_VARS
+        configure_CDS_SiPh_ENV_VARS
+        configure_LUM
+        configure_ICM
+
+        ;;
+    6) # RTL/DV
         export AMSHOME=$CDSTOOLS/XCELIUM1809
 
         configure_CDS
         ;;
-    6) # Allegro
+    7) # Allegro
 
         # Allegro and SiP
         export ALLEGROHOME=$CDSTOOLS/SPB172
