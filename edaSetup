@@ -368,7 +368,9 @@ case $configOption in
         export AMSHOME=$CDSTOOLS/XCELIUM1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
-        export PVSHOME=$CDSTOOLS/PVS161
+#	export QRC_HOME=$CDSTOOLS/QUANTUS201
+#        export PVSHOME=$CDSTOOLS/PVS161
+	export PVSHOME=$CDSTOOLS/PVS191ISR1
 
         # Digital Flow
         #export GENUSHOME=$CDSTOOLS/GENUS181
