@@ -388,7 +388,8 @@ case $configOption in
     5) # AMS - ICADVM181/PD
 
         # IC Installation
-        export CDSBASE=ICADVM181ISR8
+        export CDSBASE=ICADVM181
+	#export CDSBASE=ICADVM181ISR8
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
