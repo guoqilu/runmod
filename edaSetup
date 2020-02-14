@@ -381,7 +381,7 @@ case $configOption in
         #export JOULESHOME=$CDSTOOLS/JLS181
         #export MODUSHOME=$CDSTOOLS/MODUS181
         #export SSVHOME=$CDSTOOLS/SSV181
-        export SSVHOME=$CDSTOOLSSSV191ISR2
+        export SSVHOME=$CDSTOOLS/SSV191ISR2
 
 
         configure_CDS
