@@ -380,7 +380,9 @@ case $configOption in
         #export CONFRMLHOME=$CDSTOOLS/CONFRML182
         #export JOULESHOME=$CDSTOOLS/JLS181
         #export MODUSHOME=$CDSTOOLS/MODUS181
-        export SSVHOME=$CDSTOOLS/SSV181
+        #export SSVHOME=$CDSTOOLS/SSV181
+        export SSVHOME=$CDSTOOLSSSV191ISR2
+
 
         configure_CDS
         configure_CDS_AMS_ENV_VARS
@@ -412,6 +414,8 @@ case $configOption in
         #export JOULESHOME=$CDSTOOLS/JLS181
         #export MODUSHOME=$CDSTOOLS/MODUS181
         #export SSVHOME=$CDSTOOLS/SSV181
+        #export SSVHOME=$CDSTOOLS/SSV181
+        export SSVHOME=$CDSTOOLS/SSV191ISR2
 
         configure_CDS
         configure_CDS_AMS_ENV_VARS
