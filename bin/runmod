@@ -9,11 +9,52 @@
 # Bash code
 if "true" : '''\'
 then
-# The shortname in tools.yaml
-tool_name=$1
 
-# This is the command to run afterwards
-command=${@:2}
+declare -i command_separator_index=0
+automatically_insert_canonical_name=false
+canonical_toolname=""
+
+for var in "$@"
+do
+    ((command_separator_index++))
+    case $var in
+        "-t")
+            automatically_insert_canonical_name=true
+            ;;
+        "--")
+            # Stop parsing args, the rest will be passed to the command
+            break;
+            ;;
+        *)
+            if [ "$canonical_toolname" != "" ] ; then
+                echo "Trying to set toolname again. Previous value '$canonical_toolname'. New value '$var'. did you forgot the '--'?"
+                exit 1
+            fi
+            canonical_toolname=$var
+            ;;
+    esac
+done
+
+if [ $command_separator_index == $# ]
+then
+    echo "Did not find '--' to separate runmod args from command args or it was last argument on line"
+    exit 1
+fi
+
+if [ "$canonical_toolname" = "" ]
+then
+    echo "Canonical toolname not set. Did you forget to pass it?"
+    exit 1
+fi
+
+
+((command_separator_index++))
+if [ "$automatically_insert_canonical_name" == true ]
+then
+    command=${canonical_toolname}" "${@:$command_separator_index}
+else
+    command=${@:$command_separator_index}
+fi    
 
 # Find the absolute path to this file so it can be invoked in python
 runmod_file="${BASH_SOURCE[0]}"
@@ -26,7 +67,7 @@ while [ -h "$runmod_file" ]; do # resolve $RUNMOD_FILE until the file is no long
   runmod_file="$(readlink "$runmod_file")"
 done
 
-if ! modules=$(python $runmod_file $tool_name); then
+if ! modules=$(python $runmod_file $canonical_toolname); then
     echo $modules
     exit 1
 fi
