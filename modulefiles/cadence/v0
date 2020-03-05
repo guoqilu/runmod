@@ -3,3 +3,6 @@
 module-whatis	"Common setup related to Cadence"
 
 setenv CADENCE_DIR /tools/cadence
+
+setenv LM_LICENSE_FILE 5280@Faraday-1.opu.tv
+setenv CDS_LIC_FILE 5280@Faraday-1.opu.tv
