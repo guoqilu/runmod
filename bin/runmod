@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This python/bash polyglot loads modules from a canonical configuration in a
 # tools.yaml files and runs an arbitrary command before returning your shell
@@ -90,7 +90,7 @@ fi
 module load $modules
 
 # Run the actual command
-$command
+bash -c "$command"
 exit $?
 fi
 '''
