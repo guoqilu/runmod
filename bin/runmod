@@ -4,7 +4,21 @@
 # tools.yaml files and runs an arbitrary command before returning your shell
 # back to its original state.
 
-
+###############################################################################
+# Usage
+#
+#  runmod -t xrun -- -helpall
+#    Functionally equivalent to:
+#       module load <all_modules_listed_in_tools.yaml_for_xrun>
+#       xrun -helpall
+#       module unload <all_modules_listed_in_tools.yaml_for_xrun>
+#
+#  runmod xrun -- echo $PATH
+#    Functionally equivalent to:
+#       module load <all_modules_listed_in_tools.yaml_for_xrun>
+#       echo $PATH
+#       module unload <all_modules_listed_in_tools.yaml_for_xrun>
+#      
 ###############################################################################
 # Bash code
 if "true" : '''\'
