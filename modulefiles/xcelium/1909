@@ -1,0 +1,10 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads xcelium paths"
+
+module load cadence
+
+set	xcelium_version 1909
+
+prepend-path    PATH	$env(CADENCE_DIR)/XCELIUM$xcelium_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/XCELIUM$xcelium_version/tools.lnx86/bin

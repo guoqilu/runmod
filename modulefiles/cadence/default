@@ -1,0 +1,5 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Common setup related to Cadence"
+
+setenv CADENCE_DIR /tools/cadence

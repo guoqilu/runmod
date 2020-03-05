@@ -1,0 +1,85 @@
+#!/bin/sh
+
+# This python/bash polyglot loads modules from a canonical configuration in a
+# tools.yaml files and runs an arbitrary command before returning your shell
+# back to its original state.
+
+
+###############################################################################
+# Bash code
+if "true" : '''\'
+then
+# The shortname in tools.yaml
+tool_name=$1
+
+# This is the command to run afterwards
+command=${@:2}
+
+# Find the absolute path to this file so it can be invoked in python
+runmod_file="${BASH_SOURCE[0]}"
+# Hack for zsh
+if [ -z $runmod_file ]
+then
+  runmod_file=$0
+fi
+while [ -h "$runmod_file" ]; do # resolve $RUNMOD_FILE until the file is no longer a symlink
+  runmod_file="$(readlink "$runmod_file")"
+done
+
+if ! modules=$(python $runmod_file $tool_name); then
+    echo $modules
+    exit 1
+fi
+
+# Load the appropriate modules
+module load $modules
+
+# Run the actual command
+$command
+exit $?
+fi
+'''
+
+###############################################################################
+# Python code
+import os
+import sys
+import yaml
+
+try:
+    tool_name = sys.argv[1]
+except IndexError:
+    print("Missing required arg[1] in runmod loader")
+    sys.exit(1)
+
+search_paths = []
+
+proj_dir = os.getenv("PROJ_DIR")
+if proj_dir:
+    tools_yaml_path = os.path.join(proj_dir, "env", "tools.yaml")
+    if os.path.exists(tools_yaml_path):
+        search_paths.append(tools_yaml_path)
+
+eda_tools_yaml = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "env", "tools.yaml"))
+search_paths.append(eda_tools_yaml)
+
+found_match = False
+for tools_yaml in search_paths:
+    with open(tools_yaml, 'r') as filep:
+        ydata = yaml.load(filep, Loader=yaml.Loader)
+
+        try:
+            required_modules = ydata[tool_name]
+            assert isinstance(required_modules, list), f"{tool_name} in {tools_yaml} was not a yaml list"
+        except KeyError:
+            continue
+        except TypeError:
+            continue
+        print(" ".join(required_modules))
+        found_match = True
+        sys.exit(0)
+
+if not found_match:
+    print(f"{tool_name} was not found in {search_paths}")
+    sys.exit(1)
+        
