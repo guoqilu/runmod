@@ -1,8 +1,0 @@
-name: allegro
-channels:
- - file:///tools/EDA/conda_release
- - conda-forge
-dependencies:
- - license_cfg
- - allegro
- - sigrity

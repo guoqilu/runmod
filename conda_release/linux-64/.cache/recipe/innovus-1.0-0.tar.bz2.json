@@ -1,1 +1,0 @@
-{"package": {"name": "innovus", "version": "1.0"}, "source": {"path": "/data/proj/wstucker/mosaic/EDA/conda_src/innovus/env.sh"}, "build": {"number": "0", "script": "mkdir -p $PREFIX/etc/conda/activate.d; cp $RECIPE_DIR/env.sh $PREFIX/etc/conda/activate.d/innovus_activate.sh", "string": "0"}, "extra": {"copy_test_source_files": true, "final": true}}
