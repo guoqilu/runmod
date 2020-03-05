@@ -69,8 +69,10 @@ for tools_yaml in search_paths:
         ydata = yaml.load(filep, Loader=yaml.Loader)
 
         try:
-            required_modules = ydata[tool_name]
-            assert isinstance(required_modules, list), f"{tool_name} in {tools_yaml} was not a yaml list"
+            tool_ydata = ydata[tool_name]
+            assert 'modules' in tool_ydata, f"{tool_name} in {tools_yaml} missing 'modules' entry"
+            required_modules = tool_ydata['modules']
+            assert isinstance(required_modules, list), f"{tool_name}['modules'] in {tools_yaml} was not a yaml list"
         except KeyError:
             continue
         except TypeError:
