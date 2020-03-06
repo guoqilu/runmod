@@ -197,34 +197,6 @@ configure_ICM() {
 
 
 # --------------------------------------------------
-# **************************************************
-#
-#                       Lumerical
-#
-# **************************************************
-# --------------------------------------------------
-
-configure_LUM() {
-
-    # Lumerical License File
-    if [ -n "$LM_LICENSE_FILE" ]; then
-        export LM_LICENSE_FILE=$LM_LICENSE_FILE:27011@Faraday-1.opu.tv
-    else
-        export LM_LICENSE_FILE=27011@Faraday-1.opu.tv
-    fi
-
-    # Set HOME and PATH Variables
-    export LUMTOOLS=$TOOLSBASE/lumerical
-    export INTERCONNECT_HOME=$LUMTOOLS/2019b
-
-    if [ -n "$INTERCONNECT_HOME" ]; then
-            export PATH=$INTERCONNECT_HOME/bin:$PATH;
-            export LD_LIBRARY_PATH=$INTERCONNECT_HOME/interfaces/cadence/spectre:$LD_LIBRARY_PATH;
-    fi
-
-}
-
-# --------------------------------------------------
 # Tools Base Installation Folder
 # --------------------------------------------------
 
@@ -293,7 +265,7 @@ case $configOption in
         configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
-        configure_LUM
+        module load lumerical
         configure_ICM
 
         ;;
@@ -352,7 +324,7 @@ case $configOption in
         configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
-        configure_LUM
+        module load lumerical
         configure_ICM
 
         ;;
