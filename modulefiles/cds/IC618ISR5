@@ -5,13 +5,6 @@ module-whatis	"Loads cds paths"
 module load cadence
 
 setenv CDSBASE IC618ISR5
-setenv CDSHOME $env(CADENCE_DIR)/$env(CDSBASE)
 
-prepend-path PATH $env(CDSHOME)/tools/dfII/bin
-prepend-path PATH $env(CDSHOME)/tools/bin
-
-prepend-path LD_LIBRARY_PATH $env(CDSHOME)/tools/dfII/lib
-prepend-path LD_LIBRARY_PATH $env(CDSHOME)/tools/lib
-
-prepend-path CDNSHELP_DOC $env(CDSHOME)/doc
-
+set cwd [file dirname $ModulesCurrentModulefile]
+source "$cwd/common.tcl"

@@ -75,31 +75,6 @@ fi
 
 echo $configOption
 
-# --------------------------------------------------
-# **************************************************
-#
-#            Cadence - AMS ENV Variables
-#
-# **************************************************
-# --------------------------------------------------
-
-configure_CDS_AMS_ENV_VARS() {
-
-    export CDS_LIC_FILE=$LM_LICENSE_FILE
-    export CDS_AUTO_64BIT=ALL
-    #export SPECTRE_DEFAULTS=-E
-    export CDS_Netlisting_Mode=Analog
-
-    export QRC_ENABLE_EXTRACTION=t
-    export RCXTODFII_TYPE=QRC
-
-    export CDS_LOAD_ENV=addCWD
-    export CDS_LOG_PATH=.
-    export CDS_DEFAULT_BROWSER=firefox
-
-    export CDS_ERRORLOG="DIR=/tools/crashlogs"
-
-}
 
 # --------------------------------------------------
 # **************************************************
@@ -133,7 +108,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS_AMS_ENV_VARS
         module load icmanage
 
         ;;
@@ -148,7 +122,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS_AMS_ENV_VARS
         module load icmanage
 
         ;;
@@ -162,7 +135,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
         module load icmanage
@@ -190,7 +162,6 @@ case $configOption in
         #module load modus/181
         module load ssv/191ISR2
 
-        configure_CDS_AMS_ENV_VARS
         module load icmanage
 
         ;;
@@ -216,7 +187,6 @@ case $configOption in
         #module load modus/181
         module load ssv/191ISR2
 
-        configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
         module load icmanage
