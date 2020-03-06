@@ -96,11 +96,6 @@ module load cadence
 
 # Set Path, LD_LIBRARY Path, and CDS Help Path for Cadence Executables
 
-if [ -n "$QRC_HOME" ]; then
-    export PATH=$QRC_HOME/tools/bin:$QRC_HOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$CDSHOME" ]; then
     export PATH=$CDSHOME/tools/bin:$CDSHOME/tools/dfII/bin:$PATH; 
     export LD_LIBRARY_PATH=$CDSHOME/tools/lib:$CDSHOME/tools/dfII/lib:$LD_LIBRARY_PATH;
@@ -226,7 +221,7 @@ case $configOption in
         module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
-        export QRC_HOME=$CDSTOOLS/EXT191
+        module load quantus/191
         module load pvs/161
 
         configure_CDS
@@ -243,7 +238,7 @@ case $configOption in
         module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
-        export QRC_HOME=$CDSTOOLS/EXT191
+        module load quantus/191
         module load pvs/161
 
         configure_CDS
@@ -259,7 +254,7 @@ case $configOption in
         module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
-        export QRC_HOME=$CDSTOOLS/EXT191
+        module load quantus/191
         module load pvs/161
 
         configure_CDS
@@ -278,8 +273,8 @@ case $configOption in
         module load mmsim/181
         module load xcelium/1809
         # Physical Verification
-        #export QRC_HOME=$CDSTOOLS/EXT191
-	export QRC_HOME=$CDSTOOLS/QUANTUS201
+        #module load quantus/191
+	module load quantus/201
 #        module load pvs/161
 	module load pvs/191ISR1
 
@@ -307,8 +302,8 @@ case $configOption in
         module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
-#        export QRC_HOME=$CDSTOOLS/EXT191
-	export QRC_HOME=$CDSTOOLS/QUANTUS201
+#        module load quantus/191
+	module load quantus/201
 #       module load pvs/161
 	module load pvs/191ISR1
 
