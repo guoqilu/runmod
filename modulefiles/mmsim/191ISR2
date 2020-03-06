@@ -14,6 +14,6 @@ prepend-path    PATH	$env(MMSIMHOME)/tools/dfII/bin
 prepend-path    PATH	$env(MMSIMHOME)/tools/bin
 prepend-path    CDNSHELP_DOC $env(MMSIMHOME)/doc
 
-prepend-path    LD_LIBRARY_PATH=env(MMSIMHOME)/tools/inca/lib
-prepend-path    LD_LIBRARY_PATH=env(MMSIMHOME)/tools/lib
-prepend-path    LD_LIBRARY_PATH=env(MMSIMHOME)/tools/ultrasim/lib
+prepend-path    LD_LIBRARY_PATH $env(MMSIMHOME)/tools/inca/lib
+prepend-path    LD_LIBRARY_PATH $env(MMSIMHOME)/tools/lib
+prepend-path    LD_LIBRARY_PATH $env(MMSIMHOME)/tools/ultrasim/lib

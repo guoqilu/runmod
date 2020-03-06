@@ -13,4 +13,5 @@ prepend-path PATH $env(CDSHOME)/tools/bin
 prepend-path LD_LIBRARY_PATH $env(CDSHOME)/tools/dfII/lib
 prepend-path LD_LIBRARY_PATH $env(CDSHOME)/tools/lib
 
-prepend-path CDNSHELP_DOC $env(CDS_HOME)/doc
+prepend-path CDNSHELP_DOC $env(CDSHOME)/doc
+
