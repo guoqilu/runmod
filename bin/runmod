@@ -134,9 +134,9 @@ for tools_yaml in search_paths:
 
         try:
             tool_ydata = ydata[tool_name]
-            assert 'modules' in tool_ydata, f"{tool_name} in {tools_yaml} missing 'modules' entry"
+            assert 'modules' in tool_ydata, "{} in {} missing 'modules' entry".format(tool_name, tools_yaml)
             required_modules = tool_ydata['modules']
-            assert isinstance(required_modules, list), f"{tool_name}['modules'] in {tools_yaml} was not a yaml list"
+            assert isinstance(required_modules, list), "{}['modules'] in {} was not a yaml list".format(tool_name, tools_yaml)
         except KeyError:
             continue
         except TypeError:
@@ -146,6 +146,6 @@ for tools_yaml in search_paths:
         sys.exit(0)
 
 if not found_match:
-    print(f"{tool_name} was not found in {search_paths}")
+    print("{} was not found in {}".format(tool_name, search_paths))
     sys.exit(1)
         
