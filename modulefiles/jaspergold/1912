@@ -1,0 +1,9 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads jasper paths"
+
+module load cadence
+
+set	jasper_version 1912
+
+prepend-path    PATH	$env(CADENCE_DIR)/JASPER$jasper_version/bin
