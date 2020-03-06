@@ -1,0 +1,3 @@
+#%Module1.0# # -*- tcl -*-
+module load allegro
+module load sigrity

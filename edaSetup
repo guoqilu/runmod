@@ -28,7 +28,7 @@ do
             echo "                                  Available Roles and Valid Options:"
             echo "                                  1  :: AMS - IC618"
             echo "                                  2  :: AMS - ICADVM181"
-            echo "                                  3  :: AMS - ICADVM181/Photonics"
+            echo "                                  3  :: AMS - ICADVM181/Siph"
             echo "                                  4  :: AMS - ICADVM181/PD"
             echo "                                  5  :: AMS - ICADVM181/PD-Siph"
             echo "                                  6  :: RTL/DV"
@@ -64,7 +64,7 @@ then
     echo "  Please Select Your Role:"
     echo "  1. AMS - IC618"
     echo "  2. AMS - ICADVM181"
-    echo "  3. AMS - ICADVM181/Photonics"
+    echo "  3. AMS - ICADVM181/Siph"
     echo "  4. AMS - ICADVM181/PD"
     echo "  5. AMS - ICADVM181/PD-Siph"    
     echo "  6. RTL/DV"
@@ -90,107 +90,27 @@ echo $configOption
 
 case $configOption in
     1) # AMS - IC618
-
-        # IC Installation
-        module load cds/IC618ISR5
-        # Simulation
-        module load mmsim/191ISR2
-        module load xcelium/1809
-        # Physical Verification
-        module load quantus/191
-        module load pvs/161
-
-        module load icmanage
-
+        module load ams_ic618
         ;;
     2) # AMS - ICADVM181
-        
-        # IC Installation
-        module load cds/181
-        # Simulation
-        module load mmsim/191ISR2
-        module load xcelium/1809
-        # Physical Verification
-        module load quantus/191
-        module load pvs/161
-
-        module load icmanage
-
+        module load ams_icadvm181
         ;;
-    3) # AMS - ICADVM181/Photonics
-        # IC Installation
-        module load cds/181
-        # Simulation
-        module load mmsim/191ISR2
-        module load xcelium/1809
-        # Physical Verification
-        module load quantus/191
-        module load pvs/161
-
-        module load lumerical
-        module load icmanage
-
+    3) # AMS - ICADVM181/siph
+        module load ams_icadvm181_siph
         ;;
     4) # AMS - ICADVM181/PD
-
-        # IC Installation
-        module load cds/181
-        # Simulation
-        module load mmsim/181
-        module load xcelium/1809
-        # Physical Verification
-        #module load quantus/191
-	module load quantus/201
-#        module load pvs/161
-	module load pvs/191ISR1
-
-        # Digital Flow
-        # module load genus/191
-        #module load innovus/181
-        #module load innovus/191
-        #module load confrml/182
-        #module load jls/181
-        #module load modus/181
-        module load ssv/191ISR2
-
-        module load icmanage
-
+        module load ams_icadvm181_pd
         ;;
-    5) # AMS - ICADVM181/PD
-
-        # IC Installation
-        module load cds/181
-        # Simulation
-        module load mmsim/191ISR2
-        module load xcelium/1809
-        # Physical Verification
-#        module load quantus/191
-	module load quantus/201
-#       module load pvs/161
-	module load pvs/191ISR1
-
-        # Digital Flow
-        #module load genus/191
-        #module load innovus/181
-        module load innovus/191
-        #module load confrml/182
-        #module load jls/181
-        #module load modus/181
-        module load ssv/191ISR2
-
-        module load lumerical
-        module load icmanage
-
+    5) # AMS - ICADVM181/PD-siph
+        module load ams_icadvm181_pd_siph
         ;;
     6) # RTL/DV
-        module load xcelium/1809
+        module load rtl_dv
 
         ;;
     7) # Allegro
-        module load allegro
-        module load sigrity
+        module load pcb
         ;;
     *)
         ;;
 esac
-   

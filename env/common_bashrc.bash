@@ -30,6 +30,8 @@ eda_dir=`readlink -f $env_dir/..`
 # Set up modulefiles paths
 modulefiles_dir=`readlink -f $eda_dir/modulefiles`
 [[ ":${MODULEPATH}:" != *":${modulefiles_dir}:"* ]] && MODULEPATH="${modulefiles_dir}:${MODULEPATH}"
+flows_dir=`readlink -f $eda_dir/flows`
+[[ ":${MODULEPATH}:" != *":${flows_dir}:"* ]] && MODULEPATH="${flows_dir}:${MODULEPATH}"
 export MODULEPATH
 
 bin_dir=`readlink -f $eda_dir/bin`
