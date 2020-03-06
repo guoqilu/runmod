@@ -107,11 +107,6 @@ if [ -n "$CDSHOME" ]; then
     export CDNSHELP_DOC=$CDSHOME/doc:$CDNSHELP_DOC;
 fi
 
-if [ -n "$INNOVUSHOME" ]; then
-    export PATH=$INNOVUSHOME/tools/bin:$INNOVUSHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$INNOVUSHOME/doc:$CDNSHELP_DOC;
-fi
-
 }
 
 # --------------------------------------------------
@@ -318,8 +313,8 @@ case $configOption in
 
         # Digital Flow
         # module load genus/191
-        #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
-        #export INNOVUSHOME=$CDSTOOLS/INNOVUS191
+        #module load innovus/181
+        #module load innovus/191
         #module load confrml/182
         #module load jls/181
         #module load modus/181
@@ -347,8 +342,8 @@ case $configOption in
 
         # Digital Flow
         #module load genus/191
-        #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
-        export INNOVUSHOME=$CDSTOOLS/INNOVUS191
+        #module load innovus/181
+        module load innovus/191
         #module load confrml/182
         #module load jls/181
         #module load modus/181

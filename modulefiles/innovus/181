@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	innovus_version 19-12
+set	innovus_version 181
 setenv INNOVUSHOME $env(CADENCE_DIR)/INNOVUS$innovus_version
 setenv INNOVUS_PATH $env(INNOVUSHOME)/tools.lnx86/bin
 
