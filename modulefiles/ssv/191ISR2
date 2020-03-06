@@ -8,6 +8,8 @@ module load cadence
 
 
 set	ssv_version 191ISR2
+setenv SSVHOME $env(CADENCE_DIR)/SSV$ssv_version
 
-prepend-path    PATH	$env(CADENCE_DIR)/SSV$ssv_version/tools.lnx86/bin
-prepend-path    PATH	$env(CADENCE_DIR)/SSV$ssv_version/tools.lnx86/dfII/bin
+prepend-path    PATH	$env(SSVHOME)/tools/dfII/bin
+prepend-path    PATH	$env(SSVHOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(SSVHOME)/doc

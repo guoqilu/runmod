@@ -96,11 +96,6 @@ module load cadence
 
 # Set Path, LD_LIBRARY Path, and CDS Help Path for Cadence Executables
 
-if [ -n "$SSVHOME" ]; then
-    export PATH=$SSVHOME/tools/bin:$SSVHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$SSVHOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$JOULESHOME" ]; then
     export PATH=$JOULESHOME/tools/bin:$JOULESHOME/tools/dfII/bin:$PATH; 
     export CDNSHELP_DOC=$JOULESHOME/doc:$CDNSHELP_DOC;
@@ -349,9 +344,7 @@ case $configOption in
         #module load confrml/182
         #export JOULESHOME=$CDSTOOLS/JLS181
         #export MODUSHOME=$CDSTOOLS/MODUS181
-        #export SSVHOME=$CDSTOOLS/SSV181
-        export SSVHOME=$CDSTOOLS/SSV191ISR2
-
+        module load ssv/191ISR2
 
         configure_CDS
         configure_CDS_AMS_ENV_VARS
@@ -380,9 +373,7 @@ case $configOption in
         #module load confrml/182
         #export JOULESHOME=$CDSTOOLS/JLS181
         #export MODUSHOME=$CDSTOOLS/MODUS181
-        #export SSVHOME=$CDSTOOLS/SSV181
-        #export SSVHOME=$CDSTOOLS/SSV181
-        export SSVHOME=$CDSTOOLS/SSV191ISR2
+        module load ssv/191ISR2
 
         configure_CDS
         configure_CDS_AMS_ENV_VARS
