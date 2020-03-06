@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads innovus paths"
+
+
+module load cadence
+
+
+
+set	innovus_version 19-12
+
+prepend-path    PATH	$env(CADENCE_DIR)/INNOVUS$innovus_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/INNOVUS$innovus_version/tools.lnx86/bin

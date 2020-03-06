@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads jls paths"
+
+
+module load cadence
+
+
+
+set	jls_version 191
+
+prepend-path    PATH	$env(CADENCE_DIR)/JLS$jls_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/JLS$jls_version/tools.lnx86/bin
