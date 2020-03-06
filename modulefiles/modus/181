@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	modus_version 1912
+set	modus_version 181
 setenv MODUSHOME $env(CADENCE_DIR)/MODUS$modus_version
 
 prepend-path    PATH	$env(MODUSHOME)/tools/dfII/bin/64bit
