@@ -116,11 +116,6 @@ if [ -n "$MODUSHOME" ]; then
     export CDNSHELP_DOC=$MODUSHOME/doc:$CDNSHELP_DOC;
 fi
 
-if [ -n "$GENUSHOME" ]; then
-    export PATH=$GENUSHOME/tools/bin:$GENUSHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$GENUSHOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$QRC_HOME" ]; then
     export PATH=$QRC_HOME/tools/bin:$QRC_HOME/tools/dfII/bin:$PATH; 
     export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
@@ -353,8 +348,7 @@ case $configOption in
 	export PVSHOME=$CDSTOOLS/PVS191ISR1
 
         # Digital Flow
-        #export GENUSHOME=$CDSTOOLS/GENUS181
-        #export GENUSHOME=$CDSTOOLS/GENUS191
+        # module load genus/191
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS191
         #export CONFRMLHOME=$CDSTOOLS/CONFRML182
@@ -385,8 +379,7 @@ case $configOption in
 	export PVSHOME=$CDSTOOLS/PVS191ISR1
 
         # Digital Flow
-        #export GENUSHOME=$CDSTOOLS/GENUS181
-        #export GENUSHOME=$CDSTOOLS/GENUS191
+        #module load genus/191
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
         export INNOVUSHOME=$CDSTOOLS/INNOVUS191
         #export CONFRMLHOME=$CDSTOOLS/CONFRML182
