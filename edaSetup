@@ -194,7 +194,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_ICM
 
@@ -210,7 +209,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_ICM
 
@@ -225,7 +223,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
@@ -254,7 +251,6 @@ case $configOption in
         #module load modus/181
         module load ssv/191ISR2
 
-        configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_ICM
 
@@ -281,7 +277,6 @@ case $configOption in
         #module load modus/181
         module load ssv/191ISR2
 
-        configure_CDS
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
@@ -291,13 +286,10 @@ case $configOption in
     6) # RTL/DV
         module load xcelium/1809
 
-        configure_CDS
         ;;
     7) # Allegro
         module load allegro
         module load sigrity
-
-        configure_CDS
         ;;
     *)
         ;;
