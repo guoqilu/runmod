@@ -1,0 +1,10 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets base install path for all tools"
+
+# Some people sync /tools to /eda on their local machine for "performance"
+if [file exist /eda] {
+    setenv TOOLBASE /eda
+} else {
+    setenv TOOLBASE /tools
+}

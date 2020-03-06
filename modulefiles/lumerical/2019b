@@ -2,11 +2,13 @@
 
 module-whatis	"Loads lumerical paths"
 
+module load toolbase
+
 set	lumerical_version 2019b
 
 prepend-path	LM_LICENSE_FILE		27011@Faraday-1.opu.tv
 
-setenv 		LUMTOOLS		/tools/lumerical
+setenv 		LUMTOOLS		$env(TOOLBASE)/lumerical
 setenv		INTERCONNECT_HOME	$env(LUMTOOLS)/$lumerical_version
 
 prepend-path    PATH			$env(INTERCONNECT_HOME)/bin
