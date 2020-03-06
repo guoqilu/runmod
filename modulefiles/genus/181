@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	genus_version 191
+set	genus_version 181
 setenv GENUSHOME $env(CADENCE_DIR)/GENUS$genus_version
 
 prepend-path    PATH	$env(GENUSHOME)/tools.lnx86/bin/64bit
