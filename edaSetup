@@ -101,12 +101,6 @@ if [ -n "$QRC_HOME" ]; then
     export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
 fi
 
-if [ -n "$MMSIMHOME" ]; then
-    export PATH=$MMSIMHOME/bin:$MMSIMHOME/tools/bin:$MMSIMHOME/tools/dfII/bin:$PATH; 
-    export LD_LIBRARY_PATH=$MMSIMHOME/tools/inca/lib:$MMSIMHOME/tools/lib:$MMSIMHOME/tools/ultrasim/lib:$LD_LIBRARY_PATH;
-    export CDNSHELP_DOC=$MMSIMHOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$CDSHOME" ]; then
     export PATH=$CDSHOME/tools/bin:$CDSHOME/tools/dfII/bin:$PATH; 
     export LD_LIBRARY_PATH=$CDSHOME/tools/lib:$CDSHOME/tools/dfII/lib:$LD_LIBRARY_PATH;
@@ -262,7 +256,7 @@ case $configOption in
         export CDSBASE=IC618ISR5
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
+        module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -279,7 +273,7 @@ case $configOption in
         export CDSBASE=ICADVM181
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
+        module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -295,7 +289,7 @@ case $configOption in
         export CDSBASE=ICADVM181
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
+        module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
@@ -314,7 +308,7 @@ case $configOption in
         export CDSBASE=ICADVM181
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE181
+        module load mmsim/181
         module load xcelium/1809
         # Physical Verification
         #export QRC_HOME=$CDSTOOLS/EXT191
@@ -343,7 +337,7 @@ case $configOption in
 	#export CDSBASE=ICADVM181ISR8
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
-        export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
+        module load mmsim/191ISR2
         module load xcelium/1809
         # Physical Verification
 #        export QRC_HOME=$CDSTOOLS/EXT191
