@@ -82,9 +82,18 @@ while [ -h "$runmod_file" ]; do # resolve $RUNMOD_FILE until the file is no long
 done
 
 if ! modules=$(python $runmod_file $canonical_toolname); then
+    # $modules here is going to be the error message from the python invocation
     echo $modules
     exit 1
 fi
+
+# 'bazel test' does something to clear bash of all knowledge of modules
+# It doesn't even recognize the module command
+# Reinitialize modules and set module path again
+# Eventually, find the configuration knob in bazel to be able to remove this code
+source /usr/share/Modules/init/bash
+MODULEPATH="$( cd -P "$( dirname "$runmod_file" )" >/dev/null 2>&1 && pwd )"
+export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
 
 # Load the appropriate modules
 module load $modules
