@@ -1,0 +1,5 @@
+{
+    "toolname" : "vmanager",
+    "version" : "1909",
+    "requires_cadence" : ["true", "false"] 
+}
