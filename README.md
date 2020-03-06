@@ -19,14 +19,14 @@ This file set up configuration information to be able to use environment-modules
 For now, analog and photonics users may still source the old edaSetup script to set up their environments in a backwards compatible method.
 
 ### DV and RTL
-The `env/tools.yaml` file in our project tree configures our modules. The `runmod` tool uses this file to dynamically load modules. See [rumod][runmod] help.
+The `env/tools.yaml` file in our project tree configures our modules. The [runmod](#runmod) tool uses this file to dynamically load modules.
 
 ### runmod
 runmod is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command. This allows for a more heterogenous toolsuite as tools only have their environment setup when they are being executed. Compare this model to upfront loading of every module you could possibly need.
 
 #### Examples:
 If tools.yaml contains the following content:
-```
+``` yaml
 xrun:
   modules:
     - xcelium/1909
