@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	confrml_version 19201
+set	confrml_version 182
 setenv CONFRMLHOME $env(CADENCE_DIR)/CONFRML$confrml_version
 
 prepend-path    PATH	$env(CONFRMLHOME)/tools.lnx86/bin/64bit
