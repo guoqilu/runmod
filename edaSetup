@@ -116,51 +116,6 @@ configure_CDS_SiPh_ENV_VARS() {
 
 }
 
-# --------------------------------------------------
-# **************************************************
-#
-#                       ICManage
-#
-# **************************************************
-# --------------------------------------------------
-
-configure_ICM() {
-
-    #To be placed one level up from the root client directory
-    #e.g. if client installed in /eda/icmanage/gdpxl
-    #     gdpxl.baschrc file sits in /eda/icmanage
-
-    # --------------------------------------------------
-    # ZSH Hack
-    # ICManage Requires Bash Complete
-    # --------------------------------------------------
-
-    if [ -n "$ZSH_VERSION" ]; then
-        # >>> ZSH EDA initialize >>>
-        # Source EDA Environment
-        #
-        autoload bashcompinit   # Need for ZSH Auto-Completion
-        bashcompinit            # Need for ZSH Auto-Completion
-        # <<< ZSH EDA initialize <<<
-    fi
-
-    # Set HOME and PATH Variables
-    export ICM_HOME="$TOOLSBASE/icmanage"
-    export PATH="$ICM_HOME/gdpxl/bin.lnx86-64:$ICM_HOME/gdpxl/gdm.lnx86-64:$PATH"
-
-    # Set ENV Variables
-    export ICM_GDP_SERVER="http://Mach2.lt.lab:5000"
-    export ICM_PLASTIC_SERVER="Mach2.lt.lab:8087"
-    export PYTHONPATH="$ICM_HOME/gdpxl/cli:$ICM_HOME/gdpxl/pypackages"
-    export ICM_SkillRoot="$ICM_HOME/gdpxl"
-    export CDS_GDM_SHLIB_LOCATION="$ICM_HOME/gdpxl/gdm.lnx86-64"
-
-    # Source ICM Collateral
-    source "$ICM_HOME/gdpxl/cli/noglob"
-    source "$ICM_HOME/gdpxl/cli/bash-completion"
-
-}
-
 
 # --------------------------------------------------
 # Tools Base Installation Folder
@@ -189,7 +144,7 @@ case $configOption in
         module load pvs/161
 
         configure_CDS_AMS_ENV_VARS
-        configure_ICM
+        module load icmanage
 
         ;;
     2) # AMS - ICADVM181
@@ -204,7 +159,7 @@ case $configOption in
         module load pvs/161
 
         configure_CDS_AMS_ENV_VARS
-        configure_ICM
+        module load icmanage
 
         ;;
     3) # AMS - ICADVM181/Photonics
@@ -220,7 +175,7 @@ case $configOption in
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
-        configure_ICM
+        module load icmanage
 
         ;;
     4) # AMS - ICADVM181/PD
@@ -246,7 +201,7 @@ case $configOption in
         module load ssv/191ISR2
 
         configure_CDS_AMS_ENV_VARS
-        configure_ICM
+        module load icmanage
 
         ;;
     5) # AMS - ICADVM181/PD
@@ -274,7 +229,7 @@ case $configOption in
         configure_CDS_AMS_ENV_VARS
         configure_CDS_SiPh_ENV_VARS
         module load lumerical
-        configure_ICM
+        module load icmanage
 
         ;;
     6) # RTL/DV
