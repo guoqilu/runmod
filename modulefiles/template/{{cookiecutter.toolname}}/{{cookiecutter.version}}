@@ -9,7 +9,7 @@ module load cadence
 {% set root="/tools" %}
 {% endif %}
 
-set	{{ cookiecutter.tooolname|lower }}_version {{ cookiecutter.version }}
+set	{{ cookiecutter.toolname|lower }}_version {{ cookiecutter.version }}
 
 prepend-path    PATH	{{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version/tools.lnx86/bin/64bit
 prepend-path    PATH	{{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version/tools.lnx86/bin
