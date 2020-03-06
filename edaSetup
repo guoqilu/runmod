@@ -118,16 +118,6 @@ configure_CDS_SiPh_ENV_VARS() {
 
 
 # --------------------------------------------------
-# Tools Base Installation Folder
-# --------------------------------------------------
-
-if [ -d "/eda" ]; then
-    export TOOLSBASE=/eda
-else
-    export TOOLSBASE=/tools
-fi
-
-# --------------------------------------------------
 # EDA Roles and Tool Selection
 # --------------------------------------------------
 
