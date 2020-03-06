@@ -88,23 +88,13 @@ configure_CDS() {
 # --------------------------------------------------
 # Set License File Server for Cadence
 # --------------------------------------------------
-
-if [ -n "$LM_LICENSE_FILE" ]; then
-    export LM_LICENSE_FILE=5280@Faraday-1.opu.tv:$LM_LICENSE_FILE
-else
-    export LM_LICENSE_FILE=5280@Faraday-1.opu.tv
-fi
+module load cadence
 
 # --------------------------------------------------
 # Update Path(s)
 # --------------------------------------------------
 
 # Set Path, LD_LIBRARY Path, and CDS Help Path for Cadence Executables
-
-if [ -n "$SIGRITYHOME" ]; then
-    export PATH=$SIGRITYHOME/tools/bin:$SIGRITYHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$SIGRITYHOME/doc:$CDNSHELP_DOC;
-fi
 
 if [ -n "$CONFRMLHOME" ]; then
     export PATH=$CONFRMLHOME/tools/bin:$CONFRMLHOME/tools/dfII/bin:$PATH; 
@@ -131,11 +121,6 @@ if [ -n "$GENUSHOME" ]; then
     export CDNSHELP_DOC=$GENUSHOME/doc:$CDNSHELP_DOC;
 fi
 
-if [ -n "$ALLEGROHOME" ]; then
-    export PATH=$ALLEGROHOME/tools/bin:$ALLEGROHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$ALLEGROHOME/doc:$CDNSHELP_DOC;
-fi
-
 if [ -n "$QRC_HOME" ]; then
     export PATH=$QRC_HOME/tools/bin:$QRC_HOME/tools/dfII/bin:$PATH; 
     export CDNSHELP_DOC=$QRC_HOME/doc:$CDNSHELP_DOC;
@@ -144,11 +129,6 @@ fi
 if [ -n "$PVSHOME" ]; then
     export PATH=$PVSHOME/tools/bin:$PVSHOME/tools/dfII/bin:$PATH; 
     export CDNSHELP_DOC=$PVSHOME/doc:$CDNSHELP_DOC;
-fi
-
-if [ -n "$AMSHOME" ]; then
-    export PATH=$AMSHOME/tools/bin:$AMSHOME/tools/dfII/bin:$PATH; 
-    export CDNSHELP_DOC=$AMSHOME/doc:$CDNSHELP_DOC;
 fi
 
 if [ -n "$MMSIMHOME" ]; then
@@ -313,7 +293,7 @@ case $configOption in
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
-        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
         export PVSHOME=$CDSTOOLS/PVS161
@@ -330,7 +310,7 @@ case $configOption in
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
-        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
         export PVSHOME=$CDSTOOLS/PVS161
@@ -346,7 +326,7 @@ case $configOption in
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
-        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        module load xcelium/1809
         # Physical Verification
         export QRC_HOME=$CDSTOOLS/EXT191
         export PVSHOME=$CDSTOOLS/PVS161
@@ -365,7 +345,7 @@ case $configOption in
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE181
-        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        module load xcelium/1809
         # Physical Verification
         #export QRC_HOME=$CDSTOOLS/EXT191
 	export QRC_HOME=$CDSTOOLS/QUANTUS201
@@ -397,8 +377,7 @@ case $configOption in
         export CDSHOME=$CDSTOOLS/$CDSBASE
         # Simulation
         export MMSIMHOME=$CDSTOOLS/SPECTRE191ISR2
-#        export AMSHOME=$CDSTOOLS/XCELIUM1809
-        export AMSHOME=$CDSTOOLS/XCELIUM1909
+        module load xcelium/1809
         # Physical Verification
 #        export QRC_HOME=$CDSTOOLS/EXT191
 	export QRC_HOME=$CDSTOOLS/QUANTUS201
@@ -425,15 +404,13 @@ case $configOption in
 
         ;;
     6) # RTL/DV
-        export AMSHOME=$CDSTOOLS/XCELIUM1809
+        module load xcelium/1809
 
         configure_CDS
         ;;
     7) # Allegro
-
-        # Allegro and SiP
-        export ALLEGROHOME=$CDSTOOLS/SPB172
-        export SIGRITYHOME=$CDSTOOLS/SIGRITY2018
+        module load allegro
+        module load sigrity
 
         configure_CDS
         ;;
