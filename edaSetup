@@ -84,14 +84,6 @@ echo $configOption
 # **************************************************
 # --------------------------------------------------
 
-configure_CDS_SiPh_ENV_VARS() {
-
-    export Virtuoso_Photonics_Option=1
-    export Virtuoso_MultiTech=1
-
-}
-
-
 # --------------------------------------------------
 # EDA Roles and Tool Selection
 # --------------------------------------------------
@@ -135,7 +127,6 @@ case $configOption in
         module load quantus/191
         module load pvs/161
 
-        configure_CDS_SiPh_ENV_VARS
         module load lumerical
         module load icmanage
 
@@ -187,7 +178,6 @@ case $configOption in
         #module load modus/181
         module load ssv/191ISR2
 
-        configure_CDS_SiPh_ENV_VARS
         module load lumerical
         module load icmanage
 
