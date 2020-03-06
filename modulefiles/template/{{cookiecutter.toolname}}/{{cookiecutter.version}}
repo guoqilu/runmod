@@ -1,4 +1,4 @@
-#%Module1.0# # -*- tcl -*-
+{{ "#%Module1.0# # -*- tcl -*-" }}
 
 module-whatis	"Loads {{ cookiecutter.toolname|lower }} paths"
 
