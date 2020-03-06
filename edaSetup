@@ -106,7 +106,6 @@ case $configOption in
         ;;
     6) # RTL/DV
         module load rtl_dv
-
         ;;
     7) # Allegro
         module load pcb
