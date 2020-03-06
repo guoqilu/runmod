@@ -10,6 +10,8 @@ module load cadence
 {% endif %}
 
 set	{{ cookiecutter.toolname|lower }}_version {{ cookiecutter.version }}
+setenv {{ cookiecutter.toolname|upper }}HOME {{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version
 
-prepend-path    PATH	{{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version/tools.lnx86/bin/64bit
-prepend-path    PATH	{{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version/tools.lnx86/bin
+prepend-path    PATH	$env({{ cookiecutter.toolname|upper }}HOME)/{{ cookiecutter.tool_path_subdir }}/bin/64bit
+prepend-path    PATH	$env({{ cookiecutter.toolname|upper }}HOME)/{{ cookiecutter.tool_path_subdir }}/bin
+prepend-path    CDNSHELP_DOC $env({{ cookiecutter.toolname|upper }}HOME)/doc

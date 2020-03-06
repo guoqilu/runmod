@@ -1,5 +1,6 @@
 {
     "toolname" : "vmanager",
     "version" : "1909",
-    "requires_cadence" : ["true", "false"] 
+    "requires_cadence" : ["true", "false"],
+    "tool_path_subdir" : ["tools", "tools.lnx86", "tools/dfII"]
 }
