@@ -5,6 +5,7 @@ export MODULEPATH=.
 for d in *; do
     if [ -d $d ] && [ $d != "template" ] ; then
         for f in $d/*; do
+            echo "testing $f"
             module load $f
             module unload $f
         done
