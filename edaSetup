@@ -45,7 +45,7 @@ do
             ;;
         *)
             echo $arg
-            echo "Unexecpted Command Line Input - Exiting"
+            echo "Unexpected Command Line Input - Exiting"
             return
             ;;    
     esac
