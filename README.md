@@ -61,6 +61,18 @@ module unload xcelium/1909 vmanager/1909
 
 # Administration
 
+## Releasing a new tool
+Use the cookiecutter template in the modulefiles directory
+## Releasing a new version of a tool with an existing modulefile
+*cd* to the appropriate directory in modulefiles
+*cp* and existing file (ideally the latest)
+Modify the new file to do the right thing.
+Once you've qualified the release, update the .version file in that directory to change the default to your new version.
+### DO NOT EDIT EXISTING MODULE FILES
+Well, do it with extreme caution. Generally, you should create a new modulefile for each tool release. There are cases where we might want toe edit and existing one, but bumping the version number is not one of those reasons.
+## Creating a new flow
+TBD
+
 ## Installation
 FIXME put in salt-stack
 ```sudo yum install environment-modules```
