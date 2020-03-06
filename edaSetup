@@ -78,35 +78,6 @@ echo $configOption
 # --------------------------------------------------
 # **************************************************
 #
-#                       Cadence
-#
-# **************************************************
-# --------------------------------------------------
-
-configure_CDS() {
-
-# --------------------------------------------------
-# Set License File Server for Cadence
-# --------------------------------------------------
-module load cadence
-
-# --------------------------------------------------
-# Update Path(s)
-# --------------------------------------------------
-
-# Set Path, LD_LIBRARY Path, and CDS Help Path for Cadence Executables
-
-if [ -n "$CDSHOME" ]; then
-    export PATH=$CDSHOME/tools/bin:$CDSHOME/tools/dfII/bin:$PATH; 
-    export LD_LIBRARY_PATH=$CDSHOME/tools/lib:$CDSHOME/tools/dfII/lib:$LD_LIBRARY_PATH;
-    export CDNSHELP_DOC=$CDSHOME/doc:$CDNSHELP_DOC;
-fi
-
-}
-
-# --------------------------------------------------
-# **************************************************
-#
 #            Cadence - AMS ENV Variables
 #
 # **************************************************
@@ -215,8 +186,7 @@ case $configOption in
     1) # AMS - IC618
 
         # IC Installation
-        export CDSBASE=IC618ISR5
-        export CDSHOME=$CDSTOOLS/$CDSBASE
+        module load cds/IC618ISR5
         # Simulation
         module load mmsim/191ISR2
         module load xcelium/1809
@@ -232,8 +202,7 @@ case $configOption in
     2) # AMS - ICADVM181
         
         # IC Installation
-        export CDSBASE=ICADVM181
-        export CDSHOME=$CDSTOOLS/$CDSBASE
+        module load cds/181
         # Simulation
         module load mmsim/191ISR2
         module load xcelium/1809
@@ -248,8 +217,7 @@ case $configOption in
         ;;
     3) # AMS - ICADVM181/Photonics
         # IC Installation
-        export CDSBASE=ICADVM181
-        export CDSHOME=$CDSTOOLS/$CDSBASE
+        module load cds/181
         # Simulation
         module load mmsim/191ISR2
         module load xcelium/1809
@@ -267,8 +235,7 @@ case $configOption in
     4) # AMS - ICADVM181/PD
 
         # IC Installation
-        export CDSBASE=ICADVM181
-        export CDSHOME=$CDSTOOLS/$CDSBASE
+        module load cds/181
         # Simulation
         module load mmsim/181
         module load xcelium/1809
@@ -295,9 +262,7 @@ case $configOption in
     5) # AMS - ICADVM181/PD
 
         # IC Installation
-        export CDSBASE=ICADVM181
-	#export CDSBASE=ICADVM181ISR8
-        export CDSHOME=$CDSTOOLS/$CDSBASE
+        module load cds/181
         # Simulation
         module load mmsim/191ISR2
         module load xcelium/1809
