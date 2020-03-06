@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	xcelium_version 1909
+set	xcelium_version 1809
 setenv XCELIUMHOME $env(CADENCE_DIR)/XCELIUM$xcelium_version
 
 prepend-path    PATH	$env(XCELIUMHOME)/tools.lnx86/bin/64bit
