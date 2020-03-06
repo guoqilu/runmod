@@ -7,7 +7,7 @@ module load cadence
 
 
 
-set	jls_version 191
+set	jls_version 181
 setenv JLSHOME $env(CADENCE_DIR)/JLS$jls_version
 
 prepend-path    PATH	$env(JLSHOME)/tools/dfII/bin

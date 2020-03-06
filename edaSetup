@@ -342,7 +342,7 @@ case $configOption in
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS191
         #module load confrml/182
-        #export JOULESHOME=$CDSTOOLS/JLS181
+        #module load jls/181
         #export MODUSHOME=$CDSTOOLS/MODUS181
         module load ssv/191ISR2
 
@@ -371,7 +371,7 @@ case $configOption in
         #export INNOVUSHOME=$CDSTOOLS/INNOVUS181
         export INNOVUSHOME=$CDSTOOLS/INNOVUS191
         #module load confrml/182
-        #export JOULESHOME=$CDSTOOLS/JLS181
+        #module load jls/181
         #export MODUSHOME=$CDSTOOLS/MODUS181
         module load ssv/191ISR2
 
