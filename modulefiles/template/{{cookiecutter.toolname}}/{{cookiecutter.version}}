@@ -6,7 +6,8 @@ module-whatis	"Loads {{ cookiecutter.toolname|lower }} paths"
 module load cadence
 {% set root="$env(CADENCE_DIR)" %}
 {% else %}
-{% set root="/tools" %}
+module load toolbase
+{% set root="$env(TOOLBASE)" %}
 {% endif %}
 
 set	{{ cookiecutter.toolname|lower }}_version {{ cookiecutter.version }}
