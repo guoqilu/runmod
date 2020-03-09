@@ -22,7 +22,7 @@ For now, analog and photonics users may still source the old edaSetup script to 
 The `env/tools.yaml` file in our project tree configures our modules. The [runmod](#runmod) tool uses this file to dynamically load modules.
 
 ### runmod
-runmod is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command. This allows for a more heterogenous toolsuite as tools only have their environment setup when they are being executed. Compare this model to upfront loading of every module you could possibly need.
+runmod is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command. This allows for a more heterogeneous tool-suite as tools only have their environment setup when they are being executed. Many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
 
 #### Examples:
 If tools.yaml contains the following content:
@@ -62,16 +62,38 @@ module unload xcelium/1909 vmanager/1909
 # Administration
 
 ## Releasing a new tool
-Use the cookiecutter template in the modulefiles directory
+Use the cookiecutter template in the modulefiles/template directory to create a new modulefile
+
+```
+cd modulefiles
+cookecutter template
+<follow onscreen menu>
+```
+
 ## Releasing a new version of a tool with an existing modulefile
 * *cd* to the appropriate directory in modulefiles
 * *cp* and existing file (ideally the latest)
 * Modify the new file to do the right thing.
 * Once you've qualified the release, update the .version file in that directory to change the default to your new version.
 ### DO NOT EDIT EXISTING MODULE FILES
-Well, do it with extreme caution. Generally, you should create a new modulefile for each tool release. There are cases where we might want toe edit and existing one, but bumping the version number is not one of those reasons.
-## Creating a new flow
-TBD
+Well, only do it with extreme caution. Generally, you should create a new modulefile for each tool release. There are cases where we might want toe edit and existing one, but bumping the version number is not one of those reasons.
+## Creating a New Flow
+We currently have two different places to put modules: *modulefiles* and *flows*. Modulefiles is intended to capture configurations for each individual tool. Flows is intended to capture meta-modulefiles which loads modules from modulefiles to create a work "flow".
+### Flows
+Flows should also not be edited in place. Please create new versions when you want to upgrade the version of a tools. This allows users to easily swap back and forth between every variant of our environment.
+#### Example
+Releasing a new version of lumerical would be something like:
+
+``` bash
+cd modulefiles/lumerical
+cp 2019b 2020a
+<edit 2020a>
+<edit .version file to point at 2020a>
+cd ../../flows/ams_icadvm181_siph
+cp v0 v1
+<edit v1>
+<edit .version file to point at v1>
+```
 
 ## Installation
 FIXME put in salt-stack
