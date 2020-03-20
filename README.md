@@ -6,7 +6,7 @@ This allows to create reproducible and somewhat isolated environments.
 ## End Users
 All users are required to put the following in their .bashrc, .bash_profile, or .zshrc file:
 
-```
+``` bash
 if [[ -z "$EDA_CHECKOUT" ]]; then
    export EDA_CHECKOUT=/tools/EDA
 fi
