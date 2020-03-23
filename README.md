@@ -96,5 +96,4 @@ cp v0 v1
 ```
 
 ## Installation
-FIXME put in salt-stack
-```sudo yum install environment-modules```
+The yum package *environment-modules* has been added to our [saltstack](https://dev.azure.com/LightelligencePlatform/IT/_git/saltstack/commit/e91761e2449436c89200091423f1a07084a37be3?refName=refs%2Fheads%2Fmaster) configuration.
