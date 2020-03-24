@@ -60,6 +60,17 @@ module unload xcelium/1909 vmanager/1909
 ```
 
 # Administration
+An error in a single modulefile can cause the module command to break. As such, you must test your changes locally before pushing them to /tools/EDA.
+
+You need to checkout this repository. Then set the EDA_CHECKOUT environment variable to your checkout. Source your ~/.bashrc. Check that if you do a ```module avail``` that your checkout path is listed first.
+
+Follow different steps below to make your appropriate edits. Make sure that your new module:
+
+1. Is listed correctly with ```module avail```
+2. Can be loaded with ```module load <your_module/version>```
+3. The tools works after loading
+
+When everything is working, commit and push your changes. You then need to be a member of the eda-admin group to cd to /tools/EDA to do a ```git pull``` to update the published version.
 
 ## Releasing a new tool
 Use the cookiecutter template in the modulefiles/template directory to create a new modulefile
