@@ -32,6 +32,8 @@ modulefiles_dir=`readlink -f $eda_dir/modulefiles`
 [[ ":${MODULEPATH}:" != *":${modulefiles_dir}:"* ]] && MODULEPATH="${modulefiles_dir}:${MODULEPATH}"
 flows_dir=`readlink -f $eda_dir/flows`
 [[ ":${MODULEPATH}:" != *":${flows_dir}:"* ]] && MODULEPATH="${flows_dir}:${MODULEPATH}"
+projects_dir=`readlink -f $eda_dir/projects`
+[[ ":${MODULEPATH}:" != *":${projects_dir}:"* ]] && MODULEPATH="${projects_dir}:${MODULEPATH}"
 export MODULEPATH
 
 bin_dir=`readlink -f $eda_dir/bin`

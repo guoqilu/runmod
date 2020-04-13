@@ -1,0 +1,10 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Mosaic 1.0"
+
+setenv PROJECT mosaic_1.0
+setenv PROCESS tsmcn28
+setenv METAL_STACK 1P7M_4M2Z
+setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
+
+prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
