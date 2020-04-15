@@ -11,9 +11,9 @@ module load quantus/201
 module load pvs/191ISR1
 
 # Digital Flow
-# module load genus/191
+module load genus/191
 #module load innovus/181
-#module load innovus/191
+module load innovus/191
 #module load confrml/182
 #module load jls/181
 #module load modus/181
