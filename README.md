@@ -62,15 +62,35 @@ module unload xcelium/1909 vmanager/1909
 # Administration
 An error in a single modulefile can cause the module command to break. As such, you must test your changes locally before pushing them to /tools/EDA.
 
-You need to checkout this repository. Then set the EDA_CHECKOUT environment variable to your checkout. Source your ~/.bashrc. Check that if you do a ```module avail``` that your checkout path is listed first.
+You need to checkout this repository. Then source the env/common_bashrc.bash file in your checkout. Your $MODULEPATH variable will change from:
 
-Follow different steps below to make your appropriate edits. Make sure that your new module:
+```/data/tools/EDA/projects:/data/tools/EDA/flows:/data/tools/EDA/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles```
+
+to something like:
+
+```/data/proj/wstucker/EDA/projects:/data/proj/wstucker/EDA/flows:/data/proj/wstucker/EDA/modulefiles:/data/tools/EDA/projects:/data/tools/EDA/flows:/data/tools/EDA/modulefiles:/usr/share/Modulesfiles:/etc/modulefiles```
+
+You now have modulefiles from your local checkout and from the common tools area in your path.
+
+Check that if you do a ```module avail``` that your checkout path is listed first. Example:
+
+```(base) [wstucker@mach-2 EDA]$ module avail                                       
+                                                                                 
+----------------------- /data/proj/wstucker/EDA/projects ----------------------- 
+mosaic/1.0(default)                                                              
+```
+
+Follow different steps below to make your appropriate edits. Make sure that your new or updated module:
 
 1. Is listed correctly with ```module avail```
 2. Can be loaded with ```module load <your_module/version>```
 3. The tools works after loading
 
-When everything is working, commit and push your changes. You then need to be a member of the eda-admin group to cd to /tools/EDA to do a ```git pull``` to update the published version.
+When everything is working the release steps are as follows:
+1. Commit and push your changes to master (or a branch if significant)
+2. Push your changes back to origin
+3. If you are a member of the eda-admin group: ```cd /tools/EDA && git pull``` to update the published version.
+4. If you are not a a member of the eda-admin group, pick your least favorite member and ask them to perform step 3.
 
 ## Releasing a new tool
 Use the cookiecutter template in the modulefiles/template directory to create a new modulefile

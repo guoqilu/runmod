@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads genus paths"
+
+
+module load cadence
+
+
+
+set	genus_version 1912-2
+setenv GENUSHOME $env(CADENCE_DIR)/GENUS$genus_version
+
+prepend-path    PATH	$env(GENUSHOME)/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(GENUSHOME)/tools.lnx86/bin
+prepend-path    CDNSHELP_DOC $env(GENUSHOME)/doc
