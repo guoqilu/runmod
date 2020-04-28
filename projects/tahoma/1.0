@@ -1,0 +1,10 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Tahoma 1.0"
+
+setenv PROJECT tahoma_1.0
+setenv PROCESS tsmcn28
+setenv METAL_STACK 1P10M_5X2Y2Z
+setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
+
+prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
