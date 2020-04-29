@@ -8,3 +8,13 @@ setenv METAL_STACK 1P10M_5X2Y2Z
 setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
 
 prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
+
+# Add per checkout directories to path
+# export PATH="$PROJ_DIR/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/dv/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/rtl/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/pd/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/pd/alpha_mosaic/scripts/oa_common_ui/synth:$PATH"
+# export PATH="$PROJ_DIR/analog/scripts:$PATH"
+
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1

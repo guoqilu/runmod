@@ -8,3 +8,5 @@ setenv METAL_STACK 1P10M_5X2Y2Z
 setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
 
 prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
+
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
