@@ -1,0 +1,40 @@
+#%Module1.0# # -*- tcl -*-
+
+module load toolbase
+
+module-whatis	"Deals with ICManage"
+
+set myshell [module-info shell]
+
+if { $myshell == "zsh" } {
+    # Required for ZSH Auto-completion
+    puts stdout "autoload bashcompinit;"
+    puts stdout "bashcompinit;"
+}  
+
+setenv ICM_HOME $env(TOOLBASE)/icmanage
+
+setenv ICM_GDP_SERVER http://Mach2.lt.lab:5000
+setenv ICM_PLASTIC_SERVER Mach2.lt.lab:8087
+
+prepend-path PATH $env(ICM_HOME)/gdpxl/gdm.lnx86
+prepend-path PATH $env(ICM_HOME)/gdpxl/gdm.lnx86-64
+prepend-path PATH $env(ICM_HOME)/gdpxl/bin.lnx86-64
+
+prepend-path PYTHONPATH $env(ICM_HOME)/gdpxl/pypackages
+prepend-path PYTHONPATH $env(ICM_HOME)/gdpxl/cli
+
+setenv ICM_SkillRoot $env(ICM_HOME)/gdpxl
+setenv CDS_GDM_SHLIB_LOCATION $env(ICM_HOME)/gdpxl/gdm.lnx86-64:$env(ICM_HOME)/gdpxl/gdm.lnx86:"
+setenv GDM_USE_SHLIB_ENVVAR 1
+
+prepend-path LD_LIBRARY_PATH $env(ICM_SkillRoot)/gdm.lnx86.ic5
+prepend-path LD_LIBRARY_PATH $env(ICM_SkillRoot)/gdm.lnx86-64.ic5
+prepend-path LD_LIBRARY_PATH $env(ICM_SkillRoot)/gdm.lnx86
+prepend-path LD_LIBRARY_PATH $env(ICM_SkillRoot)/gdm.lnx86-64
+
+setenv ICM_PLATFORM GDPXL
+
+# Source ICM Collateral
+puts stdout "source $env(ICM_HOME)/gdpxl/cli/noglob;"
+puts stdout "source $env(ICM_HOME)/gdpxl/cli/bash-completion;"
