@@ -3,8 +3,14 @@
 module-whatis	"Sets up static project configuration for Mosaic 1.0"
 
 setenv PROJECT mosaic_1.0
+
+# Enables per project Physical Verification
+setenv TECH_NAME tsmcN28
+setenv FOUNDRY TSMC
 setenv PROCESS tsmcn28
+setenv VARIANT hpcp
 setenv METAL_STACK 1P10M_5X2Y2Z
+
 setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
 
 prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
