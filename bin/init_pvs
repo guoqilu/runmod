@@ -2,20 +2,21 @@
 
 function initialize_pvs_files() {
 
-	if [[ -f $1/pvtech.lib ]]; then
+	if [[ -f ${1}/pvtech.lib ]]; then
 		echo "Removing pvtech.lib present in target directory!"
-		rm -f $1/pvtech.lib
+		rm -f ${1}/pvtech.lib
 	fi	
 	
-	if [[ -f $1/.simrc ]]; then
+	if [[ -f ${1}/.simrc ]]; then
 		echo "Removing .simrc present in target directory!"
-		rm -f $1/.simrc
+		rm -f ${1}/.simrc
 	fi
 
 	echo -e "Copying generic pvtech.lib and .simrc files to target directory: ${1}\n"
 	
-	cp /data/proj/mosaic_1.0/pd/cds/pvtech.lib ${1}
- 	cp /data/proj/mosaic_1.0/pd/cds/.simrc ${1}
+	cp /data/proj/${PROJECT}/pd/cds/pvtech.lib ${1}
+ 	cp /data/proj/${PROJECT}/pd/cds/.simrc ${1}
+
 }
 
 echo ""
