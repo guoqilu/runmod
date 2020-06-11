@@ -2,12 +2,9 @@
 
 module-whatis	"Loads allegro paths"
 
-
 module load cadence
 
-
-
-set	allegro_version 172
+set	allegro_version 174HF004
 setenv ALLEGROHOME $env(CADENCE_DIR)/SPB$allegro_version
 
 prepend-path    PATH	$env(ALLEGROHOME)/tools/dfII/bin

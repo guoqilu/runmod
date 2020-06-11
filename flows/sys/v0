@@ -38,7 +38,7 @@ module load confrml
 module load jls
 module load modus
 module load ssv
-module load genus
+module load genus/1912-2
 
 # Simulation
 module load mmsim
