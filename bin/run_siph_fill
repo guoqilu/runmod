@@ -1,0 +1,78 @@
+#!/bin/bash
+
+: <<'STRIP_FILE_EXTENSION_FUNCTION_DOCUMENTATION'
+
+strip_file_extension: Removes a given file extension
+
+$1 : file name to strip
+$2 : extension to be removed
+
+STRIP_FILE_EXTENSION_FUNCTION_DOCUMENTATION
+function strip_file_extension() {
+
+	filename=$1
+	extension=$2
+
+	dummy=${filename%${extension}}
+	echo ${dummy##*/}
+
+}
+
+: <<'SETUP_RUN_DIRECTORY_FUNCTION_DOCUMENTATION'
+
+setup_run_directory: Creates a run environment tailored to 
+$1 : name of the gds file to use (assmed to match the top cell name as well)
+
+SETUP_RUN_DIRECTORY_FUNCTION_DOCUMENTATION
+function setup_run_directory() {
+
+	now=$(date +'%m_%d_%Y')
+	run_directory=/tmp/fill_run_${now}
+	
+	# Try-Catch statement making sure that each directory is fresh
+	mkdir $run_directory || (cleanup_run_directory $run_directory && mkdir $run_directory)
+	cp /data/proj/${PROJECT}/pd/dummy_util/${PROCESS_PIC}/${PROJECT}_full_chip_fill.pvs $run_directory
+
+	cd $run_directory
+	sed -i "s/LT_GDS_NAME/${1}/g" ${PROJECT}_full_chip_fill.pvs
+	cp $OLDPWD/${1}.gds $run_directory
+
+	echo $run_directory	
+	
+
+}
+
+
+
+: <<'EXECUTE_FILL_FUNCTION_DOCUMENTATION'
+
+cleanup_run_directory: Wipes the run directory
+$1 : directory to wipe
+
+EXECUTE_FILL_FUNCTION_DOCUMENTATION
+function execute_fill() {
+
+	cd $2
+	chmod +rwx ${PROJECT}_full_chip_fill.pvs
+	pvs -drc -dp 3 -flatten_output ${PROJECT}_full_chip_fill.pvs
+	cp ./${1}_fill.gds $OLDPWD
+	cd -
+
+}
+
+: <<'CLEAN_RUN_DIRECTORY_FUNCTION_DOCUMENTATION'
+
+cleanup_run_directory: Wipes the run directory
+$1 : directory to wipe
+
+CLEAN_RUN_DIRECTORY_FUNCTION_DOCUMENTATION
+function cleanup_run_directory() {
+	
+	rm -r $1 || echo "Unable to clean run directory."
+	
+}
+
+file_name=$(strip_file_extension $1 ".gds")
+run_directory=$(setup_run_directory $file_name)
+execute_fill $file_name $run_directory
+cleanup_run_directory $run_directory
