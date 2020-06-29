@@ -11,7 +11,7 @@ setenv FOUNDRY_PIC TSMC
 setenv METAL_STACK_PIC 1P6M_3X2Z
 
 # Used to enable automatic update of Black Box LVS
-setenc LT_PDK_VERSION tsmc_ltpdk_V0
+setenv LT_PDK_VERSION tsmc_ltpdk_V0
 setenv PROJECT_CDS_LIB_PIC /data/proj/$env(PROJECT)/pd/cds/siph_cds.lib
 
 # Enables per project EIC Physical Verification
