@@ -13,7 +13,7 @@ setenv METAL_STACK 1P10M_5X2Y2Z
 
 setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
 
-prepend-path PATH /data/proj/$env(PROJECT)/pd/scripts/bin
+prepend-path PATH /data/tools/lt/pd_tools/bin
 
 # Add per checkout directories to path
 # export PATH="$PROJ_DIR/scripts:$PATH"
