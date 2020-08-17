@@ -4,13 +4,10 @@
 module load icmanage
 
 # Enable Photonics Option
-setenv Virtuoso_Photonics_Option 1
-
-# Enable Multi-Tech Framework
-setenv Virtuoso_MultiTech 1
+setenv Virtuoso_Photonics_Platform 1
 
 # Enable VRF
-setenv Virtuoso_RF_Option 1
+# setenv Virtuoso_RF_Option 1
 
 # Enable Library Import Wizard
 setenv CDS_IGNORE_NON_ASCII_CHARS 1

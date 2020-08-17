@@ -14,5 +14,4 @@ setenv		INTERCONNECT_HOME	$env(LUMTOOLS)/$lumerical_version
 prepend-path    PATH			$env(INTERCONNECT_HOME)/bin
 prepend-path    LD_LIBRARY_PATH		$env(INTERCONNECT_HOME)/interfaces/cadence/spectre
 
-setenv Virtuoso_Photonics_Option 1
-setenv Virtuoso_MultiTech 1
+setenv Virtuoso_Photonics_Platform 1
