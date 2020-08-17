@@ -10,6 +10,6 @@ module load cadence
 set	modus_version 1912
 setenv MODUSHOME $env(CADENCE_DIR)/MODUS$modus_version
 
-prepend-path    PATH	$env(MODUSHOME)/tools/dfII/bin/64bit
-prepend-path    PATH	$env(MODUSHOME)/tools/dfII/bin
+prepend-path    PATH	$env(MODUSHOME)/tools/bin/64bit
+prepend-path    PATH	$env(MODUSHOME)/tools/bin
 prepend-path    CDNSHELP_DOC $env(MODUSHOME)/doc
