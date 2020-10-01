@@ -2,16 +2,25 @@
 
 module-whatis	"Sets up static project configuration for Mosaic 1.0"
 
-setenv PROJECT mosaic_1.0
-
-# Enables per project Physical Verification
-setenv TECH_NAME tsmcN28
-setenv FOUNDRY TSMC
-setenv PROCESS tsmcn28
-setenv VARIANT hpcp
-setenv METAL_STACK 1P10M_5X2Y2Z
-
-setenv PROJECT_CDS_LIB /data/proj/$env(PROJECT)/pd/cds/cds.lib
+setenv PROJECT mosaic
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC TSMC
+#
+setenv CHIP_REV_EIC p1.0
+setenv CHIP_REV_PIC p1.0
+#
+setenv PROCESS_EIC         tsmcn28
+setenv PROCESS_VARIANT_EIC hpcp
+setenv METAL_STACK_EIC     1P10M_5X2Y2Z
+setenv PROJECT_CDS_LIB_EIC /data/proj/mosaic/eic/$env(CHIP_REV_EIC)/pd/cds/cds.lib
+#
+setenv PROCESS_PIC         tsmcn65
+setenv PROCESS_VARIANT_PIC hpcp
+setenv METAL_STACK_PIC     1P7M_3Y2Z
+setenv PROJECT_CDS_LIB_PIC /data/proj/mosaic/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
+#
+prepend-path PATH /data/proj/mosaic/eic/$env(CHIP_REV_EIC)/pd/scripts/bin
 
 prepend-path PATH /data/tools/lt/pd_tools/bin
 
