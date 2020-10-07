@@ -1,6 +1,6 @@
 #%Module1.0# # -*- tcl -*-
 # IC Installation
-module load cds/181
+module load cds/ICADVM181ISR11
 # Simulation
 module load mmsim/191ISR2
 module load xcelium/1809
@@ -8,5 +8,5 @@ module load xcelium/1809
 module load quantus/191
 module load pvs/161
 
-module load lumerical/2019b
+module load lumerical
 module load icmanage
