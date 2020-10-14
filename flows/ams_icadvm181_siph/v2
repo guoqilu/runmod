@@ -1,6 +1,6 @@
 #%Module1.0# # -*- tcl -*-
 # IC Installation
-module load cds/ICADVM181ISR11
+module load cds/181
 # Simulation
 module load mmsim/191ISR2
 module load xcelium/1809
