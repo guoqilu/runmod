@@ -2,12 +2,10 @@
 
 module-whatis	"Loads vivado paths"
 
-
 module load toolbase
 
-
-
 set	vivado_version 2018.3
+
 setenv VIVADOHOME $env(TOOLBASE)/Xilinx/Vivado/$vivado_version
 
 prepend-path    PATH	$env(VIVADOHOME)/bin
