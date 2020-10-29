@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads petalinux paths"
+
+
+module load toolbase
+
+
+
+set	petalinux_version 2018.3
+setenv PETALINUXHOME $env(TOOLBASE)/Xilinx/petalinux/
+
+prepend-path    PATH	$env(PETALINUXHOME)/tools/common/petalinux/bin
