@@ -90,7 +90,7 @@ When everything is working the release steps are as follows:
 1. Commit and push your changes to master (or a branch if significant)
 2. Push your changes back to origin
 3. If you are a member of the eda-admin group: ```cd /tools/EDA && git pull``` to update the published version.
-4. If you are not a a member of the eda-admin group, pick your least favorite member and ask them to perform step 3.
+4. If you are not a a member of the [eda-admin group](https://ipa2.lgt.ai/ipa/ui/#/e/group/member_user/eda-admins), pick your least favorite member and ask them to perform step 3.
 
 ## Releasing a new tool
 Use the cookiecutter template in the modulefiles/template directory to create a new modulefile
