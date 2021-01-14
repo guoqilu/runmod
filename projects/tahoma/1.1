@@ -7,8 +7,8 @@ setenv PROJECT tahoma
 setenv FOUNDRY_EIC TSMC
 setenv FOUNDRY_PIC TSMC
 #
-setenv CHIP_REV_EIC p1.0
-setenv CHIP_REV_PIC p1.0
+setenv CHIP_REV_EIC p1.1
+setenv CHIP_REV_PIC p1.1
 #
 setenv PDK_PROCESS_EIC tsmcN28
 setenv PDK_PROCESS_PIC tsmnN65
@@ -19,6 +19,7 @@ setenv METAL_STACK_EIC     1P10M_5X2Y2Z
 setenv PROJECT_CDS_LIB_EIC /data/proj/tahoma/eic/$env(CHIP_REV_EIC)/pd/cds/cds.lib
 #
 setenv PROCESS_PIC         tsmcn65
+setenv PROCESS_VARIANT_EIC sp
 setenv METAL_STACK_PIC     1P6M_3X2Z
 setenv PROJECT_CDS_LIB_PIC /data/proj/tahoma/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
 #
