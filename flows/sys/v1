@@ -1,0 +1,51 @@
+#%Module1.0# # -*- tcl -*-
+
+# Load ICManage
+module load icmanage
+
+# Enable Photonics Option
+setenv Virtuoso_Photonics_Platform 1
+
+# Enable VRF
+#setenv Virtuoso_RF_Option 1
+
+# Enable Library Import Wizard
+setenv CDS_IGNORE_NON_ASCII_CHARS 1
+
+# New Cluster Option cdnsip and apd
+setenv VEM_ADV_VIA_CLUSTER 1
+setenv VEM_LCE_VIA_CLUSTER 1
+
+# Load Lumerical
+#module load lumerical
+
+# Load SiP / SoC / PCB Tools
+module load sigrity
+module load allegro
+
+# Physical Verification
+# module load quantus
+module load pvs
+
+# Digital Flow
+module load idsbatch
+module load synopsys
+module load embedit
+module load confrml
+module load jls
+module load modus
+module load ssv
+module load genus/1912-2
+
+# Simulation
+module load mmsim/191ISR12
+module load xcelium
+
+# Innovus Installation
+module load innovus
+
+# IC Installation
+module load cds/ICADVM181ISR11
+
+# PERL Installation
+module load perl
