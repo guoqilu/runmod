@@ -2,7 +2,6 @@
 
 module-whatis	"Loads calibre paths"
 
-setenv		ISIPP_DRC_INCLUDE_DIR /data/proj/alpha_mosaic/Foundry/IMEC/drc
 setenv		CALIBRE_HOME /data/tools/mentor/aoi_cal_2019.4_16.9
 prepend-path	PATH  $env(CALIBRE_HOME)/bin
 
