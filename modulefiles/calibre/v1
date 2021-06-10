@@ -2,7 +2,7 @@
 
 module-whatis	"Loads calibre paths"
 
+module load mentor
+
 setenv		CALIBRE_HOME /data/tools/mentor/calibre_2122815/aoi_cal_2021.2_28.15
 prepend-path	PATH  $env(CALIBRE_HOME)/bin
-
-prepend-path	LM_LICENSE_FILE 1717@Faraday-1.opu.tv
