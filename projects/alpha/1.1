@@ -1,0 +1,35 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Alpha 1.1"
+
+setenv PROJECT alpha
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC IMEC
+#
+setenv CHIP_REV_EIC p1.1
+setenv CHIP_REV_PIC p1.1
+#
+setenv PDK_PROCESS_EIC tsmcN28
+setenv PDK_PROCESS_PIC imec130
+#
+setenv PROCESS_EIC         tsmcn28
+setenv PROCESS_VARIANT_EIC hpcp
+setenv METAL_STACK_EIC     1P7M_4M2Z
+setenv PROJECT_CDS_LIB_EIC /data/proj/alpha/eic/$env(CHIP_REV_EIC)/pd/cds/cds.lib
+#
+setenv PROCESS_PIC         imec130
+setenv PROCESS_VARIANT_EIC sp
+setenv METAL_STACK_PIC     1P2M_2Z
+setenv PROJECT_CDS_LIB_PIC /data/proj/alpha/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
+#
+#prepend-path PATH /data/proj/alpha/eic/$env(CHIP_REV_EIC)/pd/scripts/bin
+
+prepend-path PATH /data/tools/lt/pd_tools/bin
+
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+# Define drc runset area
+setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130sp/runset/
