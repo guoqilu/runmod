@@ -6,5 +6,16 @@ module load toolbase
 
 setenv CADENCE_DIR $env(TOOLBASE)/cadence
 
-setenv LM_LICENSE_FILE 5280@Faraday-1.opu.tv
-setenv CDS_LIC_FILE 5280@Faraday-1.opu.tv
+#idc: China Nanjing server
+if { [ info exists ::env(SITE_ID) ] } {
+  if { [ string match $::env(SITE_ID) idc ] } { 
+    setenv LM_LICENSE_FILE 5280@idc-backup
+    setenv CDS_LIC_FILE 5280@idc-backup
+  } else {
+    setenv LM_LICENSE_FILE 5280@Faraday-1.opu.tv
+    setenv CDS_LIC_FILE 5280@Faraday-1.opu.tv
+  }
+} else {
+    setenv LM_LICENSE_FILE 5280@Faraday-1.opu.tv
+    setenv CDS_LIC_FILE 5280@Faraday-1.opu.tv
+}
