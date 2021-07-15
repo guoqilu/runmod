@@ -6,6 +6,13 @@ module-whatis	"Loads svunit paths"
 module load toolbase
 
 set	svunit_version 3.34.0
-setenv SVUNIT_INSTALL $env(TOOLBASE)/svunit/$svunit_version
+
+if { [ info exists ::env(SITE_ID) ] } {
+  if { [ string match $::env(SITE_ID) idc ] } { 
+    setenv SVUNIT_INSTALL /nfs/depot/git_repo_mirror/svunit/$svunit_version
+  } 
+} else {
+  setenv SVUNIT_INSTALL $env(TOOLBASE)/svunit/$svunit_version
+}
 
 prepend-path    PATH	$env(SVUNIT_INSTALL)/bin
