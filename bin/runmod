@@ -97,9 +97,11 @@ export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
 
 if [ $SITE_ID == "idc" ]
 then
-    echo "Add the Synopsys tools path in Nanjing server"
-    echo "Will be updated if some other siteid is valid"
+    #echo "Add the Synopsys tools path in Nanjing server"
+    #echo "Will be updated if some other siteid is valid"
     export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
+else
+    echo "Add here if other site id is valid"
 fi
 
 # Load the appropriate modules
