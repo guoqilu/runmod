@@ -99,13 +99,8 @@ if [ -n ${SITE_ID} ]
 then
   if [ $SITE_ID == "idc" ]
   then
-    export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
-  else
-    # echo "Unknown SITE_ID=$SITE_ID"
-    # exit 1
+      export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
   fi
-else
-  # echo "site_id not set"
 fi
 
 # Load the appropriate modules
