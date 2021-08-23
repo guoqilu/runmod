@@ -101,11 +101,11 @@ then
   then
     export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
   else
-    echo "Unknown SITE_ID=$SITE_ID"
-    exit 1
+    # echo "Unknown SITE_ID=$SITE_ID"
+    # exit 1
   fi
 else
-  echo "site_id not set"
+  # echo "site_id not set"
 fi
 
 # Load the appropriate modules
