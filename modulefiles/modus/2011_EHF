@@ -13,7 +13,7 @@ setenv MODUSHOME $env(CADENCE_DIR)/MODUS$modus_version
 prepend-path    PATH	$env(MODUSHOME)/tools/bin/64bit
 prepend-path    PATH	$env(MODUSHOME)/tools/bin
 prepend-path    CDNSHELP_DOC $env(MODUSHOME)/doc
-prepend_path    QF_LD_LIBRARY_PATH  $env(MODUSHOME)_EHF/tools.lnx86/tb/lib/64bit
-prepend_path    QF_NLSPATH          $env(MODUSHOME)_EHF/tools.lnx86/tb/msg/%N
-prepend_path    QF_PATH             $env(MODUSHOME)_EHF/tools.lnx86/tb/bin/64bit
+setenv    QF_LD_LIBRARY_PATH  $env(MODUSHOME)_EHF/tools.lnx86/tb/lib/64bit
+setenv    QF_NLSPATH          $env(MODUSHOME)_EHF/tools.lnx86/tb/msg/%N
+setenv    QF_PATH             $env(MODUSHOME)_EHF/tools.lnx86/tb/bin/64bit
 
