@@ -9,6 +9,7 @@ module load cadence
 
 set	vipcat_version 1130
 setenv VIPCATHOME $env(CADENCE_DIR)/VIPCAT$vipcat_version
+setenv DENALI     $env(VIPCATHOME)/tools/denali
 
 prepend-path    PATH	$env(VIPCATHOME)/tools/bin/64bit
 prepend-path    PATH	$env(VIPCATHOME)/tools/bin
