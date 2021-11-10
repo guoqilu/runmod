@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads vipcat paths"
+
+
+module load cadence
+
+
+
+set	vipcat_version 1130
+setenv VIPCATHOME $env(CADENCE_DIR)/VIPCAT$vipcat_version
+
+prepend-path    PATH	$env(VIPCATHOME)/tools/bin/64bit
+prepend-path    PATH	$env(VIPCATHOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(VIPCATHOME)/doc
