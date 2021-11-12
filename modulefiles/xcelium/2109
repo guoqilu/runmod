@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads xcelium paths"
+
+
+module load cadence
+
+
+
+set	xcelium_version 2109
+setenv XCELIUMHOME $env(CADENCE_DIR)/XCELIUM$xcelium_version
+
+prepend-path    PATH	$env(XCELIUMHOME)/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(XCELIUMHOME)/tools.lnx86/bin
+prepend-path    CDNSHELP_DOC $env(XCELIUMHOME)/doc
