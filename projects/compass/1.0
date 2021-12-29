@@ -1,0 +1,27 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for compass 1.0"
+
+module load ph_icadvm201
+#
+setenv PROJECT compass
+#
+setenv FOUNDRY_PIC     imec_nhanced
+setenv PROCESS_PIC     n130
+setenv TF_REV_PIC      v0
+#
+setenv LTPDK_REV_PIC   v0
+setenv CHIP_REV_PIC    1.0
+#
+#setenv PROJECT_CDS_LIB_PIC /data/proj/compass/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
+
+#pd_tools scripts
+prepend-path PATH /data/tools/lt/pd_tools/bin
+
+
+# Calibre Setup
+setenv ISIPP_DRC_INCLUDE_DIR /bos/foundry/$env(FOUNDRY_PIC)/$env(PROCESS_PIC)/drc
+
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
