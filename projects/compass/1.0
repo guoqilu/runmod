@@ -8,9 +8,9 @@ setenv PROJECT compass
 #
 setenv FOUNDRY_PIC     imec_nhanced
 setenv PROCESS_PIC     n130
-setenv TF_REV_PIC      v0
+setenv TF_REV_PIC      v1
 #
-setenv LTPDK_REV_PIC   v0
+setenv LTPDK_REV_PIC   v1
 setenv CHIP_REV_PIC    1.0
 #
 #setenv PROJECT_CDS_LIB_PIC /data/proj/compass/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
