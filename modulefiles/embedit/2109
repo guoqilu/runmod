@@ -5,6 +5,9 @@ module-whatis	"Loads embedit paths"
 
 module load synopsys
 
+# license for TSMC N6 SRAM compilers
+prepend-path LM_LICENSE_FILE 27020@faraday-1
+
 set	embedit_version S-2021.09
 setenv EMBEDITHOME $env(SYNOPSYS_DIR)/embedit/$embedit_version
 
