@@ -95,6 +95,14 @@ source /usr/share/Modules/init/bash
 MODULEPATH="$( cd -P "$( dirname "$runmod_file" )" >/dev/null 2>&1 && pwd )"
 export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
 
+if [ -n ${SITE_ID} ]
+then
+  if [ $SITE_ID == "idc" ]
+  then
+      export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
+  fi
+fi
+
 # Load the appropriate modules
 module load $modules
 

@@ -39,5 +39,5 @@ prepend-path PATH /data/tools/lt/pd_tools/bin
 setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
 setenv CDS_AUTO_64BIT ALL
 
-# Define drc runset area
+# Calibre Setup
 setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
