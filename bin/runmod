@@ -97,7 +97,7 @@ export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
 
 if [ -n ${SITE_ID} ]
 then
-  if [ $SITE_ID == "idc" ]
+  if [ "$SITE_ID" == "idc" ]
   then
     export MODULEPATH="/global/admin/etc/modules/files/synopsys:$MODULEPATH"
   else
