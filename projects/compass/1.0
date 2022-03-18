@@ -34,10 +34,10 @@ setenv CDS_AUTO_64BIT ALL
 setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
 
 # there is no EIC with compass
-setenv FOUNDRY_EIC     
-setenv PROCESS_EIC    
-setenv METAL_STACK_EIC
-setenv CHIP_REV_EIC
+setenv FOUNDRY_EIC ""
+setenv PROCESS_EIC ""
+setenv METAL_STACK_EIC ""
+setenv CHIP_REV_EIC ""
 
 
 
