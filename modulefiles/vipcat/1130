@@ -1,10 +1,8 @@
 #%Module1.0# # -*- tcl -*-
 
-module-whatis	"Loads vipcat paths"
-
+module-whatis	"Load VIPCAT paths"
 
 module load cadence
-
 
 set	vipcat_version 1130
 
@@ -13,7 +11,7 @@ setenv DENALI     $env(VIPCATHOME)/tools/denali_64bit
 setenv CDN_VIP_ROOT $env(VIPCATHOME)
 setenv CDS_INST_DIR $env(XCELIUMHOME)
 setenv CDS_ARCH lnx86
-setenv CDN_VIP_LIB_PATH /data/proj/jlemay/apb_example/vip_lib/64bit
+setenv CDN_VIP_LIB_PATH $env(VIPCATHOME)/vip_lib
 
 prepend-path    SPECMAN_PATH $env(CDN_VIP_ROOT)/packages
 prepend-path    SPECMAN_PATH $env(CDN_VIP_LIB_PATH)/64bit
