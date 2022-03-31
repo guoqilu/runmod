@@ -1,0 +1,40 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Forerider 1.0"
+
+setenv PROJECT forerider
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC ""
+#
+setenv CHIP_REV_EIC 1.0
+setenv CHIP_REV_PIC ""
+#
+setenv PDK_PROCESS_EIC tsmcN6
+setenv PDK_PROCESS_PIC ""
+#
+setenv PROCESS_EIC         tsmcn6
+setenv PROCESS_VARIANT_EIC hpcp
+setenv METAL_STACK_EIC     1P15M_1x1xa1yahy2yy2yx2r
+setenv PROJECT_CDS_LIB_EIC ""
+setenv PROCESS_VARIANT_EIC sp
+#
+setenv PROCESS_PIC         ""
+setenv METAL_STACK_PIC     ""
+setenv PROJECT_CDS_LIB_PIC ""
+#
+prepend-path PATH /data/tools/lt/pd_tools/bin
+
+# Add per checkout directories to path
+# export PATH="$PROJ_DIR/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/dv/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/rtl/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/pd/scripts:$PATH"
+# export PATH="$PROJ_DIR/digital/pd/alpha_mosaic/scripts/oa_common_ui/synth:$PATH"
+# export PATH="$PROJ_DIR/analog/scripts:$PATH"
+
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+# Calibre Setup
