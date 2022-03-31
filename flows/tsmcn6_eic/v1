@@ -1,0 +1,28 @@
+#%Module1.0# # -*- tcl -*-
+module-whatis	"Tool setup for Physical Design for TSMCN6"
+
+# IC Installation
+module load cds/ICADVM181ISR11
+
+# Simulation
+module load mmsim/181
+module load xcelium/1809
+
+# Physical Verification
+module load calibre
+module load pvs/191ISR1
+
+module load quantus/201
+
+
+# Digital Flow
+module load genus/191
+module load innovus/181
+
+module load ssv/191ISR2
+
+module load icmanage
+
+module load cliosoft
+
+
