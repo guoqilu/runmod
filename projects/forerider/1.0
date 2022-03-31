@@ -7,7 +7,7 @@ setenv PROJECT forerider
 setenv FOUNDRY_EIC TSMC
 setenv FOUNDRY_PIC ""
 #
-setenv CHIP_REV_EIC 1.0
+setenv CHIP_REV_EIC 1p0
 setenv CHIP_REV_PIC ""
 #
 setenv PDK_PROCESS_EIC tsmcN6
