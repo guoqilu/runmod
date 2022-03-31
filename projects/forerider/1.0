@@ -17,9 +17,9 @@ setenv PROCESS_EIC         tsmcn6
 setenv PROCESS_VARIANT_EIC hpcp
 setenv METAL_STACK_EIC     1P15M_1x1xa1yahy2yy2yx2r
 setenv PROJECT_CDS_LIB_EIC ""
+setenv PROCESS_VARIANT_EIC sp
 #
 setenv PROCESS_PIC         ""
-setenv PROCESS_VARIANT_EIC sp
 setenv METAL_STACK_PIC     ""
 setenv PROJECT_CDS_LIB_PIC ""
 #
