@@ -2,8 +2,9 @@
 module-whatis	"Tool setup for Physical Design for TSMCN6"
 
 # IC Installation
-module load cds/ICADVM181ISR11
-
+# module load cds/ICADVM181ISR11
+# Use IC6 for now until we have advanced node
+module load cds/IC618ISR8
 # Simulation
 module load mmsim/181
 module load xcelium/1809
