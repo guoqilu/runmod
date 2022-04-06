@@ -7,7 +7,8 @@ module load ph_icadvm201
 setenv PROJECT compass
 #
 setenv FOUNDRY_PIC     imec_nhanced
-setenv PROCESS_PIC     imec130
+# setenv PROCESS_PIC     imec130
+setenv PROCESS_PIC     n130
 # setenv METAL_STACK_PIC 1P4M_4Z
 setenv METAL_STACK_PIC 1P2M_2Z
 setenv TF_REV_PIC      v1
