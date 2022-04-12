@@ -66,3 +66,6 @@ setenv SNPS_VIEW_CONFIG_PATH $env(SCML_TM_QTL_DIR)/viewconfig:$env(SNPS_VIEW_CON
 setenv SNPS_PCT_PLUGIN_PATH $env(SCML_TM_QTL_DIR)/pct_scripts
 setenv COWAREPCPLUGIN $env(SCML_TM_QTL_DIR)/pct_plugins
 setenv CWR_PCT_LIBRARY_SET $env(SCML_TM_QTL_DIR)/qtl.pctlib
+
+#generic Noc
+setenv SNPS_GENERICNOC $env(SNPS_VP_HOME)/IP/GenericNoC

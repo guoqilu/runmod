@@ -1,0 +1,19 @@
+#%Module1.0# # -*- tcl -*-
+# IC Installation
+module load cds/ICADVM201ISR15
+
+# lumerical
+module load lumerical
+
+# physical verification
+module load quantus/201
+module load pvs/191ISR1
+
+# cliosoft
+module load cliosoft
+
+# calibre
+module load calibre/v1
+
+
+

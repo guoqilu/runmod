@@ -1,0 +1,45 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for compass 1.0"
+
+module load ph_icadvm201
+#
+setenv PROJECT compass
+#
+setenv FOUNDRY_PIC     imec_nhanced
+# setenv PROCESS_PIC     imec130
+setenv PROCESS_PIC     n130
+# setenv METAL_STACK_PIC 1P4M_4Z
+setenv METAL_STACK_PIC 1P2M_2Z
+setenv TF_REV_PIC      v1
+#
+setenv LTPDK_REV_PIC   v1
+setenv CHIP_REV_PIC    1.0
+#
+#setenv PROJECT_CDS_LIB_PIC /data/proj/compass/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
+
+#pd_tools scripts
+prepend-path PATH /data/tools/lt/pd_tools/bin
+
+
+# Calibre Setup
+# setenv ISIPP_DRC_INCLUDE_DIR /bos/foundry/$env(FOUNDRY_PIC)/$env(PROCESS_PIC)/drc
+setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
+setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
+
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+# Calibre Setup
+setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
+
+# there is no EIC with compass
+setenv FOUNDRY_EIC ""
+setenv PROCESS_EIC ""
+setenv METAL_STACK_EIC ""
+setenv CHIP_REV_EIC ""
+
+
+
+ 
