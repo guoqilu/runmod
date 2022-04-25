@@ -6,7 +6,7 @@ module-whatis	"Loads pau paths"
 module load toolbase
 module load synopsys
 
-prepend-path SNPSLMD_LICENSE_FILE 27020@10.200.7.203
+prepend-path SNPSLMD_LICENSE_FILE 27020@idc-lic03.rd.lgt.ai
 
 set	pau_version Q-2020.06-SP2
 setenv PAUHOME $env(SYNOPSYS_DIR)/pau/$pau_version
