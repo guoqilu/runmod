@@ -16,7 +16,7 @@ echo "USAGE:
                                      PROJECT/REV will be appended to any DIR specified!
                                      WS will be dir/project/rev
     [-rev <pass>]          OPTIONAL: Default module will be loaded.  Use \"module avail PROJECT\" to see default
-    [-server <SOS server>] OPTIONAL: Default server will be used if not passed [ $SOS_SERVER ].
+    [-server <SOS server>] OPTIONAL: Default server will be used if not passed [ $SOS_SERVER_PIC ].
     [-clean]               OPTIONAL: Remove unmanaged files when WS is recreated.
     [-remove]              OPTIONAL: Removes WS from SOS.
     [-force]               OPTIONAL: Forces removal of WS from SOS.
@@ -251,8 +251,10 @@ fi
 		echo " * Process: $PROCESS_PIC"
 		echo " * Foundry pdk/techFile: $TF_REV_PIC"
 		echo " * LTPDK version: $LTPDK_REV_PIC"
+		echo " * SOS Server: $SOS_SERVER_PIC"
 		process=$PROCESS_PIC
 		chip_rev=$CHIP_REV_PIC 
+		sos_server=$SOS_SERVER_PIC 
 	elif [ $chip_type == "eic" ]; then
 		if [ -z $CHIP_REV_EIC ]; then 
 			echo ""
@@ -262,8 +264,10 @@ fi
 		echo " * Chip version: $CHIP_REV_EIC"
 		echo " * Foundry: $FOUNDRY_EIC"
 		echo " * Process: $PROCESS_EIC"
+		echo " * SOS Server: $SOS_SERVER_EIC"
 		process=$PROCESS_EIC
 		chip_rev=$CHIP_REV_EIC 
+		sos_server=$SOS_SERVER_EIC 
 	else
     	echo ""
     	echo " *** ERROR: Chip type must be pic or eic!"
@@ -380,12 +384,12 @@ if [ $create ]; then
 	fi
 	
 	 if [ -z "$server" ]; then	
-		 if [ -z $SOS_SERVER ]; then	
+		 if [ -z $sos_server ]; then	
 			echo " *** ERROR: SOS_SERVER global variable is not set!"
 			echo "            Please use -server switch to define sos server."
 			kill -INT $$;
 		else
-			server=$SOS_SERVER
+			server=$sos_server
 		fi
 	fi
 	

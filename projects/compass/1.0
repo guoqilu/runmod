@@ -40,6 +40,8 @@ setenv PROCESS_EIC ""
 setenv METAL_STACK_EIC ""
 setenv CHIP_REV_EIC ""
 
+#
+setenv SOS_SERVER_PIC uc_photonics
 
 
  

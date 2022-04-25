@@ -1,29 +1,30 @@
 #%Module1.0# # -*- tcl -*-
 
-module-whatis	"Sets up static project configuration for Forerider 1.0"
+module-whatis	"Sets up static project configuration for Smaradg 1.0"
 
-setenv PROJECT forerider
+setenv PROJECT Smaradg
 #
 setenv FOUNDRY_EIC TSMC
-setenv FOUNDRY_PIC ""
+setenv FOUNDRY_PIC imec_nhanced
 #
 setenv CHIP_REV_EIC 1p0
-setenv CHIP_REV_PIC ""
+setenv CHIP_REV_PIC 1p0
 #
 setenv PDK_PROCESS_EIC tsmcN6
-setenv PDK_PROCESS_PIC ""
+setenv PDK_PROCESS_PIC n130
 #
 setenv PROCESS_EIC         tsmcn6
 setenv PROCESS_VARIANT_EIC hpcp
 setenv METAL_STACK_EIC     1P15M_1x1xa1yahy2yy2yx2r
-setenv PROJECT_CDS_LIB_EIC ""
 setenv PROCESS_VARIANT_EIC sp
+setenv PROJECT_CDS_LIB_EIC ""
 #
-setenv PROCESS_PIC         ""
-setenv METAL_STACK_PIC     ""
+setenv PROCESS_PIC         n130
+setenv METAL_STACK_PIC     1P2M_2Z
 setenv PROJECT_CDS_LIB_PIC ""
 #
 setenv SOS_SERVER_EIC uc_tsmcn6
+setenv SOS_SERVER_PIC uc_photonics
 #
 prepend-path PATH /data/tools/lt/pd_tools/bin
 
