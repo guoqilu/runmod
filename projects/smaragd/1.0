@@ -1,8 +1,8 @@
 #%Module1.0# # -*- tcl -*-
 
-module-whatis	"Sets up static project configuration for Smaradg 1.0"
+module-whatis	"Sets up static project configuration for Smaragd 1.0"
 
-setenv PROJECT Smaradg
+setenv PROJECT smaragd
 #
 setenv FOUNDRY_EIC TSMC
 setenv FOUNDRY_PIC imec_nhanced
