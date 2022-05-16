@@ -1,8 +1,0 @@
-#%Module1.0# # -*- tcl -*-
-
-module-whatis	"Common setup related to TSMC N7 Ultra-High-Density Single-Port (UHDSP) SRAM Compiler"
-
-module load mc2
-
-setenv MC_HOME /foundry/TSMC/tsmcn7/sram_compilers/tsn7_uhdspsram_20151201_130a/0M36001_20220320/TSMCHOME/sram/Compiler/tsn7_uhdspsram_20151201_130a
-prepend-path PATH $env(MC_HOME)
