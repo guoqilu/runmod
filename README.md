@@ -1,7 +1,7 @@
 # Purpose
 We are using [environment-modules](https://modules.readthedocs.io/en/latest/index.html) to handle configuration of our environment.
 
-This allows to create reproducible and somewhat isolated environments.
+This allows us to create reproducible and somewhat isolated environments.
 
 ## End Users
 All users are required to put the following in their .bashrc, .bash_profile, or .zshrc file:
@@ -22,9 +22,26 @@ For now, analog and photonics users may still source the old edaSetup script to 
 The `env/tools.yaml` file in our project tree configures our modules. The [runmod](#runmod) tool uses this file to dynamically load modules.
 
 ### runmod
-runmod is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command. This allows for a more heterogeneous tool-suite as tools only have their environment setup when they are being executed. Many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
+`runmod` is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command.
+This allows for a more heterogeneous tool-suite as tools only have their environment setup when they are being executed.
+Many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
+We use runmod as the wrapper instead of directly running 'module load' because loading modulefiles can have unintended side effects on the environment.
+For example the FlexNoC/4.7.0 module file forces the shell's python environment to python 2.7.
+This is incompatible with our RTL environment because many of our other tools will not work with python 2.7.
+This is just one example of a lack of interoperability between our own environment and the contents of a module file, but there are many other potential issues.
 
-#### Examples:
+`runmod` invokes module-based tools (for example Xcelium) in an isolated environment without the user running a 'module load' command.
+The `runmod` invocation creates a new sub-shell, does one or more `module load` in that shell, runs the user's commands, then terminates the sub-shell.
+All the stdout and stderr is piped to the place you invoked `runmod` from, but your original environment is untouched.
+This avoids interoperability problems between tools and keeps our development environment clean.
+
+`runmod` determines which modules to load based on a `tools.yaml` file.
+Each project has its own `tools.yaml` file in the `env/` directory for that project, and there is a `tools.yaml` in the EDA repository in env/ as well.
+Each `tools.yaml` is a dictionary where the primary keys are canonical names for tool flows (e.g. flowkit for the digital back-end flow) and the values are another dictionary.
+The sub-dictionary currently only has a single key-value pair, where the required key is 'modules', and the valued is an ordered list of modules to load for that tool flow.
+A tool flow might only load one module (e.g. JasperGold, which only needs to load the 'jaspergold' module), but some might need to load many modules (like flowkit, which loads modules for synthesis, pnr, lec, DFT, etc.).
+
+### Examples:
 If tools.yaml contains the following content:
 ``` yaml
 xrun:
@@ -40,7 +57,7 @@ synth:
     - innovus/19-12
 ```
 
-Then ```runmod synth -- genus -helpall``` command is tantamount to:
+Then ```runmod synth -- genus -helpall``` command is equivalent to:
 ```
 module load genus/191 innovus/19-12
 genus -helpall
@@ -51,7 +68,7 @@ Note that the `--` is the separator between `runmod` arguments and command argum
 
 There also exists a shortcut for when the `flow` is the same name as the tool you want to invoke to save on typing.
 
-```runmod -t xrun -- -helpall``` is tantamount to:
+```runmod -t xrun -- -helpall``` is equivalent to:
 
 ```
 module load xcelium/1909 vmanager/1909
@@ -60,9 +77,12 @@ module unload xcelium/1909 vmanager/1909
 ```
 
 # Administration
-An error in a single modulefile can cause the module command to break. As such, you must test your changes locally before pushing them to /tools/EDA.
+An error in a single modulefile can cause the module command to break. As such, you must test your changes locally before pushing them to the EDA repository.
 
-You need to checkout this repository. Then source the env/common_bashrc.bash file in your checkout. Your $MODULEPATH variable will change from:
+To locally test changes to this repository, you need to take a few steps.
+First, you need to clone the master branch of this repository, then create a branch off of master.
+Then, source the env/common_bashrc.bash file in your checkout.
+Your $MODULEPATH variable will change from:
 
 ```/data/tools/EDA/projects:/data/tools/EDA/flows:/data/tools/EDA/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles```
 
@@ -74,25 +94,24 @@ You now have modulefiles from your local checkout and from the common tools area
 
 Check that if you do a ```module avail``` that your checkout path is listed first. Example:
 
-```(base) [wstucker@mach-2 EDA]$ module avail                                       
-                                                                                 
------------------------ /data/proj/wstucker/EDA/projects ----------------------- 
-mosaic/1.0(default)                                                              
+```[wstucker@mach-2 EDA]$ module avail genus
+
+---------------------------------------------------------------------------------------- /data/tools/EDA/modulefiles -----------------------------------------------------------------------------------------
+genus/181           genus/191           genus/1912-2        genus/1913          genus/1915          genus/1916          genus/2010          genus/2011(default)
 ```
 
 Follow different steps below to make your appropriate edits. Make sure that your new or updated module:
 
 1. Is listed correctly with ```module avail```
 2. Can be loaded with ```module load <your_module/version>```
-3. The tools works after loading
+3. Your module-based tools are working correctly when invoked through runmod.
 
-When everything is working the release steps are as follows:
-1. Commit and push your changes to master (or a branch if significant)
-2. Push your changes back to origin
-3. If you are a member of the eda-admin group: ```cd /tools/EDA && git pull``` to update the published version.
-4. If you are not a a member of the [eda-admin group](https://ipa2.lgt.ai/ipa/ui/#/e/group/member_user/eda-admins), pick your least favorite member and ask them to perform step 3.
+When you are satisfied with your changes, release the changes by following these steps:
+1. Commit and push your changes to your branch
+2. Create a Pull Request for your branch into the EDA master branch
+3. When that Pull Request completes, ask the reviewer that approved your Pull Request to update the published version. They will need to run: ```cd /tools/EDA && git pull``` to update the published version.
 
-## Releasing a new tool
+## Creating a module for a new tool
 Use the cookiecutter template in the modulefiles/template directory to create a new modulefile
 
 ```
