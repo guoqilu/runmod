@@ -22,24 +22,24 @@ For now, analog and photonics users may still source the old edaSetup script to 
 The `env/tools.yaml` file in our project tree configures our modules. The [runmod](#runmod) tool uses this file to dynamically load modules.
 
 ### runmod
-`runmod` is a small wrapper around the module tool that dynamically loads modules and then runs the rest of a command.
-This allows for a more heterogeneous tool-suite as tools only have their environment setup when they are being executed.
-Many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
-We use runmod as the wrapper instead of directly running 'module load' because loading modulefiles can have unintended side effects on the environment.
+`runmod` is a small wrapper around the `module` tool that dynamically loads modules and then runs a command.
+This allows for a more heterogeneous tool-suite as tools only have their own environment setup when they are being executed.
+We use `runmod` as a wrapper instead of directly running 'module load' because loading modulefiles can have unintended side effects on the environment.
 For example the FlexNoC/4.7.0 module file forces the shell's python environment to python 2.7.
 This is incompatible with our RTL environment because many of our other tools will not work with python 2.7.
-This is just one example of a lack of interoperability between our own environment and the contents of a module file, but there are many other potential issues.
+Also, many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
+These are two examples of interoperability problems, but there are many other potential issues.
 
-`runmod` invokes module-based tools (for example Xcelium) in an isolated environment without the user running a 'module load' command.
+`runmod` invokes module-based tools (e.g. Xcelium or Genus) in an isolated environment without the user running a `module load` command.
 The `runmod` invocation creates a new sub-shell, does one or more `module load` in that shell, runs the user's commands, then terminates the sub-shell.
-All the stdout and stderr is piped to the place you invoked `runmod` from, but your original environment is untouched.
+All the stdout and stderr is piped to the shell that invoked `runmod`, but the original shell environment is unmodified.
 This avoids interoperability problems between tools and keeps our development environment clean.
 
 `runmod` determines which modules to load based on a `tools.yaml` file.
 Each project has its own `tools.yaml` file in the `env/` directory for that project, and there is a `tools.yaml` in the EDA repository in env/ as well.
 Each `tools.yaml` is a dictionary where the primary keys are canonical names for tool flows (e.g. flowkit for the digital back-end flow) and the values are another dictionary.
-The sub-dictionary currently only has a single key-value pair, where the required key is 'modules', and the valued is an ordered list of modules to load for that tool flow.
-A tool flow might only load one module (e.g. JasperGold, which only needs to load the 'jaspergold' module), but some might need to load many modules (like flowkit, which loads modules for synthesis, pnr, lec, DFT, etc.).
+The sub-dictionary currently only has a single key-value pair, where the required key is 'modules', and the value is an ordered list of modules to load for that tool flow.
+A tool flow might only load one module (e.g. 'jg' for 'JasperGold', which only needs to load the 'jaspergold' module), but some might need to load many modules (like 'flowkit', which loads modules for synthesis, pnr, lec, DFT, etc.).
 
 ### Examples:
 If tools.yaml contains the following content:
@@ -51,13 +51,13 @@ xrun:
 jg:
   modules:
     - jaspergold
-synth:
+flowkit:
   modules:
     - genus/191
     - innovus/19-12
 ```
 
-Then ```runmod synth -- genus -helpall``` command is equivalent to:
+Then ```runmod flowkit -- genus -helpall``` command is equivalent to:
 ```
 module load genus/191 innovus/19-12
 genus -helpall
@@ -66,9 +66,9 @@ module unload genus/191 innovus/19-12
 
 Note that the `--` is the separator between `runmod` arguments and command arguments.
 
-There also exists a shortcut for when the `flow` is the same name as the tool you want to invoke to save on typing.
+There also exists a shortcut for when the 'flow' or 'cannonical name' is the same name as the tool you want to invoke.
 
-```runmod -t xrun -- -helpall``` is equivalent to:
+```runmod -t xrun -- -helpall``` in this example is equivalent to:
 
 ```
 module load xcelium/1909 vmanager/1909
@@ -77,11 +77,15 @@ module unload xcelium/1909 vmanager/1909
 ```
 
 # Administration
-An error in a single modulefile can cause the module command to break. As such, you must test your changes locally before pushing them to the EDA repository.
+An error in a single modulefile can cause the `module` command to break. As such, you must test your changes locally before pushing them to the EDA repository.
+
+NEVER modify /tools/EDA/ directly.
+You must submit your changes through git, and get the changes reviewed.
+Details on how to make changes are described below in the [administration section](#administration).
 
 To locally test changes to this repository, you need to take a few steps.
 First, you need to clone the master branch of this repository, then create a branch off of master.
-Then, source the env/common_bashrc.bash file in your checkout.
+Then, source the env/common_bashrc.bash file in your EDA checkout.
 Your $MODULEPATH variable will change from:
 
 ```/data/tools/EDA/projects:/data/tools/EDA/flows:/data/tools/EDA/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles```
