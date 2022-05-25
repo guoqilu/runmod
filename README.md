@@ -23,12 +23,12 @@ The `env/tools.yaml` file in our project tree configures our modules. The [runmo
 
 ### runmod
 `runmod` is a small wrapper around the `module` tool that dynamically loads modules and then runs a command.
-This allows for a more heterogeneous tool-suite as tools only have their own environment setup when they are being executed.
-We use `runmod` as a wrapper instead of directly running 'module load' because loading modulefiles can have unintended side effects on the environment.
-For example the FlexNoC/4.7.0 module file forces the shell's python environment to python 2.7.
+This allows for a more heterogeneous tool-suite as tools only have their own environment setup when they are being executed, and do not conflict with other tool setups or environments.
+We use `runmod` as a wrapper instead of directly running `module load` because loading modulefiles can have unintended side effects on the environment.
+For example the flexnoc/4.7.0 modulefile forces the shell's python environment to python 2.7.
 This is incompatible with our RTL environment because many of our other tools will not work with python 2.7.
-Also, many tools come prepackaged with their own version of certain libraries which can accidentally get picked up by other tools.
-These are two examples of interoperability problems, but there are many other potential issues.
+Also, many tools come prepackaged with their own version of certain libraries (C, python, C++, etc.) which can accidentally get loaded or used by other tools.
+These are two examples of interoperability problems between tools, but there are many other potential issues.
 
 `runmod` invokes module-based tools (e.g. Xcelium or Genus) in an isolated environment without the user running a `module load` command.
 The `runmod` invocation creates a new sub-shell, does one or more `module load` in that shell, runs the user's commands, then terminates the sub-shell.
@@ -37,9 +37,9 @@ This avoids interoperability problems between tools and keeps our development en
 
 `runmod` determines which modules to load based on a `tools.yaml` file.
 Each project has its own `tools.yaml` file in the `env/` directory for that project, and there is a `tools.yaml` in the EDA repository in env/ as well.
-Each `tools.yaml` is a dictionary where the primary keys are canonical names for tool flows (e.g. flowkit for the digital back-end flow) and the values are another dictionary.
+Each `tools.yaml` is a dictionary where the primary keys are canonical names for tool flows (e.g. `flowkit` for the digital back-end flow) and the values are another dictionary.
 The sub-dictionary currently only has a single key-value pair, where the required key is 'modules', and the value is an ordered list of modules to load for that tool flow.
-A tool flow might only load one module (e.g. 'jg' for 'JasperGold', which only needs to load the 'jaspergold' module), but some might need to load many modules (like 'flowkit', which loads modules for synthesis, pnr, lec, DFT, etc.).
+A tool flow might only load one module (e.g. 'jg' for 'JasperGold', which only needs to load the 'jaspergold' module), but some might need to load many modules (like `flowkit`, which loads modules for synthesis, pnr, lec, DFT, etc.).
 
 ### Examples:
 If tools.yaml contains the following content:
