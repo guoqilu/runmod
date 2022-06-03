@@ -322,6 +322,9 @@ echo "#####################################################################"
 echo " * Working directory: $dir"
 echo "#####################################################################"
 
+export WORK_AREA=$dir
+
+
 if [ $remove ]; then
 	if [ ! -d $dir ]; then
 		echo " *** ERROR: Local working area does not exist!"
@@ -458,3 +461,5 @@ if [ $update ] || [ $create ]; then
 	# echo "generating CDS.lib  --> funCreateCdsLib";
 	funCreateCdsLib
 fi
+export PROJECT_CDS_LIB="/data/proj/$project/$chip_type/$chip_rev/user/$USER/cds/run/cds.lib"
+echo "setup --> cds_lib = $PROJECT_CDS_LIB\n";

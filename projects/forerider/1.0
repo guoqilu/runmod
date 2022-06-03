@@ -40,3 +40,6 @@ setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
 setenv CDS_AUTO_64BIT ALL
 
 
+# Define drc runsets for 1P15M_1x1xa1yahy2yy2yx2r
+export CALIBRE_DRC_RUNSET="/foundry/TSMC/tsmcn6/V1/DRC/Calibre/tn06cldr001c1_1_0_2a/LOGIC_TopMr_DRC/CLN6FF_15M_1X1Xa1Ya5Y2Yy2Yx2R_001.10_2a.encrypt"
+export CALIBRE_ANT_RUNSET="/foundry/TSMC/tsmcn6/V1/DRC/Calibre/tn06cldr001c1_1_0_2a/LOGIC_TopMr_DRC/CLN6FF_15M_1X1Xa1Ya5Y2Yy2Yx2R_001.10_2a.encrypt"
