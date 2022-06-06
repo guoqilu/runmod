@@ -1,0 +1,14 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads ascentlint paths"
+
+
+module load toolbase
+
+setenv LM_LICENSE_FILE 27000@license-1
+
+set	ascentlint_version 2019_p28
+setenv ASCENTLINTHOME $env(TOOLBASE)/ri_2019A
+
+prepend-path    PATH	$env(ASCENTLINTHOME)/idebug/bin
+prepend-path    PATH	$env(ASCENTLINTHOME)/ascentlint/bin
