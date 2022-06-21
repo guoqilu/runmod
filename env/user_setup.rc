@@ -462,4 +462,4 @@ if [ $update ] || [ $create ]; then
 	funCreateCdsLib
 fi
 export PROJECT_CDS_LIB="/data/proj/$project/$chip_type/$chip_rev/user/$USER/cds/run/cds.lib"
-echo "setup --> cds_lib = $PROJECT_CDS_LIB\n";
+echo "setup --> cds_lib = $PROJECT_CDS_LIB";
