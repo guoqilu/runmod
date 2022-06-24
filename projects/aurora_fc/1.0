@@ -10,7 +10,7 @@ setenv FOUNDRY_PIC IMEC_NHANCED
 setenv CHIP_REV_EIC 1p0
 setenv CHIP_REV_PIC 1p0
 #
-setenv PDK_PROCESS_EIC tsmcN6
+setenv PDK_PROCESS_EIC tsmcN12
 setenv PDK_PROCESS_PIC imec130
 #
 setenv PROCESS_EIC         tsmcn12
