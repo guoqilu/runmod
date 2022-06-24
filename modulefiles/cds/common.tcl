@@ -1,4 +1,5 @@
-setenv CDSHOME $env(CADENCE_DIR)/$env(CDSBASE)
+setenv CDSHOME      $env(CADENCE_DIR)/$env(CDSBASE)
+setenv CDS_INST_DIR $env(CADENCE_DIR)/$env(CDSBASE)
 
 prepend-path PATH $env(CDSHOME)/tools/dfII/bin
 prepend-path PATH $env(CDSHOME)/tools/bin
