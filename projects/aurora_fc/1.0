@@ -39,6 +39,9 @@ setenv CALIBRE_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr00
 setenv CALIBRE_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_DRC/CLN12FFC_13M_001_ANT.15a
 setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_MIM_DRC/CLN12FFC_13M_001_MIM_ANT.15a
 
+setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/LOGIC_TopMr_DRC/PLN12FFC_13M_2Xa1Xd3Xe2Y2Yy2R_001.15a.encrypt
+setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_DRC/PLN12FFC_13M_001_ANT.15a
+setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_13M_001_MIM_ANT.15a
 
 setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
 setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
