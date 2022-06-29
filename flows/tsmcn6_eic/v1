@@ -14,7 +14,7 @@ module load xcelium/1809
 # Physical Verification
 # module load calibre/v1
 module load calibre
-module load pvs/2111
+module load pegasus/21.31
 
 module load quantus/201
 
