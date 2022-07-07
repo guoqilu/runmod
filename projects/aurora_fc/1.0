@@ -20,7 +20,7 @@ setenv PROCESS_VARIANT_EIC sp
 #
 setenv PROCESS_PIC         imec130
 setenv METAL_STACK_PIC     1P2M_2Z
-setenv PROJECT_CDS_LIB_PIC /data/proj/$env(PORJECT)/pic/$env(CHIP_REV_PIC)/pd/cds/cds.lib
+setenv PROJECT_CDS_LIB_PIC /data/proj/aurora_fc/pic/1p0/pd/cds/cds.lib
 #
 setenv SOS_SERVER_EIC uc_tsmc12
 setenv SOS_SERVER_PIC ""
