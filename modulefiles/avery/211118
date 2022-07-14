@@ -10,7 +10,7 @@ setenv AVERY_PCIE  $env(AVERY_VIP_HOME)/apciexactor-2.4a
 setenv AVERY_DDR   $env(AVERY_VIP_HOME)/ddrxactor-2.8.0819
 setenv AVERY_PLI   $env(AVERY_VIP_HOME)/avery_pli-2021_0910
 
-prepend-path LM_LICENSE_FILE 4071@Faraday-1.opu.tv
+prepend-path LM_LICENSE_FILE 4071@Faraday-1.rd.lgt.ai
 
 prepend-path    PATH	$env(AVERY_PCIE)/scripts
 prepend-path    PATH	$env(AVERY_DDR)/scripts
