@@ -21,5 +21,9 @@ module load innovus/2013
 
 module load ssv/191ISR2
 
+# sos 
 module load cliosoft
 
+# bsub....
+module load lsf
+module load vs_code
