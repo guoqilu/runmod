@@ -23,7 +23,7 @@ setenv PROCESS_PIC         n130
 setenv METAL_STACK_PIC     1P2M_2Z
 setenv PROJECT_CDS_LIB_PIC ""
 #
-setenv SOS_SERVER_EIC uc_tsmcn12
+setenv SOS_SERVER_EIC uc_tsmc12
 setenv SOS_SERVER_PIC uc_photonics
 #
 prepend-path PATH /data/tools/lt/pd_tools/bin
