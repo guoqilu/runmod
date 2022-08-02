@@ -197,3 +197,11 @@ There is a team-wide announcement for those cases.
 This is how you update your environment:
 
 `> conda env update -f env/environment.yml`
+
+# bazel and bazelisk
+We use [bazel](https://bazel.build/) as our RTL, DV, and PD build system.
+It's extremely useful for managing dependencies, dispatching jobs, maintaining flists, etc.
+Additionally, we use [bazelisk](https://github.com/bazelbuild/bazelisk) to manage our bazel versions.
+Each project defines a .bazeliskrc file in the top of the repo that specifies a bazel version.
+Keeping a specific version instead of relying on "latest" ensures that everyone on a project is using the same tools.
+It also helps ensure that new projects can move forward with new tools without disrupting past projects.

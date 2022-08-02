@@ -91,7 +91,7 @@ fi
 # It doesn't even recognize the module command
 # Reinitialize modules and set module path again
 # Eventually, find the configuration knob in bazel to be able to remove this code
-source /usr/share/Modules/init/bash
+source $MODULESHOME/init/bash
 MODULEPATH="$( cd -P "$( dirname "$runmod_file" )" >/dev/null 2>&1 && pwd )"
 export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
 
@@ -156,4 +156,4 @@ for tools_yaml in search_paths:
 if not found_match:
     print("{} was not found in {}".format(tool_name, search_paths))
     sys.exit(1)
-        
+
