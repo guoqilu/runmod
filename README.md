@@ -153,7 +153,47 @@ cp v0 v1
 The yum package *environment-modules* has been added to our [saltstack](https://dev.azure.com/LightelligencePlatform/IT/_git/saltstack/commit/e91761e2449436c89200091423f1a07084a37be3?refName=refs%2Fheads%2Fmaster) configuration.
 
 # Conda
-We use conda for python environment management.
-Any user that runs conda must copy the .condarc from this repo's env/.condarc to their home directory.
-Without this .condarc, our conda install sometimes causes conda to use the conda install directory (e.g. /tools/miniconda3/) as the package cache.
-It's better from an environment management perspective if everyone has their own private package cache instead of trying to centralize.
+
+[The Conda documentation](https://docs.conda.io/en/latest/) says that "Conda is an open source package management system and environment management system".
+It helps ensure that all people are using the same tool and python versions.
+
+The first time you work on any repository at Lightelligence, you'll need to first copy out the defaut .condarc from this repo:
+
+`> cp env/.condarc ~/.condarc`
+
+```
+EDA/IT management note: Without this .condarc, our conda install sometimes causes conda to use the conda install directory (e.g. /tools/miniconda3/) as the package cache. It's easier from an environment management perspective if everyone has their own private package cache.
+```
+
+Then, you'll need to run:
+
+`> /tools/miniconda3/bin/conda init`
+
+That will update your .bashrc to get `conda` into your $PATH.
+You only need to do this once when you start working on any Lightelligence repository, not once for each repository you work on.
+
+The first time you start working on a project, you need to `cd` to the top of the repository and create the project-specific conda environment:
+
+`> conda env create -f env/environment.yml`
+
+Next, you'll need the name of the project's conda environment:
+
+`> head -n 1 env/environment.yml | sed 's/name: //'`
+
+After that, you'll need to "activate" your new environment.
+If the environment name is 'van_dig', then you'd run:
+
+`> conda activate van_dig`
+
+That updates your $PATH and your python tool versions to use consistent definitions across the for that project.
+Your terminal should now have this at the start of the line:
+
+`(van_dig) bash-4.2$ `
+
+That indicates you are now running in the `van_dig` conda environment.
+
+Periodically, an infrastructure update requires that everyone updates their environment.
+There is a team-wide announcement for those cases.
+This is how you update your environment:
+
+`> conda env update -f env/environment.yml`
