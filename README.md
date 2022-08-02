@@ -172,7 +172,7 @@ Then, you'll need to run:
 That will update your .bashrc to get `conda` into your $PATH.
 You only need to do this once when you start working on any Lightelligence repository, not once for each repository you work on.
 
-The first time you start working on a project, you need to `cd` to the top of the repository and create the project-specific conda environment:
+The first time you start working on a project, you need to `cd` to the top of that project's repository and create the project-specific conda environment:
 
 `> conda env create -f env/environment.yml`
 
