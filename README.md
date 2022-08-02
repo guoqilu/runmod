@@ -151,3 +151,9 @@ cp v0 v1
 
 ## Installation
 The yum package *environment-modules* has been added to our [saltstack](https://dev.azure.com/LightelligencePlatform/IT/_git/saltstack/commit/e91761e2449436c89200091423f1a07084a37be3?refName=refs%2Fheads%2Fmaster) configuration.
+
+# Conda
+We use conda for python environment management.
+Any user that runs conda must copy the .condarc from this repo's env/.condarc to their home directory.
+Without this .condarc, our conda install sometimes causes conda to use the conda install directory (e.g. /tools/miniconda3/) as the package cache.
+It's better from an environment management perspective if everyone has their own private package cache instead of trying to centralize.
