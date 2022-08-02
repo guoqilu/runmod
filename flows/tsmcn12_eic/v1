@@ -1,0 +1,29 @@
+#%Module1.0# # -*- tcl -*-
+module-whatis	"Tool setup for Physical Design for TSMCN12"
+
+# IC Installation
+module load cds/ICADVM201ISR15
+
+# Simulation
+module load mmsim/181
+module load xcelium/1809
+
+# Physical Verification
+# module load calibre/v1
+module load calibre
+module load pegasus/21.31
+
+module load quantus/201
+
+# Digital Flow
+module load genus/2011
+module load innovus/2013
+
+module load ssv/191ISR2
+
+# sos 
+module load cliosoft
+
+# bsub....
+module load lsf
+module load vs_code

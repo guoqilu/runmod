@@ -6,7 +6,7 @@ module load toolbase
 
 set	lumerical_version 2019b
 
-prepend-path	LM_LICENSE_FILE		27011@Faraday-1.opu.tv
+prepend-path	LM_LICENSE_FILE		27011@Faraday-1.rd.lgt.ai
 
 setenv 		LUMTOOLS		$env(TOOLBASE)/lumerical
 setenv		INTERCONNECT_HOME	$env(LUMTOOLS)/$lumerical_version

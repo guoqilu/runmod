@@ -2,7 +2,6 @@
 # See https://dev.azure.com/LightelligencePlatform/svunit
 module-whatis	"Loads svunit paths"
 
-
 module load toolbase
 
 set	svunit_version 3.34.0
@@ -10,8 +9,10 @@ set	svunit_version 3.34.0
 if { [ info exists ::env(SITE_ID) ] } {
   if { [ string match $::env(SITE_ID) idc ] } { 
     setenv SVUNIT_INSTALL /nfs/depot/git_repo_mirror/svunit/$svunit_version
+  } elseif { [ string match $::env(SITE_ID) bos ] } {
+    setenv SVUNIT_INSTALL $env(TOOLBASE)/svunit/$svunit_version
   } else {
-    puts stderr "Unknow SITE_ID not supported in svunit modulefile."
+    puts stderr [format "Unknown SITE_ID %s not supported in svunit modulefile." $::env(SITE_ID)]
     exit 1
   } 
 } else {

@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads pegasus paths"
+
+
+module load cadence
+
+
+
+set	pegasus_version 21.31
+setenv PVSHOME $env(CADENCE_DIR)/PEGASUS$pegasus_version
+
+prepend-path    PATH	$env(PVSHOME)/tools/dfII/bin
+prepend-path    PATH	$env(PVSHOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(PVSHOME)/doc
