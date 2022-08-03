@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads verible paths"
+
+
+module load toolbase/v1
+
+set	verible_version 2162
+setenv VERIBLEHOME $env(TOOLBASE)/freeware/verible/v0.0-$verible_version
+
+prepend-path    PATH	$env(VERIBLEHOME)
+prepend-path    PATH	$env(VERIBLEHOME)/bin
+
