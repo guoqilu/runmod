@@ -201,7 +201,12 @@ This is how you update your environment:
 # bazel and bazelisk
 We use [bazel](https://bazel.build/) as our RTL, DV, and PD build system.
 It's extremely useful for managing dependencies, dispatching jobs, maintaining flists, etc.
-Additionally, we use [bazelisk](https://github.com/bazelbuild/bazelisk) to manage our bazel versions.
+Additionally, we use [bazelisk](https://github.com/bazelbuild/bazelisk) to manage our `bazel` versions.
+`bazelisk` is installed as `bazel` in /usr/local/bin/bazel.
+Running /usr/local/bin/bazel actually is running `bazelisk`.
+That means that when you run any `bazel` command from the command line, you're actually running `bazelisk`.
+`bazelisk` then pulls the correct version of bazel from the github releases, caches the download locally, and then calls `bazel` to run the underlying command.
+
 Each project defines a .bazeliskrc file in the top of the repo that specifies a bazel version.
 Keeping a specific version instead of relying on "latest" ensures that everyone on a project is using the same tools.
 It also helps ensure that new projects can move forward with new tools without disrupting past projects.
