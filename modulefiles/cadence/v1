@@ -2,7 +2,7 @@
 
 module-whatis	"Common setup related to Cadence"
 
-module load toolbase/v0
+module load toolbase/v1
 
 setenv CADENCE_DIR $env(TOOLBASE)/cadence
 

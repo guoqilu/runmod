@@ -3,7 +3,7 @@
 module-whatis	"Loads xcelium paths"
 
 
-module load cadence
+module load cadence/v1
 
 set	xcelium_version 2203
 setenv XCELIUMHOME $env(CADENCE_DIR)/XCELIUM$xcelium_version
