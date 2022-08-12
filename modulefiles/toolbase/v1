@@ -2,4 +2,6 @@
 
 module-whatis	"Sets base install path for all tools"
 
-setenv TOOLBASE /tools
+#
+setenv TOOLBASE /global/tools
+

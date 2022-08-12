@@ -3,7 +3,7 @@
 module-whatis	"Loads vmanager paths"
 
 
-module load cadence
+module load cadence/v1
 
 set	vmanager_version 2203
 
