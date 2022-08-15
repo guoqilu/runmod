@@ -2,7 +2,7 @@
 # See https://dev.azure.com/LightelligencePlatform/svunit
 module-whatis	"Loads svunit paths"
 
-module load toolbase
+module load toolbase/v0
 
 set	svunit_version 3.34.0
 
