@@ -8,7 +8,7 @@ set	svunit_version 3.34.0
 
 if { [ info exists ::env(SITE_ID) ] } {
   if { [ string match $::env(SITE_ID) idc ] } { 
-    setenv SVUNIT_INSTALL /nfs/dv/git_repos/svunit/$svunit_version
+    setenv SVUNIT_INSTALL /nfs/dv/git_repos/svunit
   } elseif { [ string match $::env(SITE_ID) bos ] } {
     setenv SVUNIT_INSTALL $env(TOOLBASE)/svunit/$svunit_version
   } else {
