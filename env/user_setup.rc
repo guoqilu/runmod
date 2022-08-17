@@ -294,6 +294,7 @@ fi
 	fi
 	export CHIP_TYPE=$chip_type
 	export CHIP_REV=$chip_rev
+	export PROCESS=$process
 
 # if [ -z $remove ]; then
 # fi
