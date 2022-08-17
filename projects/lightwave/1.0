@@ -33,4 +33,14 @@ prepend-path PATH /data/tools/lt/pd_tools/bin
 setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
 setenv CDS_AUTO_64BIT ALL
 
+# Define drc runsets for 13M_2Xa1Xd3Xe2Y2Yy2R
+setenv CALIBRE_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/LOGIC_TopMr_DRC/CLN12FFC_11M_2Xa1Xd3Xe2Y2R_001.15a.encrypt
+setenv CALIBRE_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_DRC/CLN12FFC_11M_001_ANT.15a
+setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_MIM_DRC/CLN12FFC_11M_001_MIM_ANT.15a
 
+setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/LOGIC_TopMr_DRC/PLN12FFC_11M_2Xa1Xd3Xe2Y2R_001.15a.encrypt
+setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_DRC/PLN12FFC_11M_001_ANT.15a
+setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_11M_001_MIM_ANT.15a
+
+setenv ISIPP_DRC_INCLUDE_DIR  /data/tools/lt/pd_techdata/imec130/sp/runset/
+setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal

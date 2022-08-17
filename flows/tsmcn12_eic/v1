@@ -22,7 +22,8 @@ module load innovus/2013
 module load ssv/191ISR2
 
 # sos 
-module load cliosoft
+# module load cliosoft
+module load sos
 
 # bsub....
 module load lsf
