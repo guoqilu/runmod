@@ -8,6 +8,11 @@ module load cadence/v1
 set	xcelium_version 2203
 setenv XCELIUMHOME $env(CADENCE_DIR)/XCELIUM$xcelium_version
 
-prepend-path    PATH	$env(XCELIUMHOME)/tools.lnx86/bin/64bit
-prepend-path    PATH	$env(XCELIUMHOME)/tools.lnx86/bin
+prepend-path    PATH                    $env(XCELIUMHOME)/bin
+prepend-path    PATH                    $env(XCELIUMHOME)/tools.lnx86
+prepend-path    PATH                    $env(XCELIUMHOME)/tools.lnx86/bin
+prepend-path    PATH                    $env(XCELIUMHOME)/tools.lnx86/bin/64bit
+prepend-path    PATH                    $env(XCELIUMHOME)/tools.lnx86/lib64
+prepend-path    PATH                    $env(XCELIUMHOME)/tools/dfII/bin
+
 prepend-path    CDNSHELP_DOC $env(XCELIUMHOME)/doc
