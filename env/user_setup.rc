@@ -270,6 +270,7 @@ fi
 		echo " * Process: $PROCESS_EIC"
 		echo " * SOS Server: $SOS_SERVER_EIC"
 		process=$PROCESS_EIC
+		pdk_process=$PDK_PROCESS_EIC
 		chip_rev=$CHIP_REV_EIC 
 		sos_server=$SOS_SERVER_EIC 
 	else
@@ -294,7 +295,7 @@ fi
 	fi
 	export CHIP_TYPE=$chip_type
 	export CHIP_REV=$chip_rev
-	export PROCESS=$process
+	export PROCESS=$pdk_process
 
 # if [ -z $remove ]; then
 # fi
