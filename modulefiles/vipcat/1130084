@@ -2,7 +2,7 @@
 
 module-whatis	"Load VIPCAT paths"
 
-module load cadence
+module load cadence/v1
 
 set vipcat_version 1130084
 
