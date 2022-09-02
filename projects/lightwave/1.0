@@ -44,3 +44,7 @@ setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_
 
 setenv ISIPP_DRC_INCLUDE_DIR  /data/tools/lt/pd_techdata/imec130/sp/runset/
 setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
+
+setenv LVS_RUNSET_EIC/data/proj/lightwave/eic/1p0/pd/lvs/pdk/Pegasus/MAIN_DECK/PEGASUS_FLOW/DFM_LVS_RC_PEGASUS_N12FFC_1p11M_2Xa1Xd3Xe2Y2R_ALRDL.v1.0a 
+
+
