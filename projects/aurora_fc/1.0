@@ -47,5 +47,5 @@ setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
 setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
 
 
-
+setenv LVS_RUNSET_EIC /data/proj/aurora_fc/eic/1p0/pd/lvs/pdk/Pegasus/DFM_LVS_RC_PEGASUS_N12FFC_1p13M_2Xa1Xd3Xe2Y2Yy2R_ALRDL.v1.0a
 

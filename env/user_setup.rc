@@ -55,7 +55,8 @@ funCreateCdsLib(){
 
 				#pic-pdk database 
 				echo "#******* pic-pdk database ***********" >> $dir/cds/run/cds.lib
-				echo "INCLUDE  /bos/pic_pdk/$FOUNDRY_PIC/$PROCESS_PIC/$LTPDK_REV_PIC/cds/oa/cds.lib" >> $dir/cds/run/cds.lib
+				echo "INCLUDE  /data/proj/$project/$chip_type/$CHIP_REV_PIC/pic_pdk/latest/imec_nhanced_n130/sos.lib" >> $dir/cds/run/cds.lib
+				# echo "INCLUDE  /bos/pic_pdk/$FOUNDRY_PIC/$PROCESS_PIC/$LTPDK_REV_PIC/cds/oa/cds.lib" >> $dir/cds/run/cds.lib
 				echo "" >> $dir/cds/run/cds.lib
 			fi
 		else
@@ -113,12 +114,14 @@ let( (bindKeyFileList file path saveSkillPath)
     )
 	setSkillPath(saveSkillPath)
 )
-
-if(getShellEnvVar(\"CHIP_TYPE\") == \"pic\" then
+" > $dir/cds/run/.cdsinit
+if [ $chip_type == "pic" ];	then
+echo " 
 	info(\"Loading calibre cdsinit from *** /data/tools/mentor/calibre.cdsinit *** ....\n\" )
 	loadi(\"/data/tools/mentor/calibre.cdsinit\")
-	info(\"Completed loading calibre cdsinit from *** /data/tools/mentor/calibre.cdsinit *** ....\n\" )
-)
+	info(\"Completed loading calibre cdsinit from *** /data/tools/mentor/calibre.cdsinit *** ....\n\" )">> $dir/cds/run/.cdsinit 
+fi
+echo "
 info(\"\tCompleted loading PROJECT customizations from ***%s/.cdsinit *** ....\n\" pwd())
 let( (file) 
 	file = sprintf(nil \"/data/proj/%s/ICFB/.cdsinit\" getShellEnvVar(\"USER\") )
@@ -129,12 +132,8 @@ let( (file)
 	else
 		info(\"USER customizations file %s does not exist\" file)
 	)
-) " > $dir/cds/run/.cdsinit 
-	# cp /data/proj/slabarre/ICFB/compass/pic/.cdsinit 					 	$dir/cds/run/
-	cp /data/proj/slabarre/ICFB/compass/pic/.customLayGroups.imec130.cfg 	$dir/cds/run/
-	cp /data/proj/slabarre/ICFB/compass/pic/.olmStartUp.tcl 				$dir/cds/run/
-	cp /data/proj/slabarre/ICFB/compass/pic/.olmStartUpValids.tcl 			$dir/cds/run/
-	cp /data/proj/slabarre/ICFB/compass/pic/.cdsenv 						$dir/cds/run/
+) " >> $dir/cds/run/.cdsinit 
+
 	
 }
 
