@@ -1,0 +1,187 @@
+#%Module1.0
+#
+set global(install,app_title) "VCS (Verilog Compiled Simulator)"
+#
+###############################################################################
+#                                                                             #
+# This is a control file for building modulefiles easily.  This file defines  #
+# miscellaneous variables relating to the installation of applications.       #
+# This file is broken into 6 sections:                                        #
+#                                                                             #
+# S01: Initilization (static)                                                 #
+# S02: Revision Specific variable definition                                  #
+# S03: Flag conversion (static)                                               #
+# S04: PATH definition based on 32/64 bit environment variables (static)      #
+# S05: Define the help and display module procs (static)                      #
+# S06: Define the module load/unload process                                  #
+#                                                                             #
+###############################################################################
+
+###############################################################################
+#                                                                             #
+# S01: Modules overhead. Determine name of current modulefile, souce the      #
+#      global modulefile.                                                     #
+#                                                                             #
+###############################################################################
+
+set list [ split $ModulesCurrentModulefile / ]
+set global(install,abbr_app_name) [ lindex $list end-1 ]
+set global(install,version_number) [ lindex $list end-0 ]
+
+# Source global variables
+set global(module,global) "$env(MODULES_RC)"
+if { [ file exists $global(module,global) ] } {
+   source $global(module,global)
+} else {
+   puts stderr "Cannot locate \$MODULES_RC variable: cannot continue."
+   exit
+}
+
+###############################################################################
+#                                                                             #
+# S02:  Define global() array variables that are most commonly changed.  New  #
+#       revisions of applications get added to this switch statement.         #
+#                                                                             #
+###############################################################################
+
+switch -exact $global(install,version_number) {
+   S-2021.09 {
+      set global(install,experimental_flag) "false"
+      set global(install,release_date) "Feb 06, 2020"
+      set global(install,installer_info) "Calvin Liu<calvin.liu@lightelligence.ai"
+      set global(install,arch) "linux(64bit)"
+      set global(app,prefix) "/global/stools/synopsys/vcs/S-2021.09"
+      }
+   default {
+      puts stderr $global(install,error)
+      return
+   }
+}
+
+if { [ file isdirectory "$global(app,prefix)" ] } {
+   file stat $global(app,prefix) prefix
+   set global(install,install_date) [ clock format $prefix(mtime) -format "%b %d, %Y" ]
+} else {
+   puts stderr $global(install,error)
+   return
+}
+
+###############################################################################
+#                                                                             #
+# S03: Convert any flags to meaningful values                                 #
+#                                                                             #
+###############################################################################
+
+if { $global(install,experimental_flag) == "true" } {
+   set global(install,experimental_flag) "** This is an experimental release **"
+} else {
+   set global(install,experimental_flag) "** This is a production release **"
+}
+
+# Determine if OS is 64bit. Run the proc is64bit, sourced from the 
+# $global(module,global) variable. Set $global(sys,64bit) to true or false.                                                      
+
+is64bit
+
+###############################################################################
+#                                                                             #
+# S04: Set global(app,path) variable based on $global(sys,64bit) and the      #
+#      existance of the 64-bit directory, and APP_BITMODE environment var     #
+#                                                                             #
+###############################################################################
+
+#
+# Test for bit mode override, if set, then check values and set the arch to 
+# the right path.
+#
+# if overload is to a bit type not installed, then error out, display message.
+# Set the default PATH's based on the application determination of the OS type
+
+
+###############################################################################
+#                                                                             #
+# S05: Define the help and display variables for the ModulesHelp and          #
+#      ModulesDisplay procs                                                   #
+#                                                                             #
+###############################################################################
+
+set global(app,help) "
+This module file sets up the environment for $global(install,app_title).
+
+        Version: $global(install,version_number)
+Architecture(s): $global(install,arch)
+
+$global(install,experimental_flag)
+
+For questions on this installation, send e-mail to:
+
+   $global(install,installer_info)
+
+For configuration info, type:
+
+   % module display $global(install,abbr_app_name)/$global(install,version_number)
+
+For all other issues or further assistance, please send e-mail to:
+
+   $global(install,support_email)
+
+For application help, try the following:
+
+1. unix% vcs -help
+
+2. unix% more \$VCS_HOME/doc/ReleaseNotes
+
+3. unix% module load acrobat
+   unix% acroread \$VCS_HOME/doc/UserGuide/*.pdf
+
+
+4. External SolvNET:
+
+        http://www.synopsys.com/cgi-bin/ASP/solvnet/sign-on
+
+
+
+"
+
+set global(app,display) "
+$global(install,app_title) $global(install,version_number) (released on $global(install,release_date))
+
+$global(install,experimental_flag)
+
+Installed by: $global(install,installer_info)
+Installed on: $global(install,install_date)
+Architecture: $global(install,arch)
+
+For help, type:
+
+   % module help $global(install,abbr_app_name)
+"
+
+###############################################################################
+#                                                                             #
+# S06: Modulefile functions load unload prepend-path, etc                     #
+#                                                                             #
+###############################################################################
+
+proc ModulesHelp { } {
+   global global
+   puts stderr "$global(app,help)"
+}
+
+proc ModulesDisplay { } {
+   global global
+   puts stderr "$global(app,display)"
+}
+
+module-whatis "$global(install,app_title)"
+
+prepend-path  PATH                      $global(app,prefix)
+prepend-path  PATH                      $global(app,prefix)/bin
+prepend-path  LD_LIBRARY_PATH           $global(app,prefix)/linux64/lib
+
+setenv        UVM_HOME                  $global(app,prefix)/etc/uvm-1.2/
+setenv        VCS_HOME                  $global(app,prefix)
+setenv        VCS_LIC_EXPIRE_WARNING    5
+setenv        SNPSLMD_LICENSE_FILE      27020@idc-lic04
+
+set-alias     dve                       "dve -full64"
