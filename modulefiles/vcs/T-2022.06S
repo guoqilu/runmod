@@ -179,8 +179,8 @@ prepend-path  PATH                      $global(app,prefix)
 prepend-path  PATH                      $global(app,prefix)/bin
 prepend-path  LD_LIBRARY_PATH           $global(app,prefix)/linux64/lib
 
-setenv        UVM_HOME                  $global(app,prefix)/etc/uvm-1.2/
 setenv        VCS_HOME                  $global(app,prefix)
+setenv        UVM_HOME                  $global(app,prefix)/etc/uvm-1.2/
 setenv        VCS_LIC_EXPIRE_WARNING    5
 setenv        SNPSLMD_LICENSE_FILE      27020@idc-lic04
 

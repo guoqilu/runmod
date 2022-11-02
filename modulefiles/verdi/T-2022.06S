@@ -1,6 +1,6 @@
 #%Module1.0
 #
-set global(install,app_title) "VCS (Verilog Compiled Simulator)"
+set global(install,app_title) "Verdi"
 #
 ###############################################################################
 #                                                                             #
@@ -27,6 +27,8 @@ set global(install,app_title) "VCS (Verilog Compiled Simulator)"
 set list [ split $ModulesCurrentModulefile / ]
 set global(install,abbr_app_name) [ lindex $list end-1 ]
 set global(install,version_number) [ lindex $list end-0 ]
+set global(app,vendor) "lgt"
+set global(install,arch) "linux64"
 
 # Source global variables
 set global(module,global) "$env(MODULES_RC)"
@@ -49,8 +51,7 @@ switch -exact $global(install,version_number) {
       set global(install,experimental_flag) "false"
       set global(install,release_date) "Feb 06, 2020"
       set global(install,installer_info) "Calvin Liu<calvin.liu@lightelligence.ai"
-      set global(install,arch) "linux(64bit)"
-      set global(app,prefix) "/global/stools/synopsys/vcs/T-2022.06S"
+      set global(app,prefix) "/global/stools/synopsys/verdi/T-2022.06S"
       }
    default {
       puts stderr $global(install,error)
@@ -81,14 +82,13 @@ if { $global(install,experimental_flag) == "true" } {
 # Determine if OS is 64bit. Run the proc is64bit, sourced from the 
 # $global(module,global) variable. Set $global(sys,64bit) to true or false.                                                      
 
-is64bit
-
 ###############################################################################
 #                                                                             #
 # S04: Set global(app,path) variable based on $global(sys,64bit) and the      #
 #      existance of the 64-bit directory, and APP_BITMODE environment var     #
 #                                                                             #
 ###############################################################################
+set global(app,path) $global(app,prefix)
 
 #
 # Test for bit mode override, if set, then check values and set the arch to 
@@ -104,7 +104,6 @@ is64bit
 #      ModulesDisplay procs                                                   #
 #                                                                             #
 ###############################################################################
-
 set global(app,help) "
 This module file sets up the environment for $global(install,app_title).
 
@@ -119,7 +118,7 @@ For questions on this installation, send e-mail to:
 
 For configuration info, type:
 
-   % module display $global(install,abbr_app_name)/$global(install,version_number)
+   % module display $global(app,vendor)/$global(install,abbr_app_name)/$global(install,version_number)
 
 For all other issues or further assistance, please send e-mail to:
 
@@ -127,12 +126,12 @@ For all other issues or further assistance, please send e-mail to:
 
 For application help, try the following:
 
-1. unix% vcs -help
+1. unix% verdi -help
 
-2. unix% more \$VCS_HOME/doc/ReleaseNotes
+2. unix% more \$VERDI_HOME/doc/ReleaseNotes
 
 3. unix% module load acrobat
-   unix% acroread \$VCS_HOME/doc/UserGuide/*.pdf
+   unix% acroread \$VERDI_HOME/doc/*.pdf
 
 
 4. External SolvNET:
@@ -175,13 +174,10 @@ proc ModulesDisplay { } {
 
 module-whatis "$global(install,app_title)"
 
-prepend-path  PATH                      $global(app,prefix)
-prepend-path  PATH                      $global(app,prefix)/bin
-prepend-path  LD_LIBRARY_PATH           $global(app,prefix)/linux64/lib
-
-setenv        UVM_HOME                  $global(app,prefix)/etc/uvm-1.2/
-setenv        VCS_HOME                  $global(app,prefix)
-setenv        VCS_LIC_EXPIRE_WARNING    5
-setenv        SNPSLMD_LICENSE_FILE      27020@idc-lic04
-
-set-alias     dve                       "dve -full64"
+prepend-path    PATH                    $global(app,path)/bin
+prepend-path    LD_LIBRARY_PATH         $global(app,path)/lib:$global(app,path)/share/PLI/VCS/linux64:$global(app,prefix)/share/PLI/IUS/linux64
+setenv          VERDI_HOME              $global(app,prefix)
+setenv          SNPSLMD_LICENSE_FILE	27020@idc-lic04
+prepend-path    LD_LIBRARY_PATH         $env(VERDI_HOME)/share/FsdbWriter/$global(install,arch)
+prepend-path    LD_LIBRARY_PATH         $env(VERDI_HOME)/share/FsdbReader/$global(install,arch)
+prepend-path    LD_LIBRARY_PATH         $env(VERDI_HOME)/share/PLI/lib/LINUX64:$env(VERDI_HOME)/share/PLI/IUS/LINUX64/boot
