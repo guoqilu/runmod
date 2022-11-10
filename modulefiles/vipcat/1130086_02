@@ -5,16 +5,7 @@ module-whatis	"Load VIPCAT paths"
 module load cadence/v1
 
 set vipcat_version 1130086_02
-
-if { [ string match *2209 $env(XCELIUMHOME) ] } {
-    set XCELIUM_VERS XCELIUM2209
-} elseif { [ string match *2203 $env(XCELIUMHOME) ] } {
-    set XCELIUM_VERS XCELIUM2203
-} elseif { [ string match *2109 $env(XCELIUMHOME) ] } {
-    set XCELIUM_VERS XCELIUM2109
-} else {
-    set XCELIUM_VERS XCELIUM1909
-}
+set XCELIUM_VERS [file tail $env(XCELIUMHOME)]
 
 setenv VIPCATHOME $env(CADENCE_DIR)/VIPCAT$vipcat_version
 setenv DENALI     $env(VIPCATHOME)/tools/denali_64bit
