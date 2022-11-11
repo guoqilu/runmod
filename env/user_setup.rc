@@ -258,6 +258,7 @@ fi
 		process=$PROCESS_PIC
 		chip_rev=$CHIP_REV_PIC 
 		sos_server=$SOS_SERVER_PIC 
+		sos_project=$SOS_PROJECT_PIC 
 	elif [ $chip_type == "eic" ]; then
 		if [ -z $CHIP_REV_EIC ]; then 
 			echo ""
@@ -272,6 +273,7 @@ fi
 		pdk_process=$PDK_PROCESS_EIC
 		chip_rev=$CHIP_REV_EIC 
 		sos_server=$SOS_SERVER_EIC 
+		sos_project=$SOS_PROJECT_EIC 
 	else
     	echo ""
     	echo " *** ERROR: Chip type must be pic or eic!"
@@ -401,11 +403,17 @@ if [ $create ]; then
 		fi
 	fi
 	
+	if [ -z "$sos_project" ]; then	
+		echo " *** INFO: SOS_PROJCECT global variable is not set, using project name for sos build!"
+		# echo "           Please use -server switch to define sos server."
+		sos_project=$PROJET
+	fi
+	
 	if [ $server ]; then
 		#******make the work area as sos ***************
 		echo ""
-		echo "Executing --> soscmd newworkarea $server $project $dir";
-		soscmd newworkarea $server $project $dir;  
+		echo "Executing --> soscmd newworkarea $server $sos_project $dir";
+		soscmd newworkarea $server $sos_project $dir;  
 		echo ""
 		echo "Executing --> soscmd populate $dir  #poulates the whole tree";
 		soscmd populate $dir   #poulates the whole tree
