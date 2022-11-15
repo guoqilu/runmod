@@ -28,7 +28,9 @@ setenv SOS_PROJECT_EIC dagger1p1
 setenv SOS_SERVER_PIC  ""
 setenv SOS_PROJECT_PIC ""
 #
-prepend-path PATH /data/tools/lt/pd_tools/bin
+# Move away from global tools to project based.
+# prepend-path PATH /data/tools/lt/pd_tools/bin
+prepend-path PATH /data/proj/dagger/eic/1p1/common_tool/tsmcN28/bin
 #
 # Quality of Life Cadence Updates
 setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
