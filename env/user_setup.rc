@@ -188,7 +188,7 @@ if [ -z $project ] || [ -z $chip_type ]; then
 	echo " *** ERROR: Must pass -project and -type with appropriate arguments"
 	kill -INT $$;
 fi
-if [ $project != "NONESET" ]; then
+if [ $PROJECT != "NONESET" ]; then
 
 	if [ $project != "$PROJECT" ]; then
  	  	echo " *** ERROR: This terminal already is set up to PROJECT: $PROJECT REV: $CHIP_REV!"
