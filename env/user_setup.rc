@@ -188,6 +188,22 @@ if [ -z $project ] || [ -z $chip_type ]; then
 	echo " *** ERROR: Must pass -project and -type with appropriate arguments"
 	kill -INT $$;
 fi
+if [ $project != "NONESET" ]; then
+
+	if [ $project != "$PROJECT" ]; then
+ 	  	echo " *** ERROR: This terminal already is set up to PROJECT: $PROJECT REV: $CHIP_REV!"
+  	 	echo " *** Please use a fresh terminal to set up to a new project."
+  	 	kill -INT $$;
+	fi
+	if [ ! -z "$chip_rev" ]; then
+		if  [ $chip_rev != "$CHIP_REV" ]; then
+ 	  		echo " *** ERROR: This terminal already is set up to PROJECT: $PROJECT REV: $CHIP_REV!"
+  	 		echo " *** Please use a fresh terminal to set up to a new project."
+  	 		kill -INT $$;
+		fi
+	fi
+fi	
+
 if [ $update ] && [ $create ]; then
 	funHelp
     echo " *** ERROR: -update and -create are mutually exclusive!  Please select only one!"
