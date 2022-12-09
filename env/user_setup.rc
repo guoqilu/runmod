@@ -271,6 +271,7 @@ fi
 		echo " * Foundry pdk/techFile: $TF_REV_PIC"
 		echo " * LTPDK version: $LTPDK_REV_PIC"
 		echo " * SOS Server: $SOS_SERVER_PIC"
+		echo " * SOS Project: $SOS_PROJECT_PIC"
 		process=$PROCESS_PIC
 		chip_rev=$CHIP_REV_PIC 
 		sos_server=$SOS_SERVER_PIC 
@@ -285,6 +286,7 @@ fi
 		echo " * Foundry: $FOUNDRY_EIC"
 		echo " * Process: $PROCESS_EIC"
 		echo " * SOS Server: $SOS_SERVER_EIC"
+		echo " * SOS Project: $SOS_PROJECT_EIC"
 		process=$PROCESS_EIC
 		pdk_process=$PDK_PROCESS_EIC
 		chip_rev=$CHIP_REV_EIC 
@@ -455,8 +457,8 @@ else
 				echo "	Example: user_setup.rc -project compass -type pic -dir /data/proj/$USER/compass/ -create"
 				kill -INT $$;
 			fi
-			echo "Executing --> soscmd update -P $project $dir   #poulates the whole tree";
-			soscmd update -P $project $dir
+			echo "Executing --> soscmd update -P $sos_project $dir   #poulates the whole tree";
+			soscmd update -P $sos_project $dir
 			if [ $clean ]; then
 				echo ""
 				echo "*** WARN -clean option does not work with update.  No files will be removed.";
