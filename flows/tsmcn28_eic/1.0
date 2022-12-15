@@ -1,5 +1,5 @@
 #%Module1.0# # -*- tcl -*-
-module-whatis	"Tool setup for Physical Design for TSMCN12"
+module-whatis	"Tool setup for Physical Design for TSMCN28"
 
 # IC Installation
 module load cds/ICADVM201ISR15
@@ -9,8 +9,8 @@ module load mmsim/191ISR2
 module load xcelium/1809
 
 # Physical Verification
-# module load calibre/v1
-module load calibre
+# Calibre is breaking bazel.  
+# module load calibre
 module load pvs/191ISR1
 module load quantus/201
 
