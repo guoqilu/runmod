@@ -11,7 +11,7 @@ module load xcelium/1809
 # Physical Verification
 # Calibre is breaking bazel.  
 # module load calibre
-module load pvs/191ISR1
+module load pvs/22.20.000 
 module load quantus/201
 
 
