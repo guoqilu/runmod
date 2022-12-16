@@ -66,7 +66,7 @@ funCreateCdsLib(){
 
 }
 
- funCreateCdsCollateral(){
+funCreateCdsCollateral(){
 	# create a ./CDS/run dir if it does not exist.  All CDS data will exist here
 	if [ ! -d "$dir/cds/run" ]; then
 		echo "Creating directory $dir/cds/run ...";
@@ -182,7 +182,9 @@ while [ -n "$(echo $1 |grep '-')" ]; do
 	esac
 	shift
 done
-# show usage and exit if both project and type are not set
+##############################################################
+## show usage and exit if both project and type are not set ##
+##############################################################
 if [ -z $project ] || [ -z $chip_type ]; then 
 	funHelp
 	echo " *** ERROR: Must pass -project and -type with appropriate arguments"
@@ -203,12 +205,17 @@ if [ $PROJECT != "NONESET" ]; then
 		fi
 	fi
 fi	
-
+##############################################################
+## Error out if update and create are both called           ##
+##############################################################
 if [ $update ] && [ $create ]; then
 	funHelp
     echo " *** ERROR: -update and -create are mutually exclusive!  Please select only one!"
    	kill -INT $$;
 fi
+###############################################################
+## Error out if update or create are used with remove option ##
+###############################################################
 if [ $remove ] ; then
 	if  [ $create ] || [ $update ] ; then
 		funHelp
@@ -216,17 +223,19 @@ if [ $remove ] ; then
    		kill -INT $$;
 	fi
 fi
+###############################################################
+## Load common bashrc; FIXME: I am not sure if I need this!  ##
+###############################################################
 	# Set up and source the EDA setup
 	if [[ -z "$EDA_CHECKOUT" ]]; then
 	   export EDA_CHECKOUT=/tools/EDA
 	fi
 	source $EDA_CHECKOUT/env/common_bashrc.bash
 	user="${USER:-default_value}"
-
-	#
-	# Find the module for the inputted project and load it.
-	# if it does not exist warn and list avaible projects/revs
-	#
+###############################################################
+## Find the module for the inputted project/rev and load it. ##
+## if it does not exist warn and list avaible projects/revs  ##
+###############################################################
 	if [ ! -d "/data/tools/EDA/projects/$project" ]; then
     	echo ""
     	echo " *** ERROR: Unknown project $project, make sure that the module exists for the project!"
@@ -250,21 +259,18 @@ fi
 		echo "Executing --> module load $project"
 		module load $project 
 	fi
-	#
-	# describe setup after module load
-	# 
-	echo "" 
-	echo "Setting up the terminal or creating workspace for:"
-	echo " * User: $user"
-	echo " * Project: $project"
-	echo " * Chip type: $chip_type"
-	# verify chip type is valid for project and complete set up.
+###############################################################
+##   Check that a rev exists for the type, if not error out  ##
+##   Project may have a specified rev, but not for all types ##
+###############################################################
+	# verify chip type is valid for project and complete set up. 1st PIC then EIC.
 	if [ $chip_type == "pic" ];	then
 		if [ -z $CHIP_REV_PIC ]; then 
 			echo ""
     		echo " *** ERROR: Unknown PROJECT $project does not support CHIP TYPE $chip_type"
 			kill -INT $$;
 		fi
+		echo "Setting up the terminal or creating workspace for:"
 		echo " * Chip version: $CHIP_REV_PIC"
 		echo " * Foundry: $FOUNDRY_PIC"
 		echo " * Process: $PROCESS_PIC"
@@ -282,6 +288,7 @@ fi
     		echo " *** ERROR: Unknown PROJECT $project does not support CHIP TYPE $chip_type"
 			kill -INT $$;
 		fi
+		echo "Setting up the terminal or creating workspace for:"
 		echo " * Chip version: $CHIP_REV_EIC"
 		echo " * Foundry: $FOUNDRY_EIC"
 		echo " * Process: $PROCESS_EIC"
@@ -297,55 +304,57 @@ fi
     	echo " *** ERROR: Chip type must be pic or eic!"
     	kill -INT $$;
 	fi
-	# set up the global chip_rev for the chip_type we are builing
-	echo ""
-	# check if compass.  Eventually we will merge all these to one
+###############################################################
+# check if compass.  Eventually we will merge all these to one#
+###############################################################
 	if [ $project  == "compass" ]; then
 		mod=ph_icadvm201
 	else
 		mod=$process\_$chip_type
 	fi
-
+###############################################################
+## module load the process module for this chip type         ##
+###############################################################
 	if [ ! -d "/data/tools/EDA/flows/$mod" ]; then
 		echo " * WARN: Module $mod does not exist!"
 	else
+		echo ""
 		echo " Executing --> module load  $mod"
 		module load $mod
 	fi
+	# set up the global chip_rev for the chip_type we are building
 	export CHIP_TYPE=$chip_type
 	export CHIP_REV=$chip_rev
 	export PROCESS=$pdk_process
-
-# if [ -z $remove ]; then
-# fi
-#
-#******create work area ***************
-#
-# if create option rebuild the full directory
-# if create is not used simply update the WS
-# if a directory is pssed operate on the pass dir
-
-# if no directory is passed operate in the default directory
-if [ -z "$dir" ]; then	
-#	dir="/data/proj/$USER/$project/$chip_type/$chip_rev"
-	# check if compass.  Eventually we will merge all these to one
+###############################################################
+#             create work area  							 ##
+#															 ##
+# if create option rebuild the full directory				 ##
+# if create is not used simply update the WS				 ##
+# if a directory is passed operate on the pass dir			 ##
+# if no directory is passed operate in the default directory ##
+###############################################################
+if [ -z "$dir" ]; then
+	#FIXME: check if compass.  Eventually we will merge all these to one
 	if [ $project  == "compass" ]; then
 		dir="/data/proj/$USER/$project/$chip_type/$chip_rev"
 	else
 		dir="/data/proj/$project/$chip_type/$chip_rev/user/$USER"	
 	fi
 else
-#	dir="$dir/$chip_type/$chip_rev"
 	dir="$dir"
 fi
-echo ""
-echo "#####################################################################"
-echo " * Working directory: $dir"
-echo "#####################################################################"
-
+###############################################################
+## Describe setup after module load                          ##
+###############################################################
+	echo " * User: $user"
+	echo " * Project: $project"
+	echo " * Chip type: $chip_type"	
+	echo " * Working dir: $dir"	
 export WORK_AREA=$dir
-
-
+###############################################################
+# Remove SOS area                                            ##
+###############################################################
 if [ $remove ]; then
 	if [ ! -d $dir ]; then
 		echo " *** ERROR: Local working area does not exist!"
@@ -379,7 +388,9 @@ if [ $remove ]; then
 	fi
     kill -INT $$;
 fi
-
+###############################################################
+# Create SOS area                                            ##
+###############################################################
 if [ $create ]; then
 	if [ -d $dir ]; then
 		if [ -d $dir/.SOS ]; then
@@ -441,6 +452,9 @@ if [ $create ]; then
 		
 	fi
 else
+###############################################################
+# Update SOS area                                            ##
+###############################################################
 	if [ $update ]; then
 	# UPDATE
 		if [ ! -d $dir ]; then
@@ -457,7 +471,8 @@ else
 				echo "	Example: user_setup.rc -project compass -type pic -dir /data/proj/$USER/compass/ -create"
 				kill -INT $$;
 			fi
-			echo "Executing --> soscmd update -P $sos_project $dir   #poulates the whole tree";
+			echo "";
+			echo "Executing --> soscmd update -P $sos_project $dir   #Updates the whole tree";
 			soscmd update -P $sos_project $dir
 			if [ $clean ]; then
 				echo ""
@@ -489,4 +504,5 @@ if [ $update ] || [ $create ]; then
 	funCreateCdsLib
 fi
 export PROJECT_CDS_LIB="/data/proj/$project/$chip_type/$chip_rev/user/$USER/cds/run/cds.lib"
-echo "setup --> cds_lib = $PROJECT_CDS_LIB";
+echo " * cds_lib: $PROJECT_CDS_LIB";
+echo ""
