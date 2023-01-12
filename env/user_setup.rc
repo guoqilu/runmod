@@ -42,11 +42,11 @@ funCreateCdsLib(){
 			echo "INCLUDE $dir/cds/run/sos.lib" >> $dir/cds/run/cds.lib
 			echo "" >> $dir/cds/run/cds.lib
 
-			echo "#******* add required libraries to the cds.lib ***********" >> $dir/cds/run/cds.lib
-			echo "DEFINE opticalLib $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/opticalLib" >> $dir/cds/run/cds.lib
-			echo "DEFINE analogLib  $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/artist/analogLib" >> $dir/cds/run/cds.lib
-			echo "DEFINE basic      $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/basic" >> $dir/cds/run/cds.lib
-			echo "" >> $dir/cds/run/cds.lib
+# 			echo "#******* add required libraries to the cds.lib ***********" >> $dir/cds/run/cds.lib
+# 			echo "DEFINE opticalLib $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/opticalLib" >> $dir/cds/run/cds.lib
+# 			echo "DEFINE analogLib  $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/artist/analogLib" >> $dir/cds/run/cds.lib
+# 			echo "DEFINE basic      $CADENCE_DIR/$CDSBASE/tools.lnx86/dfII/etc/cdslib/basic" >> $dir/cds/run/cds.lib
+# 			echo "" >> $dir/cds/run/cds.lib
 			if [ $chip_type == "pic" ];	then
 				#foundry database 
 				echo "#******* foundry database ***********" >> $dir/cds/run/cds.lib
