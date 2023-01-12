@@ -1,6 +1,6 @@
 #%Module1.0# # -*- tcl -*-
 
-module-whatis	"Sets up static project configuration for Dagger 1.1"
+module-whatis	"Sets up static project configuration for Dagger 2p0"
 
 setenv PROJECT dagger
 #
@@ -25,8 +25,8 @@ setenv PROJECT_CDS_LIB_PIC ""
 #
 setenv SOS_SERVER_EIC  uc_tsmc28
 setenv SOS_PROJECT_EIC dagger2p0
-setenv SOS_SERVER_PIC  ""
-setenv SOS_PROJECT_PIC ""
+setenv SOS_SERVER_PIC  uc_photonics
+setenv SOS_PROJECT_PIC dagger2p0
 #
 # Move away from global tools to project based.
 # prepend-path PATH /data/tools/lt/pd_tools/bin
