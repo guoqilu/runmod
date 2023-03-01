@@ -339,7 +339,8 @@ if [ -z "$dir" ]; then
 	if [ $project  == "compass" ]; then
 		dir="/data/proj/$USER/$project/$chip_type/$chip_rev"
 	else
-		dir="/data/proj/$project/$chip_type/$chip_rev/user/$USER"	
+		# dir="/data/proj/$project/$chip_type/$chip_rev/user/$USER"	
+		dir="/nfs/workspace/$project/$USER/$chip_type/$chip_rev"	
 	fi
 else
 	dir="$dir"
@@ -435,7 +436,7 @@ if [ $create ]; then
 	if [ -z "$sos_project" ]; then	
 		echo " *** INFO: SOS_PROJCECT global variable is not set, using project name for sos build!"
 		# echo "           Please use -server switch to define sos server."
-		sos_project=$PROJET
+		sos_project=$PROJECT
 	fi
 	
 	if [ $server ]; then
@@ -461,14 +462,14 @@ else
 			echo " *** ERROR: Local working area does not exist!"
 			echo " 	DIR --> $dir"
 			echo " 	Please run full setup first!"
-			echo " 	Example: user_setup.rc -project compass -type pic -dir /data/proj/$USER/compass/ -create"
+			echo " 	Example: user_setup.rc -project compass -type pic -dir /nfs/workspace/compass/$USER/ -create"
     		kill -INT $$;
 		else
 			# cd $dir;	  
 			if [ ! -d $dir/.SOS ]; then
 				echo "*** WARNING $dir exists but does not appear to be a supported SOS WS."
 				echo "	Please use the -create option to build this area."
-				echo "	Example: user_setup.rc -project compass -type pic -dir /data/proj/$USER/compass/ -create"
+				echo "	Example: user_setup.rc -project compass -type pic -dir /nfs/workspace/compass/$USER/ -create"
 				kill -INT $$;
 			fi
 			echo "";
@@ -503,6 +504,6 @@ if [ $update ] || [ $create ]; then
 	# echo "generating CDS.lib  --> funCreateCdsLib";
 	funCreateCdsLib
 fi
-export PROJECT_CDS_LIB="/data/proj/$project/$chip_type/$chip_rev/user/$USER/cds/run/cds.lib"
+export PROJECT_CDS_LIB="$dir/cds/run/cds.lib"
 echo " * cds_lib: $PROJECT_CDS_LIB";
 echo ""
