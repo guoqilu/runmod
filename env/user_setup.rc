@@ -339,8 +339,12 @@ if [ -z "$dir" ]; then
 	if [ $project  == "compass" ]; then
 		dir="/data/proj/$USER/$project/$chip_type/$chip_rev"
 	else
-		# dir="/data/proj/$project/$chip_type/$chip_rev/user/$USER"	
-		dir="/nfs/workspace/$project/$USER/$chip_type/$chip_rev"	
+		
+		if  [ ! -z $WORK_AREA ] && [ $WORK_AREA  == "/nfs/workspace" ]; then
+			dir="/nfs/workspace/$project/$USER/$chip_type/$chip_rev"
+		else
+			dir="/data/proj/$project/$chip_type/$chip_rev/user/$USER"
+		fi	
 	fi
 else
 	dir="$dir"
@@ -352,7 +356,7 @@ fi
 	echo " * Project: $project"
 	echo " * Chip type: $chip_type"	
 	echo " * Working dir: $dir"	
-export WORK_AREA=$dir
+	export WORK_AREA_USER=$dir
 ###############################################################
 # Remove SOS area                                            ##
 ###############################################################
