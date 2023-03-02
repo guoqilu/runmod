@@ -27,8 +27,9 @@ setenv SOS_SERVER_EIC uc_tsmc12
 setenv SOS_SERVER_PIC uc_photonics
 #
 prepend-path PATH /data/tools/lt/pd_tools/bin
-
-
+#
+setenv WORK_AREA      /data/proj
+#
 # Quality of Life Cadence Updates
 setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
 setenv CDS_AUTO_64BIT ALL

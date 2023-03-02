@@ -25,6 +25,8 @@ setenv PROJECT_CDS_LIB_PIC /data/proj/aurora/pic/p1.0/pd/cds/cds.lib
 setenv SOS_SERVER_EIC uc_tsmc12
 setenv SOS_SERVER_PIC ""
 #
+setenv WORK_AREA      /nfs/workspace
+#
 # prepend-path PATH /data/tools/lt/pd_tools/bin
 prepend-path PATH /nfs/workspace/aurora/common_tool/tsmcN12/pd_tools/bin
 
