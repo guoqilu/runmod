@@ -1,0 +1,52 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Lake Erie 1.0"
+
+setenv PROJECT lakeerie
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC ""
+#
+setenv CHIP_REV_EIC p1.0
+setenv CHIP_REV_PIC ""
+#
+setenv PDK_PROCESS_EIC tsmcN12
+setenv PDK_PROCESS_PIC ""
+#
+setenv PROCESS_EIC         tsmcn12
+setenv METAL_STACK_EIC     13M_2Xa1Xd3Xe2Y2Yy2R
+setenv PROJECT_CDS_LIB_EIC ""
+setenv PROCESS_VARIANT_EIC sp
+#
+setenv PROCESS_PIC         ""
+setenv METAL_STACK_PIC     ""
+setenv PROJECT_CDS_LIB_PIC ""
+#
+setenv SOS_SERVER_EIC uc_tsmc12
+setenv SOS_SERVER_PIC ""
+#
+setenv WORK_AREA      /nfs/workspace
+#
+# prepend-path PATH /data/tools/lt/pd_tools/bin
+prepend-path PATH /nfs/workspace/lakeerie/common_tool/tsmcN12/pd_tools/bin
+
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+
+# Define drc runsets for 13M_2Xa1Xd3Xe2Y2Yy2R
+setenv CALIBRE_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/LOGIC_TopMr_DRC/CLN12FFC_13M_2Xa1Xd3Xe2Y2Yy2R_001.15a.encrypt
+setenv CALIBRE_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_DRC/CLN12FFC_13M_001_ANT.15a
+setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_MIM_DRC/CLN12FFC_13M_001_MIM_ANT.15a
+
+setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/LOGIC_TopMr_DRC/PLN12FFC_13M_2Xa1Xd3Xe2Y2Yy2R_001.15a.encrypt
+setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_DRC/PLN12FFC_13M_001_ANT.15a
+setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_13M_001_MIM_ANT.15a
+
+setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
+setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
+
+
+setenv LVS_RUNSET_EIC /data/proj/lakeerie_fc/eic/1p0/pd/lvs/pdk/Pegasus/DFM_LVS_RC_PEGASUS_N12FFC_1p13M_2Xa1Xd3Xe2Y2Yy2R_ALRDL.v1.0a
+
