@@ -43,10 +43,11 @@ setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr00
 setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/LOGIC_TopMr_DRC/PLN12FFC_13M_2Xa1Xd3Xe2Y2Yy2R_001.15a.encrypt
 setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_DRC/PLN12FFC_13M_001_ANT.15a
 setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_13M_001_MIM_ANT.15a
+setenv PVS_BUMP_RUNSET_EIC /nfs/platforms/TSMC/bumprules/PVS/T000BPDR022S1_0_9A/CU_BUMP_DRC_12NM_FFC/PN12FFC_CU_BUMP_022.09a
 
 setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
 setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
 
 
-setenv LVS_RUNSET_EIC /data/proj/lakeerie_fc/eic/1p0/pd/lvs/pdk/Pegasus/DFM_LVS_RC_PEGASUS_N12FFC_1p13M_2Xa1Xd3Xe2Y2Yy2R_ALRDL.v1.0a
-
+setenv LVS_RUNSET_EIC /nfs/workspace/lakeerie/pd/lvs/pdk/Pegasus/DFM_LVS_RC_PEGASUS_N12FFC_1p13M_2Xa1Xd3Xe2Y2Yy2R_ALRDL.v1.0a
+# Root LVS -> /nfs/platforms/TSMC/tsmcn12/LVS/Pegasus/MAIN_DECK/PEGASUS_FLOW/DFM_LVS_RC_PEGASUS_N12FFC_1p13M_2Xa1Xd3Xe2Y2Yy2R_ALRDL.v1.0a
