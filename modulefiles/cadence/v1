@@ -12,10 +12,10 @@ if { [ info exists ::env(SITE_ID) ] } {
     setenv LM_LICENSE_FILE 5280@idc-backup:5280@idc-lic04:5280@idc-lic08
     setenv CDS_LIC_FILE 5280@idc-backup:5280@idc-lic04:5280@idc-lic08
   } else {
-    setenv LM_LICENSE_FILE 5280@Faraday-1.rd.lgt.ai
-    setenv CDS_LIC_FILE 5280@Faraday-1.rd.lgt.ai
+    setenv LM_LICENSE_FILE 5280@license-1.lgt.ai
+    setenv CDS_LIC_FILE 5280@license-1.lgt.ai
   }
 } else {
-    setenv LM_LICENSE_FILE 5280@Faraday-1.rd.lgt.ai
-    setenv CDS_LIC_FILE 5280@Faraday-1.rd.lgt.ai
+    setenv LM_LICENSE_FILE 5280@license-1.lgt.ai
+    setenv CDS_LIC_FILE 5280@license-1.lgt.ai
 }
