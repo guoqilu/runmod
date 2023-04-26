@@ -3,6 +3,7 @@ module-whatis	"Tool setup for Physical Design for TSMCN12"
 
 # IC Installation
 module load cds/ICADVM201ISR15
+module load spectre/211ISR5
 
 # Simulation
 module load mmsim/181
