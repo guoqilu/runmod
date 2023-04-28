@@ -17,14 +17,14 @@ module load pegasus/21.30
 module load quantus/201
 
 # Digital Flow
-module load genus/2011
-module load innovus/2013
+module load genus/21.12
+module load innovus/21.13
 
 module load ssv/191ISR2
 
 # sos 
 # module load cliosoft
-module load sos
+module load sos/7.05
 
 # bsub....
 module load lsf
