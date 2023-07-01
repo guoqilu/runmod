@@ -119,8 +119,13 @@ except IndexError:
 search_paths = []
 
 proj_dir = os.getenv("PROJ_DIR")
+site_id  = os.getenv("SITE_ID")
 if proj_dir:
-    tools_yaml_path = os.path.join(proj_dir, "env", "tools.yaml")
+    if site_id == "idc":
+        tools_yaml_path = os.path.join(proj_dir, "env", "stools.yaml")
+    else:
+        tools_yaml_path = os.path.join(proj_dir, "env", "tools.yaml")
+
     if os.path.exists(tools_yaml_path):
         search_paths.append(tools_yaml_path)
 
