@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+# --------------------------------------------------
+# Script will provide options for inclusion of various EDA Software Resources
+#
+# Options will be based on Role
+# 1. AMS 
+# 2. AMS/Photonics 
+# 3. AMS/PD 
+# 4. RTL/DV 
+# --------------------------------------------------
+
+# --------------------------------------------------
+# Reacts to Command Line Options
+# --------------------------------------------------
+
+while (( $# ))
+do
+    case $1 in
+        "--help" | "-h" )
+            echo "  Usage Guide for Lightelligence EDA Configurator"
+            echo "  usage: edaSetup [-h [--help] -co [--configOption] ROLE"
+            echo ""
+            echo "  Command Line Options:"
+            echo ""
+            echo "  -c [--configOption] ROLE       Select your Role, if not provided, interactive selection is enabled"
+            echo ""
+            echo "                                  Available Roles and Valid Options:"
+            echo "                                  1  :: AMS - IC618"
+            echo "                                  2  :: AMS - ICADVM181"
+            echo "                                  3  :: AMS - ICADVM181/Siph"
+            echo "                                  4  :: AMS - ICADVM181/PD"
+            echo "                                  5  :: AMS - ICADVM181/PD-Siph"
+            echo "                                  6  :: RTL/DV"
+            echo "                                  7  :: Allegro"
+            echo ""
+            echo " -h [--help]                      Prints help message and exits"
+            echo ""
+            return
+            ;;
+        "--configOption" | "-c" )
+            # Get Value after -c || --configOption
+            shift
+            configOption="$@"
+            ;;
+        *)
+            echo $arg
+            echo "Unexpected Command Line Input - Exiting"
+            return
+            ;;    
+    esac
+    shift
+done
+
+# --------------------------------------------------
+# Parse User Input if Command Line Option not Supplied
+# --------------------------------------------------
+
+if [ -z "$configOption" ]
+then
+    echo ""
+    echo "  Welcome to the Lightelligence EDA Configurator"
+    echo ""
+    echo "  Please Select Your Role:"
+    echo "  1. AMS - IC618"
+    echo "  2. AMS - ICADVM181"
+    echo "  3. AMS - ICADVM181/Siph"
+    echo "  4. AMS - ICADVM181/PD"
+    echo "  5. AMS - ICADVM181/PD-Siph"    
+    echo "  6. RTL/DV"
+    echo "  7. Allegro"
+    echo -n "  Selection [Press Enter]: "
+    read configOption
+fi
+
+echo $configOption
+
+
+# --------------------------------------------------
+# **************************************************
+#
+#            Cadence - Photonics ENV Variables
+#
+# **************************************************
+# --------------------------------------------------
+
+# --------------------------------------------------
+# EDA Roles and Tool Selection
+# --------------------------------------------------
+
+case $configOption in
+    1) # AMS - IC618
+        module load ams_ic618
+        ;;
+    2) # AMS - ICADVM181
+        module load ams_icadvm181
+        ;;
+    3) # AMS - ICADVM181/siph
+        module load ams_icadvm181_siph
+        ;;
+    4) # AMS - ICADVM181/PD
+        module load ams_icadvm181_pd
+        ;;
+    5) # AMS - ICADVM181/PD-siph
+        module load ams_icadvm181_pd_siph
+        ;;
+    6) # RTL/DV
+        module load rtl_dv
+        ;;
+    7) # Allegro
+        module load pcb
+        ;;
+    *)
+        ;;
+esac

@@ -1,0 +1,22 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Common setup related to Cadence"
+
+module load toolbase/v0
+
+setenv CADENCE_DIR $env(TOOLBASE)/cadence
+
+#idc: China Nanjing server
+if { [ info exists ::env(SITE_ID) ] } {
+  if { [ string match $::env(SITE_ID) idc ] } { 
+    setenv LM_LICENSE_FILE 5280@idc-backup
+    setenv CDS_LIC_FILE 5280@idc-backup
+  } else {
+    setenv LM_LICENSE_FILE 5280@license-1.lgt.ai
+    setenv CDS_LIC_FILE 5280@license-1.lgt.ai
+  }
+} else {
+    setenv LM_LICENSE_FILE 5280@license-1.lgt.ai
+    setenv CDS_LIC_FILE 5280@license-1.lgt.ai
+}
+

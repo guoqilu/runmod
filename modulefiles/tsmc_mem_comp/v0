@@ -1,0 +1,7 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Common setup related to the TSMC Memmory Compiler wrapper script"
+
+module load toolbase
+
+prepend-path PATH $env(EDA_CHECKOUT)/bin/tsmc_mem_comp/v0

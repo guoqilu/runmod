@@ -1,0 +1,5 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets base install path for all tools"
+
+setenv TOOLBASE /tools

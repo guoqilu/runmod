@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads flexedit paths"
+
+
+module load toolbase
+
+
+
+set	flexedit_version 0.9.6
+setenv FLEXEDITHOME $env(TOOLBASE)/arteris/FlexEdit
+
+prepend-path    PATH	$env(FLEXEDITHOME)

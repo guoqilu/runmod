@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads ssv paths"
+
+
+module load cadence
+
+
+
+set	ssv_version 191ISR2
+setenv SSVHOME $env(CADENCE_DIR)/SSV$ssv_version
+
+prepend-path    PATH	$env(SSVHOME)/tools/dfII/bin
+prepend-path    PATH	$env(SSVHOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(SSVHOME)/doc

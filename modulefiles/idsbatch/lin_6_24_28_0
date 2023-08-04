@@ -1,0 +1,12 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads idsbatch paths"
+
+module load toolbase
+
+set	idsbatch_version lin_6_24_28_0
+
+setenv AGNISYS_DIR $env(TOOLBASE)/agnisys
+setenv AGNI_LICENSE_FILE $env(AGNISYS_DIR)/license.dat
+
+prepend-path    PATH	$env(AGNISYS_DIR)/idsbatch_$idsbatch_version

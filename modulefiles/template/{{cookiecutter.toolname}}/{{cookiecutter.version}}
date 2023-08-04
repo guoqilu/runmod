@@ -1,0 +1,20 @@
+{{ "#%Module1.0# # -*- tcl -*-" }}
+
+module-whatis	"Loads {{ cookiecutter.toolname|lower }} paths"
+
+{% if cookiecutter.requires_cadence|lower == "true" %}
+module load cadence
+{% set root="$env(CADENCE_DIR)" %}
+{% else %}
+module load toolbase
+{% set root="$env(TOOLBASE)" %}
+{% endif %}
+
+set	{{ cookiecutter.toolname|lower }}_version {{ cookiecutter.version }}
+setenv {{ cookiecutter.toolname|upper }}HOME {{ root }}/{{ cookiecutter.toolname|upper }}${{ cookiecutter.toolname|lower }}_version
+
+prepend-path    PATH	$env({{ cookiecutter.toolname|upper }}HOME)/{{ cookiecutter.tool_path_subdir }}/bin/64bit
+prepend-path    PATH	$env({{ cookiecutter.toolname|upper }}HOME)/{{ cookiecutter.tool_path_subdir }}/bin
+{% if cookiecutter.requires_cadence|lower == "true" %}
+prepend-path    CDNSHELP_DOC $env({{ cookiecutter.toolname|upper }}HOME)/doc
+{% endif %}

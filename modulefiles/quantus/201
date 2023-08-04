@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads quantus paths"
+
+
+module load cadence
+
+
+
+set	quantus_version 201
+setenv QRC_HOME $env(CADENCE_DIR)/QUANTUS$quantus_version
+
+prepend-path    PATH	$env(QRC_HOME)/tools/dfII/bin
+prepend-path    PATH	$env(QRC_HOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(QRC_HOME)/doc

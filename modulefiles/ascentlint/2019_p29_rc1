@@ -1,0 +1,13 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads Real Intent ascentlint paths"
+
+
+module load toolbase
+
+setenv LM_LICENSE_FILE 27000@license-1
+
+set	ascentlint_version 2019_p29_rc1
+setenv ASCENTLINTHOME $env(TOOLBASE)/realintent/ascentlint_$ascentlint_version
+
+prepend-path    PATH	$env(ASCENTLINTHOME)/bin

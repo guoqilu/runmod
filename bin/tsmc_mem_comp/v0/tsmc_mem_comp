@@ -1,0 +1,1 @@
+python ./tsmc_mem_comp.py "$@"

@@ -1,0 +1,51 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Dagger 2p0"
+
+setenv PROJECT dagger
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC IMEC
+#
+setenv CHIP_REV_EIC 2p0
+setenv CHIP_REV_PIC 2p0
+#
+setenv PDK_PROCESS_EIC tsmcN28
+setenv PDK_PROCESS_PIC imec130
+#
+setenv PROCESS_EIC         tsmcn28
+setenv PROCESS_VARIANT_EIC hpcp
+setenv METAL_STACK_EIC     2p00M_5X2Y2Z
+setenv PROJECT_CDS_LIB_EIC ""
+#
+setenv PROCESS_PIC         imec130
+setenv PROCESS_VARIANT_EIC sp
+setenv METAL_STACK_PIC     1P2M_2Z
+setenv PROJECT_CDS_LIB_PIC ""
+#
+setenv SOS_SERVER_EIC  uc_tsmc28
+setenv SOS_PROJECT_EIC dagger2p0
+setenv SOS_SERVER_PIC  uc_photonics
+setenv SOS_PROJECT_PIC dagger2p0
+#
+# Move away from global tools to project based.
+# prepend-path PATH /data/tools/lt/pd_tools/bin
+prepend-path PATH /data/proj/dagger/eic/2p0/common_tool/tsmcN28/pd_tools/bin
+#
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+# Calibre Setup
+setenv ISIPP_DRC_INCLUDE_DIR /data/tools/lt/pd_techdata/imec130/sp/runset/
+
+# Define drc runsets for 2p00M_5X2Y2Z
+# setenv CALIBRE_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/LOGIC_TopMr_DRC/CLN12FFC_11M_2Xa1Xd3Xe2Y2R_001.15a.encrypt
+# setenv CALIBRE_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_DRC/CLN12FFC_11M_001_ANT.15a
+# setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_MIM_DRC/CLN12FFC_11M_001_MIM_ANT.15a
+
+setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn28/DRC/PVS/tn28cldr002/LOGIC_TopMz_DRC/PLN28HP_10M_5X2Y2Z_002.20b.encrypt
+setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn28/DRC/PVS/tn28cldr002/ANTENNA_DRC/PLN28HP_10M_002_ANT.20b
+# setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_11M_001_MIM_ANT.15a
+
+setenv LVS_RUNSET_EIC /data/proj/lightwave/eic/1p0/pd/lvs/pdk/Pegasus/MAIN_DECK/PEGASUS_FLOW/DFM_LVS_RC_PEGASUS_N12FFC_2p01M_2Xa1Xd3Xe2Y2R_ALRDL.v1.0a 

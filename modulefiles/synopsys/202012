@@ -1,0 +1,22 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Common setup related to Synopsys"
+
+module load toolbase
+
+setenv SYNOPSYS_DIR $env(TOOLBASE)/synopsys
+
+#idc: China Nanjing server
+if { [ info exists ::env(SITE_ID) ] } {
+  if { [ string match $::env(SITE_ID) idc ] } { 
+    setenv SNPSLMD_LICENSE_FILE 27020@idc-lic03
+  } 
+  #else {
+  #  setenv LM_LICENSE_FILE 5280@Faraday-1.rd.lgt.ai
+  #  setenv CDS_LIC_FILE 5280@Faraday-1.rd.lgt.ai
+  #}
+} 
+#else {
+#    setenv LM_LICENSE_FILE 5280@Faraday-1.rd.lgt.ai
+#    setenv CDS_LIC_FILE 5280@Faraday-1.rd.lgt.ai
+#}

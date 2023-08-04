@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads confrml paths"
+
+
+module load cadence
+
+
+
+set	confrml_version 21102
+setenv CONFRMLHOME $env(CADENCE_DIR)/CONFRML$confrml_version
+
+prepend-path    PATH	$env(CONFRMLHOME)/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CONFRMLHOME)/tools.lnx86/bin
+prepend-path    CDNSHELP_DOC $env(CONFRMLHOME)/doc

@@ -1,0 +1,51 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Sets up static project configuration for Lightwave 1.0"
+
+setenv PROJECT lightwave
+#
+setenv FOUNDRY_EIC TSMC
+setenv FOUNDRY_PIC imec_nhanced
+#
+setenv CHIP_REV_EIC 1p0
+setenv CHIP_REV_PIC 1p0
+#
+setenv PDK_PROCESS_EIC tsmcN12
+setenv PDK_PROCESS_PIC n130
+#
+setenv PROCESS_EIC         tsmcn12
+setenv PROCESS_VARIANT_EIC hpcp
+setenv METAL_STACK_EIC     11M_2Xa1Xd3Xe2Y2R
+setenv PROCESS_VARIANT_EIC sp
+setenv PROJECT_CDS_LIB_EIC ""
+#
+setenv PROCESS_PIC         n130
+setenv METAL_STACK_PIC     1P2M_2Z
+setenv PROJECT_CDS_LIB_PIC ""
+#
+setenv SOS_SERVER_EIC uc_tsmc12
+setenv SOS_SERVER_PIC uc_photonics
+#
+prepend-path PATH /data/tools/lt/pd_tools/bin
+#
+setenv WORK_AREA      /data/proj
+#
+# Quality of Life Cadence Updates
+setenv W3264_NOWARN_UNSUPPORTED_CENTOS 1
+setenv CDS_AUTO_64BIT ALL
+
+# Define drc runsets for 13M_2Xa1Xd3Xe2Y2Yy2R
+setenv CALIBRE_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/LOGIC_TopMr_DRC/CLN12FFC_11M_2Xa1Xd3Xe2Y2R_001.15a.encrypt
+setenv CALIBRE_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_DRC/CLN12FFC_11M_001_ANT.15a
+setenv CALIBRE_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Calibre/tn12cldr001c1_1_5a/ANTENNA_MIM_DRC/CLN12FFC_11M_001_MIM_ANT.15a
+
+setenv PVS_DRC_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/LOGIC_TopMr_DRC/PLN12FFC_11M_2Xa1Xd3Xe2Y2R_001.15a.encrypt
+setenv PVS_ANT_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_DRC/PLN12FFC_11M_001_ANT.15a
+setenv PVS_MIM_RUNSET_EIC /nfs/platforms/TSMC/tsmcn12/DRC/Pegasus/tn12cldr001n1_1_5a/ANTENNA_MIM_DRC/PLN12FFC_11M_001_MIM_ANT.15a
+
+setenv ISIPP_DRC_INCLUDE_DIR  /data/tools/lt/pd_techdata/imec130/sp/runset/
+setenv CALIBRE_DRC_RUNSET_PIC /data/tools/lt/pd_techdata/imec130/sp/runset/drc_1P2M_2Z.cal
+
+setenv LVS_RUNSET_EIC /data/proj/lightwave/eic/1p0/pd/lvs/pdk/Pegasus/MAIN_DECK/PEGASUS_FLOW/DFM_LVS_RC_PEGASUS_N12FFC_1p11M_2Xa1Xd3Xe2Y2R_ALRDL.v1.0a 
+
+

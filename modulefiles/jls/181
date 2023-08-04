@@ -1,0 +1,15 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads jls paths"
+
+
+module load cadence
+
+
+
+set	jls_version 181
+setenv JLSHOME $env(CADENCE_DIR)/JLS$jls_version
+
+prepend-path    PATH	$env(JLSHOME)/tools/dfII/bin
+prepend-path    PATH	$env(JLSHOME)/tools/bin
+prepend-path    CDNSHELP_DOC $env(JLSHOME)/doc

@@ -1,0 +1,10 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Common setup related to Synopsys"
+
+module load toolbase
+
+setenv SYNOPSYS_DIR $env(TOOLBASE)/synopsys
+setenv SYNOPSYS $env(SYNOPSYS_DIR)
+
+setenv SNPSLMD_LICENSE_FILE 27020@Faraday-1.rd.lgt.ai
