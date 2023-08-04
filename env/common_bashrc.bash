@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 ###############################################################################
 # THINK LONG AND HARD BEFORE EDITING THIS FILE!
 # Perhaps even talk to someone who has edited it previously.

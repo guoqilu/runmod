@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This python/bash polyglot loads modules from a canonical configuration in a
 # tools.yaml files and runs an arbitrary command before returning your shell
