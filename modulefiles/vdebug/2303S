@@ -1,0 +1,18 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads Verisium Debug paths"
+
+
+module load cadence/vs
+
+set	vdebug_version 2303S
+
+setenv  SX_WAIT_LICENSE_TIMEOUT 60
+
+setenv  VERISIUM_DEBUG_ROOT $env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version
+
+prepend-path    PATH	$env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version/bin
+prepend-path    PATH	$env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version/tools.lnx86
+prepend-path    PATH	$env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version/tools.lnx86/bin
+prepend-path    PATH	$env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/VERISIUMDEBUG$vdebug_version/tools.lnx86/lib64
