@@ -1,0 +1,11 @@
+#%Module1.0# # -*- tcl -*-
+# See https://dev.azure.com/LightelligencePlatform/svunit
+module-whatis	"Loads svunit paths"
+
+module load toolbase/v0
+
+set	svunit_version 3.37.0
+
+setenv SVUNIT_INSTALL /nfs/dv/shared/dv_repos/svunit/$svunit_version
+
+prepend-path    PATH	$env(SVUNIT_INSTALL)/bin
