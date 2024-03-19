@@ -1,0 +1,14 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads vmanager paths"
+
+
+module load cadence/vs
+
+set	vmanager_version 2309S
+
+setenv  SX_WAIT_LICENSE_TIMEOUT 60
+
+prepend-path    PATH	$env(CADENCE_DIR)/VMANAGER$vmanager_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/VMANAGER$vmanager_version/tools.lnx86/bin/64bit
+prepend-path    PATH	$env(CADENCE_DIR)/VMANAGER$vmanager_version/bin
