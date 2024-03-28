@@ -35,7 +35,6 @@ modulefiles_dir=`readlink -f $eda_dir/modulefiles`
 # projects_dir=`readlink -f $eda_dir/projects`
 # [[ ":${MODULEPATH}:" != *":${projects_dir}:"* ]] && MODULEPATH="${projects_dir}:${MODULEPATH}"
 export MODULEPATH
-export MODULEDIR='$eda_dir'
 
 bin_dir=`readlink -f $eda_dir/bin`
 [[ ":${PATH}:" != *":${bin_dir}:"* ]] && PATH="${bin_dir}:${PATH}"
