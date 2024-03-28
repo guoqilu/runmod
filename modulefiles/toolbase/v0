@@ -2,4 +2,4 @@
 
 module-whatis	"Loads toolbase paths"
 
-setenv TOOLBASE [file dirname [file dirname [file dirname [file normalize [info script]]]]]
+setenv TOOLBASE [file dirname [file dirname [file dirname [file dirname [file normalize [info script]]]]]]
