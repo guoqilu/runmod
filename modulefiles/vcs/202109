@@ -1,6 +1,0 @@
-#%Module1.0# # -*- tcl -*-
-
-module-whatis	"Loads VCS paths"
-
-module load vcs/S-2021.09
-setenv VCS_LICENSE_WAIT 1

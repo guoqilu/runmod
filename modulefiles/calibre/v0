@@ -1,8 +1,0 @@
-#%Module1.0# # -*- tcl -*-
-
-module-whatis	"Loads calibre paths"
-
-module load mentor
-
-setenv		CALIBRE_HOME /data/tools/mentor/aoi_cal_2019.4_16.9
-prepend-path	PATH  $env(CALIBRE_HOME)/bin

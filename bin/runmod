@@ -92,8 +92,12 @@ fi
 # Reinitialize modules and set module path again
 # Eventually, find the configuration knob in bazel to be able to remove this code
 source $MODULESHOME/init/bash
-MODULEPATH="$( cd -P "$( dirname "$runmod_file" )" >/dev/null 2>&1 && pwd )"
-export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
+# MODULEPATH="$( cd -P "$( dirname "$runmod_file" )" >/dev/null 2>&1 && pwd )"
+# export MODULEPATH=`readlink -f $MODULEPATH/../modulefiles`
+# MODULEPATH=`sed 's/#.*$//' ${MODULESHOME}/init/.modulespath | awk 'NF==1{printf("%s:",$1)}'`
+# export MODULEPATH
+
+# echo $MODULESHOME $MODULEPATH
 
 # Load the appropriate modules
 module load $modules

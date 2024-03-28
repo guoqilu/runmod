@@ -1,5 +1,0 @@
-#%Module1.0# # -*- tcl -*-
-
-module-whatis	"Common setup related to Mentor Products"
-
-prepend-path LM_LICENSE_FILE 1717@faraday-1.lgt.ai:1717@idc-lic02.rd.lgt.ai

@@ -1,9 +1,0 @@
-#%Module1.0# # -*- tcl -*-
-
-module-whatis	"Common setup related to TSMC MC2 SRAM Compiler"
-
-module load toolbase
-
-setenv MC2_INSTALL_DIR /foundry/TSMC/tsmcn7/sram_compilers/tsn7_uhdspsram_20151201_130a/0M36001_20220320/TSMCHOME/sram/Compiler/tsn7_uhdspsram_20151201_130a/MC2_2015.12.01.k
-prepend-path PATH $env(MC2_INSTALL_DIR)/bin
-setenv LM_LICENSE_FILE 27000@license-1.lgt.ai
