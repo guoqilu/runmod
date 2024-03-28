@@ -1,0 +1,5 @@
+#%Module1.0# # -*- tcl -*-
+
+module-whatis	"Loads toolbase paths"
+
+setenv TOOLBASE [file dirname [file dirname [file dirname [file normalize [info script]]]]]
