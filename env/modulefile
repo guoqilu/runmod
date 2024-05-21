@@ -1,0 +1,6 @@
+#%Module1.0# # -*- tcl -*-
+# See https://github.com/guoqilu/runmod
+module-whatis	"Loads runmod paths"
+
+prepend-path    PATH	/tools/opensource/runmod/bin
+prepend-path    MODULEPATH	/tools/opensource/runmod/modulefiles
